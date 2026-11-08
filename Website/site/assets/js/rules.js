@@ -30,7 +30,7 @@ function makeRow(idx) {
   toggle.setAttribute("aria-label", "Expand/collapse subheadings");
   toggle.addEventListener("click", (e) => { e.stopPropagation(); toggleExpand(idx); });
   const label = document.createElement("button");
-  label.className = "label";
+  label.className = hasChildren ? "label expandable" : "label"; // expandable headings get the link color
   label.type = "button";
   label.textContent = h.text;
   label.title = hasChildren ? `${h.text} — click to show/hide subheadings` : h.text;

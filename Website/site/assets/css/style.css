@@ -368,6 +368,7 @@ h1, h2, h3 { line-height: 1.2; }
   font-size: 14px; text-decoration: none; color: var(--ink); padding: 4px 9px; border: none; background: none; cursor: pointer; text-align: left; font-family: var(--font-text); border-radius: 3px;
 }
 .outline-row .label:hover { background: #C4C0B7; }
+.outline-row .label.expandable { color: var(--accent-blue); } /* expandable headings look like links; plain headings keep their color */
 .outline-row .count { color: var(--muted); font-size: 12px; flex: none; }
 .outline-row .jump {
   flex: none; background: var(--ink); border: none; border-radius: 3px;
