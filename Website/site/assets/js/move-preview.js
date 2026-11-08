@@ -10,10 +10,10 @@ const wrap = document.getElementById("move-preview");
 
 const toolbar = document.createElement("div");
 toolbar.className = "sheet-toolbar";
-toolbar.innerHTML = `<a class="btn small" href="/moves/">‹ Moves</a>
+toolbar.innerHTML = `<a class="btn small" href="moves/">‹ Moves</a>
   <strong id="mv-title"></strong>
   <span style="flex:1"></span>
-  <a class="btn small" id="mv-edit" href="/moves/editor/?id=${encodeURIComponent(id || "")}">Edit</a>`;
+  <a class="btn small" id="mv-edit" href="moves/editor/?id=${encodeURIComponent(id || "")}">Edit</a>`;
 wrap.appendChild(toolbar);
 
 if (move) {

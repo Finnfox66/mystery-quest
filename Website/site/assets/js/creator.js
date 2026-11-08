@@ -151,7 +151,7 @@ function renderList() {
     const img = document.createElement("img");
     img.className = "char-portrait";
     img.alt = "";
-    img.src = c.portrait?.data ? `data:${c.portrait.mimeType};base64,${c.portrait.data}` : "/assets/img/placeholder.svg";
+    img.src = c.portrait?.data ? `data:${c.portrait.mimeType};base64,${c.portrait.data}` : "assets/img/placeholder.svg";
     const who = document.createElement("div");
     who.className = "who";
     who.innerHTML = `<div class="name"></div><div class="details"></div>`;
@@ -534,7 +534,7 @@ function previewSheet(c, d) {
   const img = document.createElement("img");
   img.className = "char-portrait pv-portrait";
   img.alt = "Portrait";
-  img.src = c.portrait?.data ? `data:${c.portrait.mimeType};base64,${c.portrait.data}` : "/assets/img/placeholder.svg";
+  img.src = c.portrait?.data ? `data:${c.portrait.mimeType};base64,${c.portrait.data}` : "assets/img/placeholder.svg";
   right.appendChild(img);
 
   const rRow = (label, value, editable, onSet, max) => {
@@ -838,7 +838,7 @@ function resEditor(c) {
 }
 
 async function movesEditor(c) {
-  if (!movesLib.length) movesLib = [...loadCustomMoves(), ...(await (await fetch("/assets/data/moves.json")).json())]; // custom Moves first
+  if (!movesLib.length) movesLib = [...loadCustomMoves(), ...(await (await fetch("assets/data/moves.json")).json())]; // custom Moves first
   const wrap = document.createElement("div");
   const addBtn = document.createElement("button");
   addBtn.className = "btn small add-btn"; addBtn.type = "button"; addBtn.textContent = "Add Move from library";
@@ -999,4 +999,4 @@ document.addEventListener("click", (e) => {
   }
 });
 renderList();
-fetch("/assets/data/moves.json").then((r) => r.json()).then((m) => { movesLib = [...loadCustomMoves(), ...m]; });
+fetch("assets/data/moves.json").then((r) => r.json()).then((m) => { movesLib = [...loadCustomMoves(), ...m]; });

@@ -127,7 +127,8 @@ html, body {
 .nav-more-wrap .menu { min-width: 210px; } /* wide enough for "Links and downloads" on one row */
 @media (max-width: 900px) {
   .nav-more-wrap { display: block; }
-  .site-nav a[href="/links-and-downloads/"], .site-nav a[href="/about/"] { display: none; }
+  /* nav hrefs are relative (resolved via <base>), so match them without the leading slash */
+  .site-nav a[href="links-and-downloads/"], .site-nav a[href="about/"] { display: none; }
 }
 
 /* narrow top bar: the logo on top, the tabs in between, the JSON data menu under the tabs */

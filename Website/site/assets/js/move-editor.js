@@ -128,10 +128,10 @@ function render() {
   // toolbar, styled like the character sheet toolbar
   const toolbar = document.createElement("div");
   toolbar.className = "sheet-toolbar";
-  toolbar.innerHTML = `<a class="btn small" href="/moves/">‹ Moves</a>
+  toolbar.innerHTML = `<a class="btn small" href="moves/">‹ Moves</a>
     <strong id="mv-title"></strong>
     <span style="flex:1"></span>
-    <a class="btn small" id="mv-preview" href="/moves/preview/?id=${encodeURIComponent(move.id)}">Preview</a>
+    <a class="btn small" id="mv-preview" href="moves/preview/?id=${encodeURIComponent(move.id)}">Preview</a>
     <div class="header-actions menu-wrap">
       <button class="btn small" id="mv-json-btn" type="button" aria-haspopup="true" aria-expanded="false">JSON data ▾</button>
       <div class="menu hidden" id="mv-json-menu" role="menu">

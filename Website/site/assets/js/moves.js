@@ -4,7 +4,7 @@ import { loadCustomMoves, saveCustomMoves } from "./main.js";
 
 async function init() {
   const grid = document.getElementById("moves-grid");
-  const moves = await (await fetch("/assets/data/moves.json")).json(); // library Moves
+  const moves = await (await fetch("assets/data/moves.json")).json(); // library Moves
 
   const types = [...new Set(moves.map((m) => m.type))].sort();
   // one Keyword filter with every keyword, incl. the Category / Targeting / Melee-Long Range groups
@@ -57,7 +57,7 @@ async function init() {
       onChanged();
     });
     const edit = document.createElement("a");
-    edit.className = "btn small"; edit.textContent = "Edit ›"; edit.href = `/moves/editor/?id=${encodeURIComponent(m.id)}`;
+    edit.className = "btn small"; edit.textContent = "Edit ›"; edit.href = `moves/editor/?id=${encodeURIComponent(m.id)}`;
     actions.append(del, edit);
     card.appendChild(actions); // buttons inside the card
     return card;

@@ -42,18 +42,23 @@ export function saveCustomMoves(moves) {
 
 function headerHtml() {
   const norm = (p) => p.replace(/\/index\.html$/, "/").replace(/\/$/, "") || "/";
-  const path = norm(location.pathname);
+  // the <base> tag makes asset and nav URLs relative to the site root; strip that base
+  // path from the location so the PAGES keys below stay root-relative ("/rules/" etc.)
+  const basePath = new URL(document.baseURI).pathname; // always ends with "/"
+  const path = norm(location.pathname.startsWith(basePath) ? "/" + location.pathname.slice(basePath.length) : location.pathname);
   const nav = PAGES.map(([href, label]) => {
     const active = path === norm(href) ? ' class="active"' : "";
-    return `<a href="${href}"${active}>${label}</a>`;
+    const link = href === "/" ? "./" : href.slice(1); // relative, so <base> applies
+    return `<a href="${link}"${active}>${label}</a>`;
   }).join("");
   // the last two tabs are shown in the "More" dropdown on narrow screens (Characters never is)
   const moreLinks = PAGES.slice(-2).map(([href, label]) => {
     const active = path === norm(href) ? ' class="active"' : "";
-    return `<a href="${href}"${active}>${label}</a>`;
+    const link = href === "/" ? "./" : href.slice(1); // relative, so <base> applies
+    return `<a href="${link}"${active}>${label}</a>`;
   }).join("");
   return `
-  <a class="site-logo" href="/">Mystery Quest</a>
+  <a class="site-logo" href="./">Mystery Quest</a>
   <nav class="site-nav">${nav}</nav>
   <div class="header-actions">
     <div class="menu-wrap nav-more-wrap">
