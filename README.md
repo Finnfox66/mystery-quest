@@ -33,8 +33,3 @@ and open it in a browser. It presents the full ruleset with a searchable outline
 Moves browser with filters, and a character creator (player characters and NPCs, with
 JSON export/import) plus an editor for custom Moves. Everything runs locally in the
 browser and stores its data in `localStorage` — no accounts, no server.
-
-## Contributing rules text
-
-If you have feedback or corrections for the rules, the place to put them is the
-author's Google Doc (the source of truth). This repository does not edit the rules exports.

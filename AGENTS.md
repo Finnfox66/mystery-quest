@@ -9,6 +9,10 @@ editing.
 
 ## Critical constraints
 
+- **Git:** the user makes all commits in this repository. The agent never runs
+  `git commit`, `git add`, or any other staging/commit command — it only edits
+  working-tree files.
+
 - The versioned ruleset exports are Markdown
   exports of the author's Google Doc. They are **not the source of truth**.
   The latest export (currently `Rules/Mystery Quest ruleset 0_9_5_8.md`) sits at

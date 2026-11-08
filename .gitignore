@@ -4,7 +4,8 @@ local-only/
 # Dependencies
 node_modules/
 
-# OS and editor artifacts
+# OS, editor and agent tooling artifacts
+.vibe/
 .DS_Store
 Thumbs.db
 .idea/
