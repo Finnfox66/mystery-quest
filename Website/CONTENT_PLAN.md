@@ -34,16 +34,18 @@ the browser and character sheets are imported/exported as JSON files.
 /                     Home
 /rules                Rules
 /moves                Move browser
+/moves/editor         Custom Move editor
+/moves/preview        Custom Move preview
 /creator              Character creator
 /links-and-downloads  Links and downloads
 /about                About
 /encounters           Encounter builder (planned — not in v1)
 ```
 
-Six pages are built in v1 (the encounter builder is planned but left out for now). Each is
+Eight pages are in v1 (the encounter builder is planned but left out for now). Each is
 one HTML file plus shared CSS/JS; navigation is plain links (no client router at this
-size). The rules, Moves, Links and downloads and About pages are fully static; only
-`/creator` runs real application code in v1.
+size). The Home, Links and downloads and About pages are fully static; `/rules`,
+`/moves`, `/moves/editor`, `/moves/preview` and `/creator` run application code.
 
 ### 2.1. Home `/`
 
@@ -71,7 +73,7 @@ size). The rules, Moves, Links and downloads and About pages are fully static; o
 - **Outline/contents list**: by default only H2 headings are shown ("Mystery Quest
   ruleset" is the H1). Each row shows the count of its direct subheadings, e.g. "(3)".
   Headings act as accordions — clicking the heading name reveals or hides its subheadings
-  (no arrow icons; subheadings indent by depth). Each heading row has a **">" button on
+  (no arrow icons; subheadings indent by depth). Each heading row has a **"›" button on
   its right side** that scrolls the main rules column to that section; clicking the name
   only expands/collapses. Both columns reserve their scrollbar at all times (no layout
   shift).
@@ -81,18 +83,24 @@ size). The rules, Moves, Links and downloads and About pages are fully static; o
   column is replaced by the search results instead of the outline. Each result shows
   its heading structure (the breadcrumb of headings it was found under, e.g. "Secondary
   effects > Status Conditions — Paralysis"), a limited amount of text surrounding the
-  match, and a **">" button** that scrolls the rules to where the result was found (with
+  match, and a **"›" button** that scrolls the rules to where the result was found (with
   the matched terms highlighted). Clearing the search word — via the **×** button that
   appears inside the field when it has text — returns the left column to the
   outline/contents list. (Implementation in TECHNICAL_PLAN §3.)
 
 ### 2.3. Move browser `/moves`
 
-- All available converted Moves: the 25 example conversions from the ruleset, plus any
-  additional converted Move library entries if the project grows one.
-- Filters: type, category (Physical / Special / Status), targeting (Single-target / AoE),
-  keyword (Priority, Counter, Charging, Recharging, Pledge), and Direct / Indirect
-  conversion marking. Free-text search over Move names and effect texts is included.
+- All converted Moves: custom Moves first (alphabetical), then the ruleset's Example Move
+  conversions plus the hand-maintained Move library (Website/site/assets/data/
+  move-library.json, converted from the latest official versions), alphabetically. Custom
+  Move cards carry
+  **Delete** and **Edit ›** buttons; a **New Move** button (right-aligned next to the
+  filters) opens the editor at `/moves/editor`, and each custom Move has a preview page
+  at `/moves/preview`.
+- Filters: type, a single keyword dropdown containing all keywords (including the
+  category, targeting and Melee/Long Range groups), and the conversion marking
+  (Direct / Indirect / custom). Free-text search over Move names and effect texts is
+  included.
 - Move detail cards show the converted fields (converted values are the operative ones;
   official values appear as provenance).
 - **Z-Moves are excluded** and never listed: they are one-per-battle transformations of
@@ -104,9 +112,9 @@ size). The rules, Moves, Links and downloads and About pages are fully static; o
   characters. Each entry shows the character's **portrait** (a small square image;
   characters without one get a placeholder), the **name** as the label, and as details
   the **type** ("Player character" / "NPC"), **species** and **level**. Each entry has
-  **"Duplicate"** and **"Delete"** buttons and a **">" button** that enters that
+  **"Duplicate"** and **"Delete"** buttons and an **"Edit ›" button** that enters that
   character's sheet. Above the list: a **filter/search field** limiting the shown
-  characters to those matching the search word, and a **"New character"** action that
+  characters to those matching the search word, and **"New player character" / "New NPC"** actions that
   creates a character from scratch.
 - Tabs: **Player character | NPC**. The sheet has two modes (toggled without losing
   state): **Edit** — all creation sections stacked on one page (identity, stats,
@@ -193,10 +201,10 @@ fan-project disclaimer and licensing note (§1), and the acknowledgments.
   the Example Move conversions and "Contents and material" sections). The build renders it
   from the first "## Description" heading onward; the page header/banner/footer present
   name, author and version instead.
-- **Moves**: `Website/ruleset/example-move-conversions.md` (the extracted Example Move
-  conversions section) is the seed for `moves.json`; a future `Rules/Move library.md` in
-  the same entry format would be merged in. Conversion method and Move-entry formatting
-  conventions: `AI context/MOVE_CONVERSIONS.md`.
+- **Moves**: `moves.json` = the ruleset's Example Move conversions (parsed from
+  `Website/ruleset/example-move-conversions.md`) plus the hand-maintained `Website/site/assets/data/move-library.json`
+  (new Moves converted from the latest official versions, same entry format). Conversion
+  method and Move-entry formatting conventions: `AI context/MOVE_CONVERSIONS.md`.
 - **Conventions carried over to the site's data**: weather has no standalone mechanics;
   Direct vs Indirect marking with a plain hyphen in the title; Move-entry formatting rules;
   curly apostrophes in generated prose.

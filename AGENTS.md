@@ -32,7 +32,9 @@ editing.
   produced by `Website/tools/update-ruleset.mjs` from the newest export: the
   artifact-cleaned ruleset under the generic name `Mystery Quest ruleset.md`
   (without the Example Move conversions section — the website's Moves list is
-  built from the separately extracted `example-move-conversions.md` — and
+  the extracted examples plus the hand-maintained `Website/site/assets/data/move-library.json`
+  (new conversions from the latest official versions; indirect ones wait in
+  `local-only/New versions.md`) — and
   without the "Contents and material" section: the site's contents listing,
   links to material, acknowledgments and character-sheet image are
   implemented site-side, separate from the rules text, and the
@@ -46,6 +48,10 @@ editing.
   `Website/site/assets/`; base64 payloads in an export are extracted
   automatically). Never hand-edit the generated documents; re-run the script
   after a new export arrives. The raw exports in `Rules/` are never modified.
+  The site in `Website/site/` is deployed to GitHub Pages by
+  `.github/workflows/website-workflow.yml` (Pages source: GitHub Actions); its pages
+  use a per-page `<base>` tag and relative URLs, so the site works both at a domain
+  root and under a project subpath (`user.github.io/<repo>/`).
   Never edit, reformat, lint, or "fix" these files — not even whitespace,
   escaped punctuation (`\+`, `\=`, `\.`), or vertical tabs inside tables.
   Those are export artifacts, not defects to repair locally. Prior exports

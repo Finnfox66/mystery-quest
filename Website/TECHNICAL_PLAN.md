@@ -1,7 +1,7 @@
 # TECHNICAL_PLAN — Pokémon Mystery Quest website
 
 **How the website is built.** For what the site contains, page by page, see
-The v1 site is built into `Website/site/` by `Website/tools/build.mjs` (all pages except the encounter builder, which is left out for now).
+The site lives as static files in `Website/site/`; `Website/tools/build.mjs` builds only the rules page and its data files from `Website/ruleset/` (the encounter builder is left out for now).
 
 Plan for a static website presenting the **Pokémon Mystery Quest** ruleset (currently
 v0.9.5.8). **There is no backend**: everything runs in the browser, and character sheets
@@ -12,17 +12,18 @@ are imported/exported as JSON files.
 ## 1. Constraints and non-goals
 
 - **No backend, no accounts, no database.** Static hosting only — the site is a plain
-  static bundle, so any static host works: AWS S3 + CloudFront (the original plan),
-  GitHub Pages, Netlify, or a local file server. All state lives in the browser
-  (in-progress characters in `localStorage`) or in exported JSON files. Hosting note for
-  GitHub Pages: a user/org page or custom domain serves from the root and root-absolute
-  URLs (`/assets/…`, `/rules/`) work as-is; a *project* page (`user.github.io/<repo>/`)
-  needs a `<base href="/<repo>/">` in the templates (add a `--base` option to
-  `tools/build.mjs`) or relative paths.
+  static bundle, so any static host works: GitHub Pages (current — see the hosting
+  note below), Netlify, or a local file server. All state lives in the browser
+  (in-progress characters in `localStorage`) or in exported JSON files. Hosting note:
+  the site uses a per-page `<base>` tag plus relative URLs, so it works both at a domain
+  root and under a GitHub Pages project subpath (`user.github.io/<repo>/`). It is
+  deployed to GitHub Pages by `.github/workflows/website-workflow.yml` (Pages source:
+  GitHub Actions), which publishes `Website/site/` on pushes to `main` that touch the
+  website.
 - **Predefined data libraries, bundled at build time — except species base stats.**
   Species names and types, the type chart (resistance/weakness levels), the Ability
   list, the Base Value Arrays and the Move library ship as static JSON under
-  `Website/site/data/`. No runtime lookup and no external API — the site stays
+  `Website/site/assets/data/`. No runtime lookup and no external API — the site stays
   dependency-free and hostable anywhere. **Species base stats are deliberately not
   included**: official creature stats can change between game versions, and bundling
   them would create a second source that drifts from the ruleset's conversion input —
@@ -120,12 +121,14 @@ and hostable anywhere:
      material so the v2 Markdown download (§11) stays a complete standalone
      document. Anchors derive from the section headings (the repo's canonical
      way to reference rules),
-  3. regenerates `Website/site/data/moves.json` from
-     `Website/ruleset/example-move-conversions.md`,
-  4. generates `Website/site/data/search-index.json` from the rendered rules (§3), and
+  3. writes `Website/site/assets/data/moves.json` as the Example Move conversions parsed
+     from `Website/ruleset/example-move-conversions.md` plus the hand-maintained
+     `Website/site/assets/data/move-library.json` (new Move conversions from the latest
+     official versions),
+  4. generates `Website/site/assets/data/search-index.json` from the rendered rules (§3), and
   5. stamps the version (from `Website/ruleset/version.json` — never the
      document byline's placeholder) and the build date into
-     `Website/site/data/site.json`.
+     `Website/site/assets/data/site.json`.
 - **Build-time Markdown parsing:** a small hand-written renderer inside
   `tools/build.mjs` (headings/tables/lists/inline formatting) — the cleaned export's
   markdown is regular enough that no parser dependency is needed, keeping even the
@@ -423,7 +426,7 @@ export JSON to keep it" warning. The landing view lists them; each list item sho
   **"Delete"** (with a confirm step), and a **">" button** that opens that character's
   sheet (edit mode, §7.0).
 Above the list: a **filter/search field** that limits the shown characters to those
-matching the search word (name, and species/type), and a **"New character"** action
+matching the search word (name, and species/type), and **"New player character" / "New NPC"** actions
 that creates a blank character from scratch (PC or NPC kind chosen on creation).
 
 ### 7.5. Encounter builder (`/encounters`)
@@ -542,7 +545,7 @@ explicitly revisited (§1).
 
 ## 12. Decided already / open questions (decide before Phase 1)
 
-Decided already: hosting (AWS S3 + CloudFront later; no effect on the build), no
+Decided already: hosting (GitHub Pages via the GitHub Actions workflow `.github/workflows/website-workflow.yml`; no effect on the build), no
 predefined static data libraries (species names/types, resistance/weakness levels, Abilities, Base Value Arrays, Moves) bundled at build time with no runtime lookup — species base stats excluded (official stats may change; entered manually), fan-project naming and disclaimers with the "MQ" short form
 (CONTENT_PLAN.md §1), only the latest ruleset version viewable, rules input format
 (Markdown throughout: the export is script-cleaned into `Website/ruleset/`, then rendered
@@ -552,7 +555,7 @@ style — light and minimalistic, grey edges instead of shadows, small radii, gr
 for page identity but never on the character sheet page, home page airy and sheet
 efficiently spaced and moderately print-ready (§4–4.1) — the encounter builder as a
 planning-only page (§7.5), no backwards compatibility and no battle tracking in v1,
-assistive-not-forced tools (§7.1), custom-Move library and data exports deferred to v2
+assistive-not-forced tools (§7.1), custom-Move library and JSON data exports (both shipped in v1)
 (§11), and **language: English only for v1** (the ruleset's language).
 
 **No open questions remain — the plan is complete and Phase 1 can start.**

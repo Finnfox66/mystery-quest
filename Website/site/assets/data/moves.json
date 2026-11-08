@@ -501,5 +501,209 @@
     "power": "",
     "secondaryEffect": "",
     "description": "Creates an area that lasts for 5 rounds. A character that enters the area or ends their turn inside the area takes 4 True Damage. A character can be affected by this Move only once per turn."
+  },
+  {
+    "name": "Brave Bird",
+    "conversion": "direct",
+    "official": "Flying | Physical | Power 120 | Accuracy 100% | PP 15 | User receives 1/3 the damage inflicted in recoil | Contact",
+    "type": "Flying",
+    "keywords": [
+      "Single-target",
+      "Physical",
+      "Melee"
+    ],
+    "ppCost": 1,
+    "range": "1 m",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+10",
+    "power": "12 + d12",
+    "secondaryEffect": "The user takes True Damage equal to one third of the damage dealt (rounded up).",
+    "description": ""
+  },
+  {
+    "name": "Play Rough",
+    "conversion": "direct",
+    "official": "Fairy | Physical | Power 90 | Accuracy 90% | PP 10 | 10% chance to lower the target’s Attack by one stage | Contact",
+    "type": "Fairy",
+    "keywords": [
+      "Single-target",
+      "Physical",
+      "Melee"
+    ],
+    "ppCost": 2,
+    "range": "1 m",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+8",
+    "power": "10 + d10",
+    "secondaryEffect": "Has a 10% (-8) chance of applying an Attack debuff of one stage (-2 Attack) to the target.",
+    "description": ""
+  },
+  {
+    "name": "Moonblast",
+    "conversion": "direct",
+    "official": "Fairy | Special | Power 95 | Accuracy 100% | PP 15 | 30% chance to lower the target’s Special Defense by one stage | No contact",
+    "type": "Fairy",
+    "keywords": [
+      "Single-target",
+      "Special",
+      "Long Range"
+    ],
+    "ppCost": 1,
+    "range": "20 m + 2x (Sp.) Attack",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+10",
+    "power": "10 + d10",
+    "secondaryEffect": "Has a 30% (-4) chance of applying a Special Defense debuff of one stage (-2 Special Defense) to the target.",
+    "description": ""
+  },
+  {
+    "name": "Shadow Ball",
+    "conversion": "direct",
+    "official": "Ghost | Special | Power 80 | Accuracy 100% | PP 15 | 20% chance to lower the target’s Special Defense by one stage | No contact",
+    "type": "Ghost",
+    "keywords": [
+      "Single-target",
+      "Special",
+      "Long Range"
+    ],
+    "ppCost": 1,
+    "range": "20 m + 2x (Sp.) Attack",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+10",
+    "power": "8 + d8",
+    "secondaryEffect": "Has a 20% (-6) chance of applying a Special Defense debuff of one stage (-2 Special Defense) to the target.",
+    "description": ""
+  },
+  {
+    "name": "Drain Punch",
+    "conversion": "direct",
+    "official": "Fighting | Physical | Power 75 | Accuracy 100% | PP 10 | Drains half the damage inflicted to heal the user | Contact",
+    "type": "Fighting",
+    "keywords": [
+      "Single-target",
+      "Physical",
+      "Melee"
+    ],
+    "ppCost": 2,
+    "range": "1 m",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+10",
+    "power": "8 + d8",
+    "secondaryEffect": "Restores the user’s HP equal to half of the damage dealt (rounded up).",
+    "description": ""
+  },
+  {
+    "name": "Giga Drain",
+    "conversion": "direct",
+    "official": "Grass | Special | Power 75 | Accuracy 100% | PP 10 | Drains half the damage inflicted to heal the user | No contact",
+    "type": "Grass",
+    "keywords": [
+      "Single-target",
+      "Special",
+      "Long Range"
+    ],
+    "ppCost": 2,
+    "range": "20 m + 2x (Sp.) Attack",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+10",
+    "power": "8 + d8",
+    "secondaryEffect": "Restores the user’s HP equal to half of the damage dealt (rounded up).",
+    "description": ""
+  },
+  {
+    "name": "Ice Shard",
+    "conversion": "direct",
+    "official": "Ice | Physical | Power 40 | Accuracy 100% | PP 30 | Priority +1 | No contact",
+    "type": "Ice",
+    "keywords": [
+      "Single-target",
+      "Physical",
+      "Long Range",
+      "Priority"
+    ],
+    "ppCost": 0,
+    "range": "20 m + 2x (Sp.) Attack",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+10",
+    "power": "4 + d4",
+    "secondaryEffect": "",
+    "description": ""
+  },
+  {
+    "name": "Mach Punch",
+    "conversion": "direct",
+    "official": "Fighting | Physical | Power 40 | Accuracy 100% | PP 30 | Priority +1 | Contact",
+    "type": "Fighting",
+    "keywords": [
+      "Single-target",
+      "Physical",
+      "Melee",
+      "Priority"
+    ],
+    "ppCost": 0,
+    "range": "1 m",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+10",
+    "power": "4 + d4",
+    "secondaryEffect": "",
+    "description": ""
+  },
+  {
+    "name": "Extreme Speed",
+    "conversion": "direct",
+    "official": "Normal | Physical | Power 80 | Accuracy 100% | PP 5 | Priority +2 | Contact",
+    "type": "Normal",
+    "keywords": [
+      "Single-target",
+      "Physical",
+      "Melee",
+      "Priority"
+    ],
+    "ppCost": 3,
+    "range": "1 m",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+10",
+    "power": "8 + d8",
+    "secondaryEffect": "",
+    "description": ""
+  },
+  {
+    "name": "Aqua Jet",
+    "conversion": "direct",
+    "official": "Water | Physical | Power 40 | Accuracy 100% | PP 20 | Priority +1 | Contact",
+    "type": "Water",
+    "keywords": [
+      "Single-target",
+      "Physical",
+      "Melee",
+      "Priority"
+    ],
+    "ppCost": 0,
+    "range": "1 m",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+10",
+    "power": "4 + d4",
+    "secondaryEffect": "",
+    "description": ""
   }
 ]

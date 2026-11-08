@@ -5,13 +5,13 @@
 // Outputs:
 //   site/rules/index.html        — rules page (rendered rules + headings data + search index embedded)
 //   site/assets/data/site.json   — version + build date
-//   site/assets/data/moves.json  — parsed Move examples (JSON, not CSV: nested fields)
+//   site/assets/data/moves.json  — the Move list: ruleset examples + hand-maintained move-library.json
 //   site/assets/data/search-index.json
 //
 // The other pages (home, moves, creator, links-and-downloads, about) are static files
 // and are not touched by this script.
 
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -199,13 +199,16 @@ function parseMoves(md) {
 const version = JSON.parse(readFileSync(join(rulesetDir, "version.json"), "utf8"));
 const rulesMd = readFileSync(join(rulesetDir, "Mystery Quest ruleset.md"), "utf8");
 const movesMd = readFileSync(join(rulesetDir, "example-move-conversions.md"), "utf8");
+// The website's Move list = the ruleset's Example Move conversions + the hand-maintained
+// library of new conversions from the latest official versions (move-library.json).
+const libraryPath = join(siteDir, "assets", "data", "move-library.json");
 
 // Rules page: render from the first "## " heading onward (page header presents title/author/version)
 const bodyStart = rulesMd.indexOf("\n## ");
 const rulesBody = rulesMd.slice(bodyStart + 1);
 const rules = renderMarkdown(rulesBody);
 
-const moves = parseMoves(movesMd);
+const moves = parseMoves(movesMd).concat(existsSync(libraryPath) ? JSON.parse(readFileSync(libraryPath, "utf8")) : []);
 
 const siteJson = { version: version.version, buildDate: new Date().toISOString() };
 const searchIndex = {
