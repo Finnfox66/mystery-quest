@@ -1,0 +1,15 @@
+# Local-only working files — never committed
+local-only/
+
+# Dependencies
+node_modules/
+
+# OS and editor artifacts
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs and scratch files
+*.log
+.tmp-*

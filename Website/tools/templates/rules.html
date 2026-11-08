@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" class="rules-page">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rules — Mystery Quest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body class="rules-body">
+<header id="site-header"></header>
+<div class="rules-layout">
+  <aside class="rules-outline" id="rules-outline">
+    <div class="rules-outline-tools">
+      <div class="search-wrap">
+        <input type="search" id="rules-search" placeholder="Search the rules…" aria-label="Search the rules">
+        <button type="button" id="search-clear" class="search-clear hidden" aria-label="Clear search">×</button>
+      </div>
+    </div>
+    <nav id="outline-nav" aria-label="Rules contents"></nav>
+    <div id="outline-results" class="hidden"></div>
+  </aside>
+  <main class="rules-main" id="rules-main">
+    <div class="rules-version-banner" id="rules-version"></div>
+    <article class="rules-content card">
+<!--RULES_CONTENT-->
+    </article>
+  </main>
+</div>
+<script type="application/json" id="headings-data"><!--HEADINGS_DATA--></script>
+<script type="application/json" id="search-data"><!--SEARCH_DATA--></script>
+<script type="application/json" id="site-data"><!--SITE_DATA--></script>
+<script type="module" src="/assets/js/main.js"></script>
+<script type="module" src="/assets/js/rules.js"></script>
+</body>
+</html>

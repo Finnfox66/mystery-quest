@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moves — Mystery Quest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+<main class="page-main">
+  <h1 class="page-title">Moves</h1>
+  <div class="card">
+    <div class="moves-filters">
+      <label>Search<input type="search" id="f-q" placeholder="Name or effect text…"></label>
+      <label>Type<select id="f-type"><option value="">All</option></select></label>
+      <label>Keyword<select id="f-keyword"><option value="">All</option></select></label>
+      <label>Conversion<select id="f-conversion"><option value="">All</option><option value="direct">Direct</option><option value="indirect">Indirect</option><option value="custom">Custom</option></select></label>
+      <a class="btn add-btn" href="/moves/editor/">New Move</a>
+    </div>
+    <p id="moves-count" style="font-size:13px;color:var(--muted)"></p>
+    <div class="moves-grid" id="moves-grid"></div>
+  </div>
+</main>
+<script type="module" src="/assets/js/main.js"></script>
+<script type="module" src="/assets/js/moves.js"></script>
+</body>
+</html>

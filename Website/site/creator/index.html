@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Characters — Mystery Quest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<header id="site-header"></header>
+<main class="page-main">
+  <div id="char-list-view">
+    <h1 class="page-title">Characters</h1>
+    <div class="card">
+      <div class="char-list-tools">
+        <input type="search" id="char-filter" placeholder="Filter characters…" aria-label="Filter characters">
+        <button class="btn" id="new-pc" type="button">New player character</button>
+        <button class="btn" id="new-npc" type="button">New NPC</button>
+      </div>
+      <div id="char-list"></div>
+    </div>
+  </div>
+  <div id="char-edit-view" class="hidden">
+    <div id="char-editor"></div>
+  </div>
+</main>
+<script type="module" src="/assets/js/main.js"></script>
+<script type="module" src="/assets/js/creator.js"></script>
+</body>
+</html>

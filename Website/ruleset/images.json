@@ -1,0 +1,11 @@
+{
+  "images": [
+    {
+      "ref": "image1",
+      "alt": "The Mystery Quest character sheet",
+      "src": "assets/images/character-sheet.png",
+      "source": "Rules/Character sheet/Mystery Quest character sheet.png",
+      "represents": "The character sheet, under the Description > Character sheet section. If a future export embeds a base64 payload for image1, the script extracts it instead of copying the source file."
+    }
+  ]
+}
