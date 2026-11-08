@@ -338,8 +338,8 @@ h1, h2, h3 { line-height: 1.2; }
 .rules-content h3 { font-size: 24px; margin-top: 28px; }
 .rules-content h4 { font-size: 20px; margin-top: 22px; }
 
-.rules-content table { border-collapse: collapse; margin: 12px 0; width: 100%; font-size: 14px; }
-.rules-content th, .rules-content td { border: 1px solid var(--line); padding: 6px 9px; text-align: left; vertical-align: top; }
+.rules-content table { border-collapse: collapse; margin: 12px 0; width: 100%; font-size: 11px; }
+.rules-content th, .rules-content td { border: 1px solid var(--line); padding: 6px 9px; text-align: left; vertical-align: top; overflow-wrap: anywhere; min-width: 80px; } /* no squeezed columns; wide tables scroll horizontally on small screens */
 .rules-content th { background: var(--card-alt); }
 .rules-content ul, .rules-content ol { padding-left: 24px; }
 .rules-content li { margin: 3px 0; }
@@ -461,14 +461,15 @@ h1, h2, h3 { line-height: 1.2; }
 .pv-row > span, .pv-moves, .pv-notes { overflow-wrap: anywhere; }
 .pv-right { border-left: 1px solid var(--line); padding-left: 18px; }
 .pv-portrait { width: 96px; height: 96px; margin-bottom: 10px; }
-.pv-table { border-collapse: collapse; width: 100%; font-size: 12.5px; margin-bottom: 6px; table-layout: fixed; }
-.pv-table th, .pv-table td { border: 1px solid var(--line); padding: 3px 6px; text-align: right; }
+.pv-table { border-collapse: collapse; width: 100%; font-size: 10px; margin-bottom: 6px; table-layout: fixed; } /* small text always: tables are not responsive */
+.pv-table th, .pv-table td { border: 1px solid var(--line); padding: 3px 6px; text-align: right; overflow: hidden; overflow-wrap: anywhere; } /* no visible overflow: long words wrap, the rest is clipped */
+.pv-table td:not(:first-child) { font-size: 12px; } /* numbers stay larger than the small table text (stat names and column labels stay small) */
 /* default width for the stat label column — with fixed layout the numeric columns align across the stat tables */
-.pv-table td:first-child, .pv-table th:first-child { text-align: left; width: 150px; }
+.pv-table td:first-child, .pv-table th:first-child { text-align: left; width: 120px; } /* stat-name column sized for the small text */
 /* long bonus stat names are capped and cut with an ellipsis */
-.pv-table.pv-bonus td:first-child, .pv-table.pv-bonus th:first-child { max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pv-table.pv-bonus td:first-child, .pv-table.pv-bonus th:first-child { max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .pv-table thead th { background: var(--card-alt); font-weight: 600; }
-.pv-buff { width: 100%; text-align: right; font-size: 12px; padding: 2px 4px; } /* buff/debuff input fills its table cell */
+.pv-buff { width: 100%; text-align: right; font-size: 12px; padding: 2px 4px; } /* buff/debuff input fills its table cell; it holds a number, so it stays larger */
 .pv-moves { font-size: 13px; margin-bottom: 8px; }
 .pv-moves .move-card { margin: 10px 0; } /* vertical gap between Move cards in preview */
 .pv-notes { font-size: 13px; color: var(--muted); resize: vertical; }
@@ -513,6 +514,7 @@ body.modal-open { overflow: hidden; } /* page scroll locked while a modal is ope
 }
 .item-card .grow { flex: 1; min-width: 0; overflow-wrap: anywhere; font-size: 14px; }
 @media (max-width: 560px) {
+  .pv-table:not(.pv-bonus) th:nth-last-child(2) { width: 56px; } /* Buff/debuff column holds an input — fixed size on small screens */
   .item-card { flex-direction: column; align-items: stretch; }
   .item-card .btn { align-self: flex-end; }
   .modal { width: calc(100vw - 16px); max-height: 90vh; } /* small screens: modal uses nearly the full width */
