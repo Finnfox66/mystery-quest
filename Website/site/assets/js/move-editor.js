@@ -34,7 +34,7 @@ const SHAPE_SIZES = ["-","2 m + half (Sp.) Attack","4 m + (Sp.) Attack","5 m","1
 const PLACEMENTS = ["-","Projected","Ranged","Radial","Flared"];
 
 function blankMove() {
-  return { id: crypto.randomUUID(), custom: true, conversion: "custom", official: "", name: "New Move", type: "Normal", keywords: ["Single-target", "Physical", "Melee"], ppCost: 0, range: "1 m", shape: "", shapeSize: "", placementType: "", accuracy: "+10", power: "4 + d4", secondaryEffect: "", description: "" };
+  return { id: crypto.randomUUID(), custom: true, conversion: "custom", official: "", name: "New Move", type: "Normal", keywords: ["Single-target", "Physical", "Melee"], ppCost: 0, range: "1 m", shape: "", shapeSize: "", placementType: "", accuracy: "+10", power: "4 + d4", secondaryEffects: "", otherEffects: "", description: "" };
 }
 
 let moves = loadCustomMoves();
@@ -234,12 +234,15 @@ function render() {
   }));
 
   editorEl.appendChild(section("Effects", (sec) => {
-    const sec2 = document.createElement("textarea"); sec2.rows = 3; sec2.style.width = "100%"; sec2.style.resize = "vertical"; sec2.value = move.secondaryEffect || "";
-    sec2.addEventListener("change", () => set("secondaryEffect", sec2.value));
-    sec.appendChild(kvRow("Secondary effect", sec2));
+    const sec2 = document.createElement("textarea"); sec2.rows = 3; sec2.style.width = "100%"; sec2.style.resize = "vertical"; sec2.value = move.secondaryEffects || "";
+    sec2.addEventListener("change", () => set("secondaryEffects", sec2.value));
+    sec.appendChild(kvRow("Secondary effects", sec2));
+    const oth = document.createElement("textarea"); oth.rows = 3; oth.style.width = "100%"; oth.style.resize = "vertical"; oth.value = move.otherEffects || "";
+    oth.addEventListener("change", () => set("otherEffects", oth.value));
+    sec.appendChild(kvRow("Other effects", oth));
     const desc = document.createElement("textarea"); desc.rows = 5; desc.style.width = "100%"; desc.style.resize = "vertical"; desc.value = move.description || "";
     desc.addEventListener("change", () => set("description", desc.value));
-    sec.appendChild(kvRow("Description", desc));
+    sec.appendChild(kvRow("Description (lore text, no rules text)", desc));
   }));
 }
 

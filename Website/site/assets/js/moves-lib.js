@@ -60,13 +60,20 @@ export function moveCardEl(m, resolved) {
     ["Keywords", m.keywords.join(", ")],
     ["PP cost", m.ppCost ?? "-"],
     ["Range", m.range || "-"],
-    ["Shape", shape],
     ["Accuracy", m.accuracy || "-"],
+    ["Shape", shape],
     ["Power", m.power || "-"],
-    ["Secondary effect", m.secondaryEffect || "-"],
+    ["Secondary effects", m.secondaryEffects || "-"],
+    ["Other effects", m.otherEffects || "-"],
     ["Description", m.description || "-"],
   ];
   el.innerHTML = `<h3>${m.name}${badge}</h3><dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>`;
+  if (m.description) {
+    const p = document.createElement("p");
+    p.className = "move-desc";
+    p.textContent = m.description;
+    el.appendChild(p);
+  }
   // bottom section: values calculated for this character (only when resolved is given, i.e. in the sheet preview)
   if (resolved) {
     const isStatus = m.keywords.some((k) => k.toLowerCase() === "status");

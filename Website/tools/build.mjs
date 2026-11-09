@@ -165,7 +165,7 @@ function parseMoves(md) {
       conversion = "indirect";
       name = name.slice(0, -"- indirect conversion".length).trim();
     }
-    const m = { name, conversion, official: "", type: "", keywords: [], ppCost: null, range: "", shape: "", shapeSize: "", placementType: "", accuracy: "", power: "", secondaryEffect: "", description: "" };
+    const m = { name, conversion, official: "", type: "", keywords: [], ppCost: null, range: "", shape: "", shapeSize: "", placementType: "", accuracy: "", power: "", secondaryEffects: "", otherEffects: "", description: "" };
     for (const line of lines.slice(1)) {
       const fm = line.match(/^- \*\*([^*]+?)\*\*:?\s*(.*)$/);
       if (!fm) {
@@ -185,7 +185,8 @@ function parseMoves(md) {
         case "placement type": m.placementType = val; break;
         case "accuracy": m.accuracy = val; break;
         case "power": m.power = val; break;
-        case "secondary effect": m.secondaryEffect = val; break;
+        case "secondary effects": m.secondaryEffects = val; break;
+        case "other effects": m.otherEffects = val; break;
         case "description": m.description = val; break;
       }
     }
@@ -209,6 +210,11 @@ const rulesBody = rulesMd.slice(bodyStart + 1);
 const rules = renderMarkdown(rulesBody);
 
 const moves = parseMoves(movesMd).concat(existsSync(libraryPath) ? JSON.parse(readFileSync(libraryPath, "utf8")) : []);
+// Lore Descriptions come from official flavor text (move-descriptions.json, built by
+// local-only/fetch-descriptions.mjs from PokeAPI); ruleset examples carry none themselves.
+const descPath = join(siteDir, "assets", "data", "move-descriptions.json");
+const descriptions = existsSync(descPath) ? JSON.parse(readFileSync(descPath, "utf8")) : {};
+for (const m of moves) if (!m.description && descriptions[m.name]) m.description = descriptions[m.name];
 
 const siteJson = { version: version.version, buildDate: new Date().toISOString() };
 const searchIndex = {

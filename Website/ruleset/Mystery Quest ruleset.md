@@ -1,7 +1,7 @@
 # Mystery Quest ruleset
 
-TTRPG for Mystery Dungeon and other Pokémon-only adventures.  
-By **u/Finnfox66**, version 0.9.5.8
+TTRPG ruleset for Mystery Dungeon and other Pokémon-only adventures.  
+By **u/Finnfox66**, version 0.9.5.9
 
 ## Description
 
@@ -400,10 +400,13 @@ Moves consist of:
 - **Shape Size** (AoE only)  
 - **Placement Type** (AoE only)  
 - **Power** (Physical and Special Moves only)  
-- **Secondary effects**  
-  - Includes buffs, debuffs and Status Conditions. These are explained in the “Secondary effects” section.  
+- **Effects**  
+  - **Secondary effects**  
+    - Includes buffs, debuffs and Status Conditions. These are explained in the “Secondary effects” section.  
+  - **Other effects**  
+    - Other effects and interactions.  
 - **Description**  
-  - Used for describing other effects and interactions.
+  - Descriptive text for how the Move appears in the game world. No rules text.
 
 #### PP costs
 
@@ -613,7 +616,7 @@ Stances determine how many Movement Actions, Main Actions and Reactions a charac
 | Quick Stance | You have +4 to Initiative | 1 | 1 | 1 |
 | Power Stance | You have +4 to Attack Power | 1 | 1 | 1 |
 | Defensive Stance | You have +4 to Defense Power | 1 | 1 | 1 |
-| Resist Stance | New debuffs applied to you are immediately reduced by one stage, and you roll attempts to remove Status Conditions both when you receive them (before they are applied) and during your End Phase. | 1 | 1 | 1 |
+| Resist Stance | New debuffs applied to you are immediately reduced by one stage, and you roll attempts to remove Status Conditions both when you receive them (before they are applied) and in your End Phase. | 1 | 1 | 1 |
 | Fleet Stance | You have +4 to Evasion and Movement Range | 2 | **0** | 1 |
 
 **Situational Stances**
@@ -659,7 +662,7 @@ Characters stop imposing Pinned Down if they are more than 1 meter away from the
 
 #### Restrict (Main Action)
 
-When using Restrict, both you and the target character roll a d20 and add your Attack to your rolls. If your result is higher than the target character’s result, they gain the No Main Actions and No Reactions restrictions until the end of their next End Phase.
+When using Restrict, both you and the target character roll a d20 and add your Attack to your rolls. If your result is higher than the target character’s result, they gain the No Main Actions and No Reactions restrictions until their next End Phase.
 
 #### Item Interaction (Main Action)
 
@@ -701,19 +704,19 @@ Buffs and debuffs are not tracked individually. This means that if there are mul
 
 #### Turn-End Decay
 
-In the End Phase of a character’s turn, all buffs and debuffs experience Turn-End Decay. It is handled by reducing the buffs and debuffs by one stage (normally 2, but 4 in the case of Accuracy and Evasion). Turn-End Decay is skipped on the turn a buff or debuff is initially applied (gained from 0, or flipped between a buff and a debuff). Increasing an already existing buff or debuff does not prevent Turn-End Decay during the End Phase of that turn.
+In the End Phase of a character’s turn, all buffs and debuffs experience Turn-End Decay. It is handled by reducing the buffs and debuffs by one stage (normally 2, but 4 in the case of Accuracy and Evasion). Turn-End Decay is skipped on the turn a buff or debuff is initially applied (gained from 0, or flipped between a buff and a debuff). Increasing an already existing buff or debuff does not prevent Turn-End Decay in the End Phase of that turn.
 
 #### Maintaining buffs and debuffs
 
 Characters can pay PP to prevent any buffs affecting them from decaying through Turn-End Decay by paying 1 PP. This cost has to be paid separately for each maintained buff and prevents a single occurrence of Turn-End Decay.
 
-Characters can also pay 1 PP to prevent any debuffs affecting enemies within 1 meter of them from decaying through Turn-End Decay. This cost has to be paid separately for each maintained debuff and prevents a single occurrence of Turn-End Decay. The decisions to maintain debuffs affecting enemy characters are done as the Turn-End Decays of the debuffs happen, so during the End Phases of the affected enemy character’s turns. This means that the enemy character can try to take distance from any characters that could maintain their debuffs before the Turn-End Decay happens.
+Characters can also pay 1 PP to prevent any debuffs affecting enemies within 1 meter of them from decaying through Turn-End Decay. This cost has to be paid separately for each maintained debuff and prevents a single occurrence of Turn-End Decay. The decisions to maintain debuffs affecting enemy characters are done as the Turn-End Decays of the debuffs happen, so in the End Phases of the affected enemy character’s turns. This means that the enemy character can try to take distance from any characters that could maintain their debuffs before the Turn-End Decay happens.
 
 ### Status Conditions
 
 Status Conditions are temporary harmful special conditions caused by some Moves. Their effects range from damaging to immobilizing the affected character.
 
-During their End Phase, characters can attempt to remove all status conditions affecting them. The test for removing a Status Condition is done for every condition individually, and is done simply by rolling a d20 and comparing it to the DC of removing the condition. If the result of the roll exceeds the DC of removing the condition, the condition is removed from the character.
+In their End Phase, characters can attempt to remove all status conditions affecting them. The test for removing a Status Condition is done for every condition individually, and is done simply by rolling a d20 and comparing it to the DC of removing the condition. If the result of the roll exceeds the DC of removing the condition, the condition is removed from the character.
 
 **The test for removing a Status Condition:**  
 d20 > Difficulty Class
@@ -728,7 +731,7 @@ d20 > Difficulty Class
 | Poison | 15 | Inflicts 2 True Damage to the affected character at the start of their every End Phase. Can’t affect characters with Poison-type or Steel-type. |
 | Badly poisoned | 15 | Inflicts 1 True Damage to the affected character at the start of their every End Phase. The amount of damage is increased by 1 after every test of removing the condition. Can’t affect characters with Poison-type or Steel-type. |
 | Sleep | 10 | The affected character has the Incapacitated restriction. If they are damaged, the condition ends. |
-| Flinch | - | The affected character has the Turn Skipped restriction. This Status Condition is always removed during the affected character’s End Phase. |
+| Flinch | - | The affected character has the Turn Skipped restriction. This Status Condition is always removed in the affected character’s End Phase. |
 
 A character can’t be given a Status Condition that they already have.
 

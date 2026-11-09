@@ -151,14 +151,16 @@ editing.
   no code quotes (e.g., no `d20 - 4 > 10`), no em-dashes or other complex line
   markings (parentheses and commas only), and empty value fields are written
   as "-". Entries list the Move's own converted values (Type, Keywords, PP
-  cost, Range or Shape, Accuracy, Power; AoE entries list Shape, Shape Size
-  and Placement Type as separate fields); secondary effects and rule
-  exceptions are written as "Secondary effect:" and "Description:" (self-effects
-  are also written as a Secondary effect, not a separate field), and
-  fields are omitted when a Move has nothing for them. Prose values after a
+  cost, Range, Accuracy, Shape, Shape Size, Placement Type, Power); AoE
+  entries list Shape, Shape Size and Placement Type as separate fields).
+  Effects are grouped under "Secondary effects:" (buffs, debuffs, Status
+  Conditions; self-effects included) and "Other effects:" (other effects and
+  interactions, including rule exceptions such as exceptional timing);
+  "Description:" holds lore text only — descriptive text for how the Move
+  appears in the game world, no rules text (ruleset 0.9.5.9). Fields are
+  omitted when a Move has nothing for them. Prose values after a
   colon start with a capital letter
-  ("**Description:** Is used as..."), and effect and description texts are
-  combined into a single Description field (no separate Effect field). Custom
+  ("**Description:** The user burrows into the ground..."). Custom
   sentence values that are not official wording are written with a capital
   letter and end with a dot ("**Power:** Equal to the user’s level."). Move
   texts never repeat rules the ruleset states elsewhere: a Move references

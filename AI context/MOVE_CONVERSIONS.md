@@ -184,10 +184,11 @@ Display convention: indirect conversions are marked in the Move's heading
 
 ## Formatting of converted Move entries
 
-- **Field order:** Type, Keywords, PP cost, Range, Shape, Shape Size, Placement Type,
-  Accuracy, Power, Secondary effect, Description. Fields with nothing to say are
-  omitted entirely; empty value fields are written as "-". Entries list the Move's
-  own converted values only.
+- **Field order (ruleset 0.9.5.9):** Type, Keywords, PP cost, Range, Accuracy, Shape,
+  Shape Size, Placement Type, Power, Effects (Secondary effects, Other effects),
+  Description. Fields with nothing to say are omitted entirely; empty value fields are
+  written as "-". Entries list the Move's own converted values only. Description holds
+  lore text only (official flavor text), never rules text.
 - The official specification line may precede the entry when the conversion is being
   documented (the ruleset's example section does this with a bold "Official:" line).
 - **Plain formatting:** no code quotes (e.g., no `d20 - 4 > 10`), no em-dashes or
@@ -205,10 +206,10 @@ Display convention: indirect conversions are marked in the Move's heading
   stage notation in the same sentence: "Has a 20% (-6) chance of applying a Defense
   debuff of one stage (-2 Defense) to the target." (The parenthetical lost the word
   "modifier" in ruleset 0.9.5.1.)
-- **Self-effects are written as a Secondary effect** ("Secondary effect: Applies a
-  Defense debuff of one stage (-2) ... to the user."), not as a separate field.
-- **Exceptional timing leads the Description:** "When a round starts, this Move can
-  be used to..." instead of trailing after the mechanics.
+- **Self-effects are written as Secondary effects** ("Secondary effects: Applies a
+  Defense debuff of one stage (-2) ... to the user."), and rule exceptions and other
+  interactions go under **Other effects** (exceptional timing leads there: "When a round
+  starts, this Move can be used to..."). The **Description** field is lore only.
 - **Move texts never repeat rules the ruleset states elsewhere** — a Move references
   rules, it does not restate them (per-target testing for AoE Moves, the free
   Movement Action of Melee Moves, duration counting, Power-modification timing,

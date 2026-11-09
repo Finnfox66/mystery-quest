@@ -17,8 +17,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "4 + d4",
-    "secondaryEffect": "",
-    "description": ""
+    "secondaryEffects": "",
+    "otherEffects": "",
+    "description": "The user lunges at the target to inflict damage, moving at blinding speed. This move always goes first."
   },
   {
     "name": "Body Slam",
@@ -37,8 +38,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "10 + d10",
-    "secondaryEffect": "Has a 30% (-4) chance of applying the Paralysis condition to the target.",
-    "description": ""
+    "secondaryEffects": "Has a 30% (-4) chance of applying the Paralysis condition to the target.",
+    "otherEffects": "",
+    "description": "The user attacks by dropping onto the target with its full body weight. This may also leave the target with paralysis."
   },
   {
     "name": "Iron Head",
@@ -57,8 +59,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "8 + d8",
-    "secondaryEffect": "Has a 30% (-4) chance of applying the Flinch condition to the target.",
-    "description": ""
+    "secondaryEffects": "Has a 30% (-4) chance of applying the Flinch condition to the target.",
+    "otherEffects": "",
+    "description": "The user slams the target with its steel-hard head. This may also make the target flinch."
   },
   {
     "name": "Crunch",
@@ -77,8 +80,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "8 + d8",
-    "secondaryEffect": "Has a 20% (-6) chance of applying a Defense debuff of one stage (-2 Defense) to the target.",
-    "description": ""
+    "secondaryEffects": "Has a 20% (-6) chance of applying a Defense debuff of one stage (-2 Defense) to the target.",
+    "otherEffects": "",
+    "description": "The user crunches up the target with sharp fangs. This may also lower the target's Defense stat."
   },
   {
     "name": "Close Combat",
@@ -97,8 +101,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "12 + d12",
-    "secondaryEffect": "Applies a Defense debuff of one stage (-2) and a Special defense debuff of one stage (-2) to the user.",
-    "description": ""
+    "secondaryEffects": "Applies a Defense debuff of one stage (-2) and a Special defense debuff of one stage (-2) to the user.",
+    "otherEffects": "",
+    "description": "The user fights the target up close, inflicting damage without guarding itself. This also lowers the user's Defense and Sp. Def stats."
   },
   {
     "name": "Earthquake",
@@ -117,8 +122,9 @@
     "placementType": "Projected",
     "accuracy": "+10",
     "power": "2d10",
-    "secondaryEffect": "",
-    "description": ""
+    "secondaryEffects": "",
+    "otherEffects": "",
+    "description": "The user sets off an earthquake that strikes every Pokémon around it."
   },
   {
     "name": "Seismic Toss",
@@ -137,8 +143,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "Equal to half the user’s level (rounded up), to a maximum of 20.",
-    "secondaryEffect": "",
-    "description": ""
+    "secondaryEffects": "",
+    "otherEffects": "",
+    "description": "The target is thrown using the power of gravity. It inflicts damage equal to the user's level."
   },
   {
     "name": "Fly",
@@ -158,8 +165,9 @@
     "placementType": "",
     "accuracy": "+9",
     "power": "10 + d10",
-    "secondaryEffect": "",
-    "description": "On the turn the Move is charged, the user has Advantage (+4) to Evasion."
+    "secondaryEffects": "",
+    "otherEffects": "On the turn the Move is charged, the user has Advantage (+4) to Evasion. From the moment the Move is charged to the moment it is used, the user has the Flight Ability if they don’t have it already.",
+    "description": "The user flies up into the sky on the first turn, then attacks on the next turn."
   },
   {
     "name": "Surf",
@@ -178,8 +186,9 @@
     "placementType": "Projected",
     "accuracy": "+10",
     "power": "2d10",
-    "secondaryEffect": "",
-    "description": ""
+    "secondaryEffects": "",
+    "otherEffects": "",
+    "description": "The user attacks everything around it by swamping its surroundings with a giant wave."
   },
   {
     "name": "Thunderbolt",
@@ -198,8 +207,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "10 + d10",
-    "secondaryEffect": "Has a 10% (-8) chance of applying the Paralysis condition to the target.",
-    "description": ""
+    "secondaryEffects": "Has a 10% (-8) chance of applying the Paralysis condition to the target.",
+    "otherEffects": "",
+    "description": "The user attacks the target with a strong electric blast. This may also leave the target with paralysis."
   },
   {
     "name": "Thunder",
@@ -218,8 +228,9 @@
     "placementType": "",
     "accuracy": "+4",
     "power": "12 + d12",
-    "secondaryEffect": "Has a 10% (-8) chance of applying the Paralysis condition to the target.",
-    "description": "During Rain, the Move’s Accuracy modifier is +10. During Harsh Sunlight, the Move’s Accuracy modifier is +0."
+    "secondaryEffects": "Has a 10% (-8) chance of applying the Paralysis condition to the target.",
+    "otherEffects": "During Rain, the Move’s Accuracy modifier is +10. During Harsh Sunlight, the Move’s Accuracy modifier is +0.",
+    "description": "A wicked thunderbolt is dropped on the target to inflict damage. This may also leave the target with paralysis."
   },
   {
     "name": "Flamethrower",
@@ -238,8 +249,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "10 + d10",
-    "secondaryEffect": "Has a 10% (-8) chance of applying the Burn condition to the target.",
-    "description": ""
+    "secondaryEffects": "Has a 10% (-8) chance of applying the Burn condition to the target.",
+    "otherEffects": "",
+    "description": "The target is scorched with an intense blast of fire. This may also leave the target with a burn."
   },
   {
     "name": "Ice Beam",
@@ -258,8 +270,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "10 + d10",
-    "secondaryEffect": "Has a 10% (-8) chance of applying the Freeze condition to the target.",
-    "description": ""
+    "secondaryEffects": "Has a 10% (-8) chance of applying the Freeze condition to the target.",
+    "otherEffects": "",
+    "description": "The target is struck with an icy-cold beam of energy. This may also leave the target frozen."
   },
   {
     "name": "Blizzard",
@@ -278,8 +291,9 @@
     "placementType": "Ranged",
     "accuracy": "+4",
     "power": "2d12",
-    "secondaryEffect": "Has a 10% (-8) chance of applying the Freeze condition to the target.",
-    "description": "During Snow, the To-Hit test succeeds automatically against all targets."
+    "secondaryEffects": "Has a 10% (-8) chance of applying the Freeze condition to the target.",
+    "otherEffects": "During Snow, the To-Hit test succeeds automatically against all targets.",
+    "description": "A howling blizzard is summoned to strike opposing Pokémon. This may also leave the opposing Pokémon frozen."
   },
   {
     "name": "Hyper Beam",
@@ -299,8 +313,9 @@
     "placementType": "",
     "accuracy": "+8",
     "power": "16 + d10 + d6",
-    "secondaryEffect": "",
-    "description": ""
+    "secondaryEffects": "",
+    "otherEffects": "",
+    "description": "The target is attacked with a powerful beam. The user can't move on the next turn."
   },
   {
     "name": "Solar Beam",
@@ -320,8 +335,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "14 + d10 + d4",
-    "secondaryEffect": "",
-    "description": "Does not need to be charged during Harsh Sunlight weather condition. During Rain, Sandstorm, Snow or Fog weather conditions, the Move’s Power is halved."
+    "secondaryEffects": "",
+    "otherEffects": "Does not need to be charged during Harsh Sunlight weather condition. During Rain, Sandstorm, Snow or Fog weather conditions, the Move’s Power is halved.",
+    "description": "The user gathers light on the first turn, then blasts a bundled beam on the next turn."
   },
   {
     "name": "Thunder Wave",
@@ -340,8 +356,9 @@
     "placementType": "",
     "accuracy": "+8",
     "power": "",
-    "secondaryEffect": "",
-    "description": "Applies the Paralysis condition to the target."
+    "secondaryEffects": "",
+    "otherEffects": "Applies the Paralysis condition to the target.",
+    "description": "The user launches a weak jolt of electricity that paralyzes the target."
   },
   {
     "name": "Will-O-Wisp",
@@ -360,8 +377,9 @@
     "placementType": "",
     "accuracy": "+7",
     "power": "",
-    "secondaryEffect": "",
-    "description": "Applies the Burn condition to the target."
+    "secondaryEffects": "",
+    "otherEffects": "Applies the Burn condition to the target.",
+    "description": "The user shoots a sinister flame at the target to inflict a burn."
   },
   {
     "name": "Toxic",
@@ -380,8 +398,9 @@
     "placementType": "",
     "accuracy": "+8",
     "power": "",
-    "secondaryEffect": "",
-    "description": "Applies the Badly poisoned condition to the target. If the user is a Poison-type character, the To-Hit test succeeds automatically."
+    "secondaryEffects": "",
+    "otherEffects": "Applies the Badly poisoned condition to the target. If the user is a Poison-type character, the To-Hit test succeeds automatically.",
+    "description": "A move that leaves the target badly poisoned. Its poison damage worsens every turn."
   },
   {
     "name": "Swords Dance",
@@ -399,8 +418,9 @@
     "placementType": "",
     "accuracy": "",
     "power": "",
-    "secondaryEffect": "",
-    "description": "Applies an Attack buff of two stages (+4) to the user."
+    "secondaryEffects": "",
+    "otherEffects": "Applies an Attack buff of two stages (+4) to the user.",
+    "description": "A frenetic dance to uplift the fighting spirit. This sharply boosts the user's Attack stat."
   },
   {
     "name": "Recover",
@@ -418,8 +438,9 @@
     "placementType": "",
     "accuracy": "",
     "power": "",
-    "secondaryEffect": "",
-    "description": "Restores HP equal to the user’s Health * 2."
+    "secondaryEffects": "",
+    "otherEffects": "Restores HP equal to the user’s Health * 2.",
+    "description": "The user regenerates its cells, restoring its own HP by up to half its max HP."
   },
   {
     "name": "Rain Dance",
@@ -438,8 +459,9 @@
     "placementType": "Radial",
     "accuracy": "Hits automatically",
     "power": "",
-    "secondaryEffect": "",
-    "description": "Sets the Rain weather condition in the area. The weather condition lasts for 1 hour and removes all previous weather conditions from the area."
+    "secondaryEffects": "",
+    "otherEffects": "Sets the Rain weather condition in the area. The weather condition lasts for 1 hour and removes all previous weather conditions from the area.",
+    "description": "The user summons a heavy rain that falls for five turns, powering up Water-type attacks. The rain also lowers the power of Fire-type attacks."
   },
   {
     "name": "Sunny Day",
@@ -458,8 +480,9 @@
     "placementType": "Radial",
     "accuracy": "Hits automatically",
     "power": "",
-    "secondaryEffect": "",
-    "description": "Sets the Harsh Sunlight weather condition in the area. The weather condition lasts for 1 hour and removes all previous weather conditions from the area."
+    "secondaryEffects": "",
+    "otherEffects": "Sets the Harsh Sunlight weather condition in the area. The weather condition lasts for 1 hour and removes all previous weather conditions from the area.",
+    "description": "The user intensifies the sun for five turns, powering up Fire-type attacks. The sunlight also lowers the power of Water-type attacks."
   },
   {
     "name": "Trick Room",
@@ -479,8 +502,9 @@
     "placementType": "Radial",
     "accuracy": "Hits automatically",
     "power": "",
-    "secondaryEffect": "",
-    "description": "When a round starts, this Move can be used to reverse the turn order. Initiative modifiers of affected characters are ignored while the effect lasts. Priority Turns are still taken before normal turns, but their order is also reversed. The effect lasts for 5 rounds. If this Move is used while its effect is active, the effect ends instead."
+    "secondaryEffects": "",
+    "otherEffects": "When a round starts, this Move can be used to reverse the turn order. Initiative modifiers of affected characters are ignored while the effect lasts. Priority Turns are still taken before normal turns, but their order is also reversed. The effect lasts for 5 rounds. If this Move is used while its effect is active, the effect ends instead.",
+    "description": "The user creates a bizarre area in which slower Pokémon get to move first for five turns."
   },
   {
     "name": "Stealth Rock",
@@ -499,8 +523,9 @@
     "placementType": "Ranged",
     "accuracy": "Hits automatically",
     "power": "",
-    "secondaryEffect": "",
-    "description": "Creates an area that lasts for 5 rounds. A character that enters the area or ends their turn inside the area takes 4 True Damage. A character can be affected by this Move only once per turn."
+    "secondaryEffects": "",
+    "otherEffects": "Creates an area that lasts for 5 rounds. A character that enters the area or ends their turn inside the area takes 4 True Damage. A character can be affected by this Move only once per turn.",
+    "description": "The user lays a trap of levitating stones around the opposing team. The trap damages opposing Pokémon that switch into battle."
   },
   {
     "name": "Brave Bird",
@@ -519,8 +544,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "12 + d12",
-    "secondaryEffect": "The user takes True Damage equal to one third of the damage dealt (rounded up).",
-    "description": ""
+    "secondaryEffects": "The user takes True Damage equal to one third of the damage dealt (rounded up).",
+    "otherEffects": "",
+    "description": "The user tucks in its wings and charges at a low altitude. This also damages the user quite a lot."
   },
   {
     "name": "Play Rough",
@@ -539,8 +565,9 @@
     "placementType": "",
     "accuracy": "+8",
     "power": "10 + d10",
-    "secondaryEffect": "Has a 10% (-8) chance of applying an Attack debuff of one stage (-2 Attack) to the target.",
-    "description": ""
+    "secondaryEffects": "Has a 10% (-8) chance of applying an Attack debuff of one stage (-2 Attack) to the target.",
+    "otherEffects": "",
+    "description": "The user attacks by playing rough with the target. This may also lower the target's Attack stat."
   },
   {
     "name": "Moonblast",
@@ -559,8 +586,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "10 + d10",
-    "secondaryEffect": "Has a 30% (-4) chance of applying a Special Defense debuff of one stage (-2 Special Defense) to the target.",
-    "description": ""
+    "secondaryEffects": "Has a 30% (-4) chance of applying a Special Defense debuff of one stage (-2 Special Defense) to the target.",
+    "otherEffects": "",
+    "description": "Borrowing the power of the moon, the user attacks the target. This may also lower the target's Sp. Atk stat."
   },
   {
     "name": "Shadow Ball",
@@ -579,8 +607,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "8 + d8",
-    "secondaryEffect": "Has a 20% (-6) chance of applying a Special Defense debuff of one stage (-2 Special Defense) to the target.",
-    "description": ""
+    "secondaryEffects": "Has a 20% (-6) chance of applying a Special Defense debuff of one stage (-2 Special Defense) to the target.",
+    "otherEffects": "",
+    "description": "The user attacks by hurling a shadowy blob at the target. This may also lower the target’s Sp. Def stat."
   },
   {
     "name": "Drain Punch",
@@ -599,8 +628,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "8 + d8",
-    "secondaryEffect": "Restores the user’s HP equal to half of the damage dealt (rounded up).",
-    "description": ""
+    "secondaryEffects": "Restores the user’s HP equal to half of the damage dealt (rounded up).",
+    "otherEffects": "",
+    "description": "The user attacks with an energy-draining punch. The user's HP is restored by up to half the damage taken by the target."
   },
   {
     "name": "Giga Drain",
@@ -619,8 +649,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "8 + d8",
-    "secondaryEffect": "Restores the user’s HP equal to half of the damage dealt (rounded up).",
-    "description": ""
+    "secondaryEffects": "Restores the user’s HP equal to half of the damage dealt (rounded up).",
+    "otherEffects": "",
+    "description": "A nutrient-draining attack. The user's HP is restored by up to half the damage taken by the target."
   },
   {
     "name": "Ice Shard",
@@ -640,8 +671,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "4 + d4",
-    "secondaryEffect": "",
-    "description": ""
+    "secondaryEffects": "",
+    "otherEffects": "",
+    "description": "The user flash-freezes chunks of ice and hurls them at the target. This move always goes first."
   },
   {
     "name": "Mach Punch",
@@ -661,8 +693,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "4 + d4",
-    "secondaryEffect": "",
-    "description": ""
+    "secondaryEffects": "",
+    "otherEffects": "",
+    "description": "The user throws a punch at blinding speed. This move always goes first."
   },
   {
     "name": "Extreme Speed",
@@ -682,8 +715,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "8 + d8",
-    "secondaryEffect": "",
-    "description": ""
+    "secondaryEffects": "",
+    "otherEffects": "",
+    "description": "The user charges the target at blinding speed. This move always goes first."
   },
   {
     "name": "Aqua Jet",
@@ -703,7 +737,8 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "4 + d4",
-    "secondaryEffect": "",
-    "description": ""
+    "secondaryEffects": "",
+    "otherEffects": "",
+    "description": "The user lunges at the target to inflict damage, moving at blinding speed. This move always goes first."
   }
 ]

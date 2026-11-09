@@ -23,7 +23,7 @@
 - **Range:** 1 m  
 - **Accuracy:** +10  
 - **Power:** 10 + d10  
-- **Secondary effect:** Has a 30% (-4) chance of applying the Paralysis condition to the target.
+- **Secondary effects:** Has a 30% (-4) chance of applying the Paralysis condition to the target.
 
 #### Iron Head
 
@@ -35,7 +35,7 @@
 - **Range:** 1 m  
 - **Accuracy:** +10  
 - **Power:** 8 + d8  
-- **Secondary effect:** Has a 30% (-4) chance of applying the Flinch condition to the target.
+- **Secondary effects:** Has a 30% (-4) chance of applying the Flinch condition to the target.
 
 #### Crunch
 
@@ -47,7 +47,7 @@
 - **Range:** 1 m  
 - **Accuracy:** +10  
 - **Power:** 8 + d8  
-- **Secondary effect:** Has a 20% (-6) chance of applying a Defense debuff of one stage (-2 Defense) to the target.
+- **Secondary effects:** Has a 20% (-6) chance of applying a Defense debuff of one stage (-2 Defense) to the target.
 
 #### Close Combat
 
@@ -59,7 +59,7 @@
 - **Range:** 1 m  
 - **Accuracy:** +10  
 - **Power:** 12 + d12  
-- **Secondary effect:** Applies a Defense debuff of one stage (-2) and a Special defense debuff of one stage (-2) to the user.
+- **Secondary effects:** Applies a Defense debuff of one stage (-2) and a Special defense debuff of one stage (-2) to the user.
 
 #### Earthquake
 
@@ -96,7 +96,7 @@
 - **Range:** 1 m  
 - **Accuracy:** +9  
 - **Power:** 10 + d10  
-- **Description:** On the turn the Move is charged, the user has Advantage (+4) to Evasion.
+- **Other effects:** On the turn the Move is charged, the user has Advantage (+4) to Evasion. From the moment the Move is charged to the moment it is used, the user has the Flight Ability if they don’t have it already.
 
 ### Special Moves
 
@@ -124,7 +124,7 @@
 - **Range:** 20 m + 2x the user’s Special attack  
 - **Accuracy:** +10  
 - **Power:** 10 + d10  
-- **Secondary effect:** Has a 10% (-8) chance of applying the Paralysis condition to the target.
+- **Secondary effects:** Has a 10% (-8) chance of applying the Paralysis condition to the target.
 
 #### Thunder
 
@@ -136,8 +136,8 @@
 - **Range:** 20 m + 2x the user’s Special attack  
 - **Accuracy:** +4  
 - **Power:** 12 + d12  
-- **Secondary effect:** Has a 10% (-8) chance of applying the Paralysis condition to the target.  
-- **Description:** During Rain, the Move’s Accuracy modifier is +10. During Harsh Sunlight, the Move’s Accuracy modifier is +0.
+- **Secondary effects:** Has a 10% (-8) chance of applying the Paralysis condition to the target.  
+- **Other effects:** During Rain, the Move’s Accuracy modifier is +10. During Harsh Sunlight, the Move’s Accuracy modifier is +0.
 
 #### Flamethrower
 
@@ -149,7 +149,7 @@
 - **Range:** 20 m + 2x the user’s Special attack  
 - **Accuracy:** +10  
 - **Power:** 10 + d10  
-- **Secondary effect:** Has a 10% (-8) chance of applying the Burn condition to the target.
+- **Secondary effects:** Has a 10% (-8) chance of applying the Burn condition to the target.
 
 #### Ice Beam
 
@@ -161,7 +161,7 @@
 - **Range:** 20 m + 2x the user’s Special attack  
 - **Accuracy:** +10  
 - **Power:** 10 + d10  
-- **Secondary effect:** Has a 10% (-8) chance of applying the Freeze condition to the target.
+- **Secondary effects:** Has a 10% (-8) chance of applying the Freeze condition to the target.
 
 #### Blizzard
 
@@ -176,8 +176,8 @@
 - **Range:** 10 m + the user’s Special attack  
 - **Accuracy:** +4  
 - **Power:** 2d12  
-- **Secondary effect:** Has a 10% (-8) chance of applying the Freeze condition to the target.  
-- **Description:** During Snow, the To-Hit test succeeds automatically against all targets.
+- **Secondary effects:** Has a 10% (-8) chance of applying the Freeze condition to the target.  
+- **Other effects:** During Snow, the To-Hit test succeeds automatically against all targets.
 
 #### Hyper Beam
 
@@ -200,7 +200,7 @@
 - **Range:** 20 m + 2x the user’s Special attack  
 - **Accuracy:** +10  
 - **Power:** 14 + d10 + d4  
-- **Description:** Does not need to be charged during Harsh Sunlight weather condition. During Rain, Sandstorm, Snow or Fog weather conditions, the Move’s Power is halved.
+- **Other effects:** Does not need to be charged during Harsh Sunlight weather condition. During Rain, Sandstorm, Snow or Fog weather conditions, the Move’s Power is halved.
 
 ### Status Moves
 
@@ -213,7 +213,7 @@
 - **PP cost:** 0  
 - **Range:** 15 m  
 - **Accuracy:** +8  
-- **Description:** Applies the Paralysis condition to the target.
+- **Other effects:** Applies the Paralysis condition to the target.
 
 #### Will-O-Wisp
 
@@ -224,7 +224,7 @@
 - **PP cost:** 1  
 - **Range:** 15 m  
 - **Accuracy:** +7  
-- **Description:** Applies the Burn condition to the target.
+- **Other effects:** Applies the Burn condition to the target.
 
 #### Toxic
 
@@ -235,7 +235,7 @@
 - **PP cost:** 2  
 - **Range:** 15 m  
 - **Accuracy:** +8  
-- **Description:** Applies the Badly poisoned condition to the target. If the user is a Poison-type character, the To-Hit test succeeds automatically.
+- **Other effects:** Applies the Badly poisoned condition to the target. If the user is a Poison-type character, the To-Hit test succeeds automatically.
 
 #### Swords Dance
 
@@ -245,7 +245,7 @@
 - **Keywords:** Single-target (self), Status  
 - **PP cost:** 0  
 - **Range:** Self  
-- **Description:** Applies an Attack buff of two stages (+4) to the user.
+- **Other effects:** Applies an Attack buff of two stages (+4) to the user.
 
 #### Recover
 
@@ -255,7 +255,7 @@
 - **Keywords:** Single-target (self), Status  
 - **PP cost:** 2  
 - **Range:** Self  
-- **Description:** Restores HP equal to the user’s Health * 2.
+- **Other effects:** Restores HP equal to the user’s Health * 2.
 
 #### Rain Dance
 
@@ -269,7 +269,7 @@
 - **Placement Type:** Radial  
 - **Range:** -  
 - **Accuracy:** Hits automatically  
-- **Description:** Sets the Rain weather condition in the area. The weather condition lasts for 1 hour and removes all previous weather conditions from the area.
+- **Other effects:** Sets the Rain weather condition in the area. The weather condition lasts for 1 hour and removes all previous weather conditions from the area.
 
 #### Sunny Day
 
@@ -283,7 +283,7 @@
 - **Placement Type:** Radial  
 - **Range:** -  
 - **Accuracy:** Hits automatically  
-- **Description:** Sets the Harsh Sunlight weather condition in the area. The weather condition lasts for 1 hour and removes all previous weather conditions from the area.
+- **Other effects:** Sets the Harsh Sunlight weather condition in the area. The weather condition lasts for 1 hour and removes all previous weather conditions from the area.
 
 #### Trick Room - indirect conversion
 
@@ -297,7 +297,7 @@
 - **Placement Type:** Radial  
 - **Range:** -  
 - **Accuracy:** Hits automatically  
-- **Description:** When a round starts, this Move can be used to reverse the turn order. Initiative modifiers of affected characters are ignored while the effect lasts. Priority Turns are still taken before normal turns, but their order is also reversed. The effect lasts for 5 rounds. If this Move is used while its effect is active, the effect ends instead.
+- **Other effects:** When a round starts, this Move can be used to reverse the turn order. Initiative modifiers of affected characters are ignored while the effect lasts. Priority Turns are still taken before normal turns, but their order is also reversed. The effect lasts for 5 rounds. If this Move is used while its effect is active, the effect ends instead.
 
 #### Stealth Rock - indirect conversion
 
@@ -311,4 +311,4 @@
 - **Placement Type:** Ranged  
 - **Range:** 15 m  
 - **Accuracy:** Hits automatically  
-- **Description:** Creates an area that lasts for 5 rounds. A character that enters the area or ends their turn inside the area takes 4 True Damage. A character can be affected by this Move only once per turn.
+- **Other effects:** Creates an area that lasts for 5 rounds. A character that enters the area or ends their turn inside the area takes 4 True Damage. A character can be affected by this Move only once per turn.

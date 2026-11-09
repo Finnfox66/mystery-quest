@@ -16,8 +16,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "12 + d12",
-    "secondaryEffect": "The user takes True Damage equal to one third of the damage dealt (rounded up).",
-    "description": ""
+    "secondaryEffects": "The user takes True Damage equal to one third of the damage dealt (rounded up).",
+    "otherEffects": "",
+    "description": "The user tucks in its wings and charges at a low altitude. This also damages the user quite a lot."
   },
   {
     "name": "Play Rough",
@@ -36,8 +37,9 @@
     "placementType": "",
     "accuracy": "+8",
     "power": "10 + d10",
-    "secondaryEffect": "Has a 10% (-8) chance of applying an Attack debuff of one stage (-2 Attack) to the target.",
-    "description": ""
+    "secondaryEffects": "Has a 10% (-8) chance of applying an Attack debuff of one stage (-2 Attack) to the target.",
+    "otherEffects": "",
+    "description": "The user attacks by playing rough with the target. This may also lower the target's Attack stat."
   },
   {
     "name": "Moonblast",
@@ -56,8 +58,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "10 + d10",
-    "secondaryEffect": "Has a 30% (-4) chance of applying a Special Defense debuff of one stage (-2 Special Defense) to the target.",
-    "description": ""
+    "secondaryEffects": "Has a 30% (-4) chance of applying a Special Defense debuff of one stage (-2 Special Defense) to the target.",
+    "otherEffects": "",
+    "description": "Borrowing the power of the moon, the user attacks the target. This may also lower the target's Sp. Atk stat."
   },
   {
     "name": "Shadow Ball",
@@ -76,8 +79,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "8 + d8",
-    "secondaryEffect": "Has a 20% (-6) chance of applying a Special Defense debuff of one stage (-2 Special Defense) to the target.",
-    "description": ""
+    "secondaryEffects": "Has a 20% (-6) chance of applying a Special Defense debuff of one stage (-2 Special Defense) to the target.",
+    "otherEffects": "",
+    "description": "The user attacks by hurling a shadowy blob at the target. This may also lower the target’s Sp. Def stat."
   },
   {
     "name": "Drain Punch",
@@ -96,8 +100,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "8 + d8",
-    "secondaryEffect": "Restores the user’s HP equal to half of the damage dealt (rounded up).",
-    "description": ""
+    "secondaryEffects": "Restores the user’s HP equal to half of the damage dealt (rounded up).",
+    "otherEffects": "",
+    "description": "The user attacks with an energy-draining punch. The user's HP is restored by up to half the damage taken by the target."
   },
   {
     "name": "Giga Drain",
@@ -116,8 +121,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "8 + d8",
-    "secondaryEffect": "Restores the user’s HP equal to half of the damage dealt (rounded up).",
-    "description": ""
+    "secondaryEffects": "Restores the user’s HP equal to half of the damage dealt (rounded up).",
+    "otherEffects": "",
+    "description": "A nutrient-draining attack. The user's HP is restored by up to half the damage taken by the target."
   },
   {
     "name": "Ice Shard",
@@ -137,8 +143,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "4 + d4",
-    "secondaryEffect": "",
-    "description": ""
+    "secondaryEffects": "",
+    "otherEffects": "",
+    "description": "The user flash-freezes chunks of ice and hurls them at the target. This move always goes first."
   },
   {
     "name": "Mach Punch",
@@ -158,8 +165,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "4 + d4",
-    "secondaryEffect": "",
-    "description": ""
+    "secondaryEffects": "",
+    "otherEffects": "",
+    "description": "The user throws a punch at blinding speed. This move always goes first."
   },
   {
     "name": "Extreme Speed",
@@ -179,8 +187,9 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "8 + d8",
-    "secondaryEffect": "",
-    "description": ""
+    "secondaryEffects": "",
+    "otherEffects": "",
+    "description": "The user charges the target at blinding speed. This move always goes first."
   },
   {
     "name": "Aqua Jet",
@@ -200,7 +209,8 @@
     "placementType": "",
     "accuracy": "+10",
     "power": "4 + d4",
-    "secondaryEffect": "",
-    "description": ""
+    "secondaryEffects": "",
+    "otherEffects": "",
+    "description": "The user lunges at the target to inflict damage, moving at blinding speed. This move always goes first."
   }
 ]

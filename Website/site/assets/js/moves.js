@@ -35,7 +35,7 @@ async function init() {
       if (state.type && m.type !== state.type) return false;
       if (state.keyword && !m.keywords.includes(state.keyword)) return false;
       if (state.conversion && m.conversion !== state.conversion) return false;
-      if (q && !(`${m.name} ${m.type} ${m.keywords.join(" ")} ${m.power} ${m.secondaryEffect} ${m.description} ${m.range}`.toLowerCase().includes(q))) return false;
+      if (q && !(`${m.name} ${m.type} ${m.keywords.join(" ")} ${m.power} ${m.secondaryEffects} ${m.otherEffects} ${m.description} ${m.range}`.toLowerCase().includes(q))) return false;
       return true;
     });
     document.getElementById("moves-count").textContent = `${shown.length} of ${allMoves.length} Moves (${customMoves.length} custom)`;
