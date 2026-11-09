@@ -65,8 +65,7 @@ export function moveCardEl(m, resolved) {
     ["Power", m.power || "-"],
     ["Secondary effects", m.secondaryEffects || "-"],
     ["Other effects", m.otherEffects || "-"],
-    ["Description", m.description || "-"],
-  ];
+  ]; // Description is lore text, shown separately below the stats, not as a stat row
   el.innerHTML = `<h3>${m.name}${badge}</h3><dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>`;
   if (m.description) {
     const p = document.createElement("p");
