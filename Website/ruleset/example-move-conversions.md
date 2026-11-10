@@ -96,7 +96,7 @@
 - **Range:** 1 m  
 - **Accuracy:** +9  
 - **Power:** 10 + d10  
-- **Other effects:** On the turn the Move is charged, the user has Advantage (+4) to Evasion. From the moment the Move is charged to the moment it is used, the user has the Flight Ability if they don’t have it already.
+- **Other effects:** On the turn the Move is charged, the user has Advantage (+4) to Evasion. As long as the Move is charged, the user has the Flight Ability if they don’t have it already.
 
 ### Special Moves
 

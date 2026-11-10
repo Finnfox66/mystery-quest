@@ -14,9 +14,9 @@ for cross-references.
 labeled 0.9.5.1-0.9.5.8 were in fact upgrades to 0.9.4: they are renumbered
 0.9.4.1-0.9.4.7, with the final export promoted to the actual 0.9.5 release as
 0.9.5.0; the 0.9.4 baseline itself is 0.9.4.0. (Exports after the 0.9.5 release
-continue the 0.9.5.x numbering — the current latest is 0.9.5.8.) All prior exports,
+continue the 0.9.5.x numbering — the current latest is 0.9.6.0.) All prior exports,
 including these, live in `Rules/Older versions/`; only the newest export
-(`Rules/Mystery Quest ruleset 0_9_5_8.md`) sits at the `Rules/` root. All version
+(`Rules/Mystery Quest ruleset 0_9_6_0.md`) sits at the `Rules/` root. All version
 references in this document use the corrected numbering (records written before the
 correction referred to the old labels: 0.9.4.x was written as 0.9.5.x, and 0.9.5.0
 as 0.9.5.8).

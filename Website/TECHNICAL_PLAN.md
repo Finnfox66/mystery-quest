@@ -4,7 +4,7 @@
 The site lives as static files in `Website/site/`; `Website/tools/build.mjs` builds only the rules page and its data files from `Website/ruleset/` (the encounter builder is left out for now).
 
 Plan for a static website presenting the **Pokémon Mystery Quest** ruleset (currently
-v0.9.5.8). **There is no backend**: everything runs in the browser, and character sheets
+v0.9.6.0). **There is no backend**: everything runs in the browser, and character sheets
 are imported/exported as JSON files.
 
 ---
@@ -85,7 +85,7 @@ and hostable anywhere:
   - **`example-move-conversions.md`** — the cleaned Example Move conversions
     section on its own: the build's source for `moves.json`.
   - **`version.json`** — the true ruleset version, derived from the export
-    FILENAME (e.g. `0_9_5_8.md` → `0.9.5.8`), plus the source export and the
+    FILENAME (e.g. `0_9_6_0.md` → `0.9.6.0`), plus the source export and the
     update date. The document byline often carries a placeholder ("0.9.5+")
     because the author does not update it constantly; the script rewrites the
     byline to the true version in the generated copy, and the site's version

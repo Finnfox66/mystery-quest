@@ -166,7 +166,7 @@
     "accuracy": "+9",
     "power": "10 + d10",
     "secondaryEffects": "",
-    "otherEffects": "On the turn the Move is charged, the user has Advantage (+4) to Evasion. From the moment the Move is charged to the moment it is used, the user has the Flight Ability if they don’t have it already.",
+    "otherEffects": "On the turn the Move is charged, the user has Advantage (+4) to Evasion. As long as the Move is charged, the user has the Flight Ability if they don’t have it already.",
     "description": "The user flies up into the sky on the first turn, then attacks on the next turn."
   },
   {
@@ -740,5 +740,111 @@
     "secondaryEffects": "",
     "otherEffects": "",
     "description": "The user lunges at the target to inflict damage, moving at blinding speed. This move always goes first."
+  },
+  {
+    "name": "Dig",
+    "conversion": "indirect",
+    "official": "Ground | Physical | Power 80 | Accuracy 100% | PP 10 | User digs underground on the first turn, dodging attacks, and strikes on the second | Contact",
+    "type": "Ground",
+    "keywords": [
+      "Single-target",
+      "Physical",
+      "Melee",
+      "Charging"
+    ],
+    "ppCost": 2,
+    "range": "1 m",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+10",
+    "power": "8 + d8",
+    "secondaryEffects": "",
+    "otherEffects": "On the turn the Move is charged, the user has Advantage (+4) to Evasion. As long as the Move is charged, the user has the Burrower Ability if they don’t have it already.",
+    "description": "The user burrows into the ground on the first turn, then attacks on the next turn."
+  },
+  {
+    "name": "Phantom Force",
+    "conversion": "indirect",
+    "official": "Ghost | Physical | Power 90 | Accuracy 100% | PP 10 | User vanishes on the first turn, dodging attacks, and strikes on the second; hits through Protect and Detect | Contact",
+    "type": "Ghost",
+    "keywords": [
+      "Single-target",
+      "Physical",
+      "Melee",
+      "Charging"
+    ],
+    "ppCost": 2,
+    "range": "1 m",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+10",
+    "power": "10 + d10",
+    "secondaryEffects": "",
+    "otherEffects": "On the turn the Move is charged, the user has Advantage (+4) to Evasion. As long as the Move is charged, the user is ghostly, as described by the Incorporeal Ability. The target does not benefit from positive modifiers to their Defense Power against this Move.",
+    "description": "The user vanishes somewhere, then strikes the target on the next turn. This move hits even if the target protects itself."
+  },
+  {
+    "name": "Whirlwind",
+    "conversion": "indirect",
+    "official": "Normal | Status | Accuracy — | PP 20 | Priority -6 | Forces the target to switch out | No contact",
+    "type": "Normal",
+    "keywords": [
+      "Single-target",
+      "Status",
+      "Long Range"
+    ],
+    "ppCost": 0,
+    "range": "15 m",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "Hits automatically",
+    "power": "-",
+    "secondaryEffects": "",
+    "otherEffects": "The target is forcibly moved 2d6 meters away from the user. Then all characters except the user within 12 meters of the target’s original location are forcibly moved 2d6 meters towards it.",
+    "description": "The target is blown away, and a different Pokémon is dragged out. In the wild, this ends a battle against a single Pokémon."
+  },
+  {
+    "name": "Dragon Tail",
+    "conversion": "indirect",
+    "official": "Dragon | Physical | Power 60 | Accuracy 90% | PP 10 | Priority -6 | Damages the target and forces it to switch out | Contact",
+    "type": "Dragon",
+    "keywords": [
+      "Single-target",
+      "Physical",
+      "Melee"
+    ],
+    "ppCost": 2,
+    "range": "1 m",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+8",
+    "power": "6 + d6",
+    "secondaryEffects": "",
+    "otherEffects": "The target is forcibly moved 5 meters away from the user.",
+    "description": "The target is knocked away, and a different Pokémon is dragged out. In the wild, this ends a battle against a single Pokémon."
+  },
+  {
+    "name": "Baton Pass",
+    "conversion": "indirect",
+    "official": "Normal | Status | Accuracy — | PP 40 | The user switches out, passing its stat stage changes to the replacement | Self",
+    "type": "Normal",
+    "keywords": [
+      "Single-target (self)",
+      "Status"
+    ],
+    "ppCost": 0,
+    "range": "Self",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "Hits automatically",
+    "power": "-",
+    "secondaryEffects": "",
+    "otherEffects": "The user and the target get free Movement Actions that they have to use to move to each other’s positions. Then the user gives all their buffs and debuffs to the target.",
+    "description": "The user switches places with a party Pokémon in waiting and passes along any stat changes."
   }
 ]

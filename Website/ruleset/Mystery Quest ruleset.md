@@ -1,7 +1,7 @@
 # Mystery Quest ruleset
 
 TTRPG ruleset for Mystery Dungeon and other Pokémon-only adventures.  
-By **u/Finnfox66**, version 0.9.5.9
+By **u/Finnfox66**, version 0.9.6.0
 
 ## Description
 
@@ -650,7 +650,7 @@ When using Disengage, your Movement Actions do not provoke Opportunity Attacks f
 
 #### Shove (Main Action)
 
-When using Shove, both you and the target character roll a d20 and add your Attack to your rolls. If your result is higher than the target character’s result, they are pushed away from you by a distance in meters equal to the difference in the two results. The direction of this forced movement can be any direction that is not in an upwards angle and where the distance between you and the target does not decrease at any point during the movement. This is interrupted by objects or other characters. To Shove a target, you need to be within 1 meter of the target.
+When using Shove, both you and the target character roll a d20 and add your Attack to your rolls. If your result is higher than the target character’s result, they are forcibly moved away from you by a distance in meters equal to the difference in the two results. The direction of the forced movement can be any direction that is not in an upwards angle and where the distance between you and the target does not decrease at any point during the movement. To Shove a target, you need to be within 1 meter of the target.
 
 #### Pin (Main Action)
 
@@ -681,6 +681,10 @@ If an enemy character within 1 meter of you uses a Movement Action in an attempt
 If an ally character near you is targeted by a Move (or forced movement from a Shove) from an enemy character and you could reach the ally character using a Movement Action, you can perform a free Movement Action to move to the ally character and replace them as the target of the Move. This means that the Move targets both characters, whether it is Single-target or Area of Effect, but the To-Hit test of the Move succeeds automatically against you and fails automatically against the protected ally.
 
 You only need to touch the ally character to provide the effect. Neither you nor the ally character can be targeted with further Shielding An Ally actions during the round. To perform a Shielding An Ally reaction, you need to be able to move.
+
+#### Catch (Reaction)
+
+If an ally character near you is being forcibly moved and you could reach the ally character at any point of the movement using a Movement Action, you can perform a free Movement Action to move to the ally character and stop the forced movement. You can’t perform this reaction if you are being forcibly moved by the same source, or if your weight is less than half of the ally character’s weight.
 
 ### Other interactions during combat
 
@@ -775,6 +779,12 @@ Fate Points are used to overcome unfortunate moments where it matters the most. 
 
 Player characters start their journeys with 0 Fate Points and gain a new Fate Point at the beginning of every session. Fate Points can also be given to players by the game master as rewards for exceptional roleplaying. The maximum number of unspent Fate Points a player character can have is 2.
 
+### Forced movement
+
+When a character is moved in away that they themselves can’t affect, the movement is referred to as forced movement. Forced movement is done in a straight line and is interrupted by environmental obstacles blocking the movement, but is not interrupted by other characters unless they use the “Catch” Reaction. If characters end up overlapping after being forcibly moved, they are repositioned to the nearest possible position.
+
+The game master determines when forced movement makes characters to slide across surfaces and when characters either get detached from surfaces or have their forced movement interrupted by them.
+
 ### Clash
 
 Clashes happen when two characters use Moves against each other simultaneously. This can happen for example when characters use the Counter Stance. In a Clash, both characters use their Moves against each other normally, but the damage and any other effects from the Moves are applied only after both Moves have been resolved. This means that both of the involved characters can end up fainting simultaneously.
@@ -837,7 +847,7 @@ The game master determines when a character is restrained and has one or more re
 
 ### Falling
 
-A character can safely drop 5 meters during a fall. If they would drop more than that, they enter free fall. If a character is free falling, they are moved towards the ground at the end of their every End Phase. On the first time the character is moved towards the ground, the falling distance is 25 meters, and on every consecutive time this number is multiplied by 2 until it becomes 200 meters. Falling to the ground deals True Damage to the character equal to the full distance they would have fallen during that End Phase if the fall had not been interrupted, divided by 5 and further reduced by the character’s Speed Progress Modifier.
+A character can safely drop 5 meters during a fall. If they would drop more than that, they enter free fall. If a character is free falling, they are forcibly moved towards the ground at the end of their every End Phase. On the first time the character is forcibly moved towards the ground, the falling distance is 25 meters, and on every consecutive time this number is multiplied by 2 until it becomes 200 meters. Falling to the ground deals True Damage to the character equal to the full distance they would have fallen during that End Phase if the fall had not been interrupted, divided by 5 and further reduced by the character’s Speed Progress Modifier.
 
 A flying character is falling if they are restrained or if their Speed drops to 0.
 
