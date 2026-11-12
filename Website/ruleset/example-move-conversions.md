@@ -96,7 +96,7 @@
 - **Range:** 1 m  
 - **Accuracy:** +9  
 - **Power:** 10 + d10  
-- **Other effects:** On the turn the Move is charged, the user has Advantage (+4) to Evasion. As long as the Move is charged, the user has the Flight Ability if they don’t have it already.
+- **Other effects:** On the turn the Move is charged, the user has Advantage (+4) to Evasion. While the Move is charged, the user has the Flight Ability if they don’t have it already.
 
 ### Special Moves
 
@@ -311,4 +311,4 @@
 - **Placement Type:** Ranged  
 - **Range:** 15 m  
 - **Accuracy:** Hits automatically  
-- **Other effects:** Creates an area that lasts for 5 rounds. A character that enters the area or ends their turn inside the area takes 4 True Damage. A character can be affected by this Move only once per turn.
+- **Other effects:** Creates an area that lasts for 5 rounds. A character that enters the area or is inside the area during their End Phase takes 4 True Damage. A character can be affected by this Move only once per round.

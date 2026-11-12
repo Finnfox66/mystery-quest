@@ -6,7 +6,7 @@ data formats, tool internals, roadmap), see `TECHNICAL_PLAN.md`. The v1 site is
 implemented in `Website/site/` (all pages except the encounter builder); this document
 remains the content plan.
 
-The site presents the **Pokémon Mystery Quest** ruleset (currently v0.9.6.0): the full
+The site presents the **Pokémon Mystery Quest** ruleset (currently v0.9.6.1): the full
 rules, a browsable list of converted Moves, a character creator for player characters and
 NPCs, and an encounter builder for game masters. There is no backend — everything runs in
 the browser and character sheets are imported/exported as JSON files.
@@ -77,7 +77,7 @@ size). The Home, Links and downloads and About pages are fully static; `/rules`,
   its right side** that scrolls the main rules column to that section; clicking the name
   only expands/collapses. Both columns reserve their scrollbar at all times (no layout
   shift).
-- A version banner showing only the version (e.g. "v0.9.6.0") fed from `version.json`,
+- A version banner showing only the version (e.g. "v0.9.6.1") fed from `version.json`,
   never from the document byline's placeholder.
 - **Search**: the search box live-filters the rules by text; while searching, the left
   column is replaced by the search results instead of the outline. Each result shows

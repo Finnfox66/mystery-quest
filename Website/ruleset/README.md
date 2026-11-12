@@ -23,7 +23,7 @@ Contents:
 - **`example-move-conversions.md`** — the cleaned Example Move conversions
   section on its own; the build's source for `moves.json`.
 - **`version.json`** — the true ruleset version (derived from the export
-  filename, e.g. `0_9_6_0.md` → `0.9.6.0`), the source export name and the
+  filename, e.g. `0_9_6_1.md` → `0.9.6.1`), the source export name and the
   update date. The site's version banner reads the version from here — never
   from the document byline, which the author keeps as a placeholder.
 - **`images.json`** — the **image manifest**: it specifies what each image

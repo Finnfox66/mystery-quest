@@ -1,7 +1,7 @@
 # Mystery Quest ruleset
 
 TTRPG ruleset for Mystery Dungeon and other Pokémon-only adventures.  
-By **u/Finnfox66**, version 0.9.6.0
+By **u/Finnfox66**, version 0.9.6.1
 
 ## Description
 

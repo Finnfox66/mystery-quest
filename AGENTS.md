@@ -2,7 +2,7 @@
 
 ## Project overview
 
-Analysis workspace for **Pokémon Mystery Quest** (v0.9.6.0), a fan-made Pokémon TTRPG
+Analysis workspace for **Pokémon Mystery Quest** (v0.9.6.1), a fan-made Pokémon TTRPG
 ruleset by u/Finnfox66. The repository holds exported copies of the ruleset and
 the character sheet. The purpose of this repo is **rules analysis**, not rules
 editing.
@@ -15,7 +15,7 @@ editing.
 
 - The versioned ruleset exports are Markdown
   exports of the author's Google Doc. They are **not the source of truth**.
-  The latest export (currently `Rules/Mystery Quest ruleset 0_9_6_0.md`) sits at
+  The latest export (currently `Rules/Mystery Quest ruleset 0_9_6_1.md`) sits at
   the `Rules/` root; all prior exports (`0_9_4_0` through `0_9_4_7` and
   `0_9_5_0` through `0_9_5_9`) are retained in `Rules/Older versions/` for
   archival and comparison purposes only.
@@ -24,7 +24,7 @@ editing.
   `0_9_4_1` through `0_9_4_7`, and the final export (formerly `0_9_5_8`) was
   promoted to the actual 0.9.5 release as `0_9_5_0` (file names also dropped
   "Pokémon"). Exports after the 0.9.5 release continue the 0.9.5.x numbering
-  (`0_9_5_1.md` and up; the current latest is `0_9_6_0`). The 0.9.4 baseline
+  (`0_9_5_1.md` and up; the current latest is `0_9_6_1`). The 0.9.4 baseline
   predating the first export is `0_9_4_0`. All of these live in
   `Rules/Older versions/`. All documents in this repository use the corrected
   numbering.
@@ -119,7 +119,7 @@ editing.
 - Verify every numerical claim (dice probabilities, conversion tables,
   advancement costs, worked examples) programmatically before reporting it.
   State which checks were run in `AI context/RULES_ANALYSIS.md`.
-- The ruleset is version 0.9.6.0 and explicitly pre-playtest. Layout issues and
+- The ruleset is version 0.9.6.1 and explicitly pre-playtest. Layout issues and
   sections the author has marked incomplete are known gaps, not defects — report
   them as content gaps only.
 - Respect the author's stated design intents (classless, minimal worldbuilding,

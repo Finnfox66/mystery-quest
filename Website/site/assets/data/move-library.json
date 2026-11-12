@@ -232,7 +232,7 @@
     "accuracy": "+10",
     "power": "8 + d8",
     "secondaryEffects": "",
-    "otherEffects": "On the turn the Move is charged, the user has Advantage (+4) to Evasion. As long as the Move is charged, the user has the Burrower Ability if they don’t have it already.",
+    "otherEffects": "On the turn the Move is charged, the user has Advantage (+4) to Evasion. While the Move is charged, the user has the Burrower Ability if they don’t have it already.",
     "description": "The user burrows into the ground on the first turn, then attacks on the next turn."
   },
   {
@@ -254,7 +254,7 @@
     "accuracy": "+10",
     "power": "10 + d10",
     "secondaryEffects": "",
-    "otherEffects": "On the turn the Move is charged, the user has Advantage (+4) to Evasion. As long as the Move is charged, the user is ghostly, as described by the Incorporeal Ability. The target does not benefit from positive modifiers to their Defense Power against this Move.",
+    "otherEffects": "On the turn the Move is charged, the user has Advantage (+4) to Evasion. While the Move is charged, the user is ghostly, as described by the Incorporeal Ability. The target does not benefit from positive modifiers to their Defense Power against this Move.",
     "description": "The user vanishes somewhere, then strikes the target on the next turn. This move hits even if the target protects itself."
   },
   {
@@ -318,5 +318,111 @@
     "secondaryEffects": "",
     "otherEffects": "The user and the target get free Movement Actions that they have to use to move to each other’s positions. Then the user gives all their buffs and debuffs to the target.",
     "description": "The user switches places with a party Pokémon in waiting and passes along any stat changes."
+  },
+  {
+    "name": "Bounce",
+    "conversion": "indirect",
+    "official": "Flying | Physical | Power 85 | Accuracy 85% | PP 5 | User bounces high into the air on the first turn, dodging attacks, and strikes on the second; 30% paralysis | Contact",
+    "type": "Flying",
+    "keywords": [
+      "Single-target",
+      "Physical",
+      "Melee",
+      "Charging"
+    ],
+    "ppCost": 3,
+    "range": "1 m",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+7",
+    "power": "10 + d10",
+    "secondaryEffects": "Has a 30% (-4) chance of applying the Paralysis condition to the target.",
+    "otherEffects": "On the turn the Move is charged, the user has Advantage (+4) to Evasion.",
+    "description": "Bounces up, then down the next turn. May paralyze."
+  },
+  {
+    "name": "Spikes",
+    "conversion": "indirect",
+    "official": "Ground | Status | Accuracy — | PP 20 | Scatters spikes on the opposing side; switching in deals damage, up to 3 layers | No contact",
+    "type": "Ground",
+    "keywords": [
+      "Area of Effect",
+      "Status",
+      "Long Range"
+    ],
+    "ppCost": 0,
+    "range": "15 m",
+    "shape": "Blast (small)",
+    "shapeSize": "5 m",
+    "placementType": "Ranged",
+    "accuracy": "Hits automatically",
+    "power": "-",
+    "secondaryEffects": "",
+    "otherEffects": "Creates an area that lasts for 5 rounds. A character that enters the area or is inside the area during their End Phase takes 2 True Damage. A character can be affected by this Move multiple times per round.",
+    "description": "Hurts foes when they switch in."
+  },
+  {
+    "name": "Destiny Bond",
+    "conversion": "indirect",
+    "official": "Ghost | Status | Accuracy — | PP 5 | If the user faints from a Move, the attacker faints too; lasts until the user’s next turn | Self",
+    "type": "Ghost",
+    "keywords": [
+      "Single-target (self)",
+      "Status"
+    ],
+    "ppCost": 3,
+    "range": "Self",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "Hits automatically",
+    "power": "-",
+    "secondaryEffects": "",
+    "otherEffects": "If a Move used by another character reduces the user to 0 HP, that character is also reduced to 0 HP. The effect lasts until the start of the user’s next Action Phase.",
+    "description": "The foe faints if the user does."
+  },
+  {
+    "name": "Endeavor",
+    "conversion": "indirect",
+    "official": "Normal | Physical | Power — | Accuracy 100% | PP 5 | Damage equal to the difference between the target’s and the user’s current HP | Contact",
+    "type": "Normal",
+    "keywords": [
+      "Single-target",
+      "Physical",
+      "Melee"
+    ],
+    "ppCost": 3,
+    "range": "1 m",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+10",
+    "power": "-",
+    "secondaryEffects": "",
+    "otherEffects": "The Move’s Power equals the user’s missing HP. The target can add their missing HP to their Defense Power against this Move.",
+    "description": "Gains power if the user’s HP is lower than the foe’s HP."
+  },
+  {
+    "name": "Counter",
+    "conversion": "indirect",
+    "official": "Fighting | Physical | Power — | Accuracy 100% | PP 20 | Priority -5 | Deals twice the damage the user last took from a Physical Move | Contact",
+    "type": "Fighting",
+    "keywords": [
+      "Single-target",
+      "Physical",
+      "Melee",
+      "Counter"
+    ],
+    "ppCost": 0,
+    "range": "1 m",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+10",
+    "power": "-",
+    "secondaryEffects": "",
+    "otherEffects": "The Move’s Power equals twice the damage the user took from the last Physical Move during the ongoing or the previous round.",
+    "description": "Returns a physical blow double."
   }
 ]
