@@ -41,7 +41,8 @@ subpath (`user.github.io/<repo>/`).
 
 ## Local development
 
-Requires Node.js for the build (the built site itself is dependency-free).
+Requires Node.js v26 for the build (the version CI uses; the built site itself is
+dependency-free).
 
 1. Build the site — once:
 
@@ -71,4 +72,5 @@ change up automatically, otherwise re-run the build.
 ## Deployment
 
 Pushing to `main` deploys automatically: `.github/workflows/website-workflow.yml`
-runs `tools/build.mjs` after checkout and publishes `Website/dist/` to GitHub Pages.
+runs `tools/build.mjs` after checkout on an `ubuntu-26.04` runner with Node.js 26
+(`actions/setup-node`) and publishes `Website/dist/` to GitHub Pages.
