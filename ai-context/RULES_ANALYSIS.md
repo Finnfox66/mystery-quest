@@ -1,11 +1,11 @@
 # RULES_ANALYSIS.md
 
 Rules analysis of **Pokémon Mystery Quest** v0.9.6.1
-([Rules/Mystery Quest ruleset 0_9_6_1.md](<../Rules/Mystery Quest ruleset 0_9_6_1.md>), the latest export). This document analyzes the
+([rules/Mystery Quest ruleset 0_9_6_1.md](<../rules/Mystery Quest ruleset 0_9_6_1.md>), the latest export). This document analyzes the
 current ruleset version only — it contains no version history or iteration log: findings
 resolved in the ruleset are removed and recorded in condensed form under "Resolved
 findings" in [DESIGN_DECISIONS.md](DESIGN_DECISIONS.md), and changelogs between release versions live in
-`Rules/Rules changelog/`. The ruleset documents are exports from the author's Google Doc
+`rules/Rules changelog/`. The ruleset documents are exports from the author's Google Doc
 and were reviewed read-only; every recommendation below is a change to make **in the
 source document**, not in this repository's copies.
 
@@ -27,7 +27,7 @@ C, E) and never reused — a resolved ID's record lives under "Resolved findings
 
 ## 1. Scope and method
 
-- Every section of [Rules/Mystery Quest ruleset 0_9_6_1.md](<../Rules/Mystery Quest ruleset 0_9_6_1.md>) was read in full.
+- Every section of [rules/Mystery Quest ruleset 0_9_6_1.md](<../rules/Mystery Quest ruleset 0_9_6_1.md>) was read in full.
 - All checkable numerical claims were verified programmatically (exact d20 enumeration and
   dynamic programming, run in a sandbox):
   - **Percentage Tests** reproduce official chances exactly for every 5% step from 0% to

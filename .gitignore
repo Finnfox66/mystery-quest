@@ -6,6 +6,7 @@ node_modules/
 
 # OS, editor and agent tooling artifacts
 .vibe/
+!.vibe/skills/**/*.md
 .DS_Store
 Thumbs.db
 .idea/
@@ -15,5 +16,5 @@ Thumbs.db
 *.log
 .tmp-*
 
-# Generated website build output (Website/tools/build.mjs builds Website/site/ into Website/dist/ — never commit it)
-Website/dist/
+# Generated website build output (website/tools/build.mjs builds website/site/ into website/dist/ — never commit it)
+website/dist/

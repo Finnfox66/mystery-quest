@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-// build.mjs — build the deployable static site in Website/dist/ from the source files
-// in Website/site/ and the generated ruleset documents in Website/ruleset/.
+// build.mjs — build the deployable static site in website/dist/ from the source files
+// in website/site/ and the generated ruleset documents in website/ruleset/.
 //
-// The whole of Website/site/ (hand-written pages, scripts, styles, images, source data)
-// is copied to Website/dist/ first, then the generated files are written into it.
-// Everything under Website/dist/ is gitignored — never commit build output.
+// The whole of website/site/ (hand-written pages, scripts, styles, images, source data)
+// is copied to website/dist/ first, then the generated files are written into it.
+// Everything under website/dist/ is gitignored — never commit build output.
 //
-// Outputs (under Website/dist/):
+// Outputs (under website/dist/):
 //   dist/rules/index.html        — rules page (rendered rules + headings data, with the
 //                                  search index and site version/build date embedded
 //                                  inline via the template's JSON script blocks)
@@ -266,4 +266,4 @@ for (const name of ["LICENSE", "LICENSING.md"]) {
   copyFileSync(join(repo, name), join(distDir, name));
 }
 
-console.log(`Built site v${version.version} into Website/dist/: rules page (${rules.headings.length} headings, ${rules.sections.length} sections), ${moves.length} moves -> dist/assets/data/moves.json`);
+console.log(`Built site v${version.version} into website/dist/: rules page (${rules.headings.length} headings, ${rules.sections.length} sections), ${moves.length} moves -> dist/assets/data/moves.json`);

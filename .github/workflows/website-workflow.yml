@@ -2,7 +2,7 @@ name: Deploy website to GitHub Pages
 on:
   push:
     branches: [main]
-    paths: ["Website/site/**", "Website/ruleset/**", "Website/tools/**", "LICENSE", "LICENSING.md"]
+    paths: ["website/site/**", "website/ruleset/**", "website/tools/**", "LICENSE", "LICENSING.md"]
   workflow_dispatch:
 
 permissions:
@@ -25,9 +25,9 @@ jobs:
         with:
           node-version: 26
       - name: Build the static site
-        run: node Website/tools/build.mjs
+        run: node website/tools/build.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: Website/dist
+          path: website/dist
       - id: deployment
         uses: actions/deploy-pages@v4

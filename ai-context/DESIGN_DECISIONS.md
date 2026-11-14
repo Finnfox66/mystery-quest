@@ -15,8 +15,8 @@ labeled 0.9.5.1-0.9.5.8 were in fact upgrades to 0.9.4: they are renumbered
 0.9.4.1-0.9.4.7, with the final export promoted to the actual 0.9.5 release as
 0.9.5.0; the 0.9.4 baseline itself is 0.9.4.0. (Exports after the 0.9.5 release
 continue the 0.9.5.x numbering — the current latest is 0.9.6.1.) All prior exports,
-including these, live in `Rules/Older versions/`; only the newest export
-([Rules/Mystery Quest ruleset 0_9_6_1.md](<../Rules/Mystery Quest ruleset 0_9_6_1.md>)) sits at the `Rules/` root. All version
+including these, live in `rules/Older versions/`; only the newest export
+([rules/Mystery Quest ruleset 0_9_6_1.md](<../rules/Mystery Quest ruleset 0_9_6_1.md>)) sits at the `rules/` root. All version
 references in this document use the corrected numbering (records written before the
 correction referred to the old labels: 0.9.4.x was written as 0.9.5.x, and 0.9.5.0
 as 0.9.5.8).
@@ -491,7 +491,7 @@ F-numbers; newer records keep the category-prefixed IDs of the current [RULES_AN
   0.9.4.2 the "Example Move conversions" section held a single example (Trick Room)
   behind a "severely incomplete" NOTICE. Resolved: the NOTICE is removed and the
   section now carries the full worked set — 25 conversions (8 Physical, 8 Special,
-  9 Status), implemented from `Rules/Example Move Conversions.md` and verified
+  9 Status), implemented from `rules/Example Move Conversions.md` and verified
   field-by-field against that file programmatically (every converted value matches
   exactly, including the four indirect-conversion markings on Seismic Toss, Fly,
   Trick Room and Stealth Rock). The same release removes the now-redundant
@@ -505,12 +505,12 @@ F-numbers; newer records keep the category-prefixed IDs of the current [RULES_AN
 - **F27 — ruleset vs. character sheet naming (resolved, 2026-10-25).** The character sheet
   files were named "Mystery Dungeon TTRPG character sheet" while the ruleset is
   "Pokémon Mystery Quest". Resolved by the author adding
-  `Rules/Character sheet/PMQ Character sheet.xlsx`, named for the ruleset; the old
+  `rules/Character sheet/PMQ Character sheet.xlsx`, named for the ruleset; the old
   PDF/PNG remain as previous-version exports (retained like the older ruleset
   exports). Update (2026-10-28): the author later simplified the naming to the
   "Mystery Quest" branding — the working xlsx (the author's style-corrected version,
   formerly the interim "PMQ Character sheet fixed.xlsx" copy) is now
-  `Rules/Character sheet/Mystery Quest character sheet.xlsx`, and the PDF/PNG
+  `rules/Character sheet/Mystery Quest character sheet.xlsx`, and the PDF/PNG
   exports are `Mystery Quest character sheet.pdf` / `.png`. The xlsx was iterated the same day to match ruleset 0.9.4.5: level is
   now progress-based ((sum of Core Progress × 1.5) + 5, matching the ruleset's
   level-conversion table), Base Evasion is 12 + Speed, the official-% → Accuracy
@@ -568,7 +568,7 @@ F-numbers; newer records keep the category-prefixed IDs of the current [RULES_AN
   global rules or other Moves' conditionals (Trick Room dropped its counting clause now
   that General logic states duration counting globally; Sunny Day dropped Thunder's and
   Solar Beam's weather clauses) — mirrored into [AGENTS.md](../AGENTS.md) and recorded with
-  per-Move notes in `Rules/Example Move Conversions.md`. Two judgment calls changed
+  per-Move notes in `rules/Example Move Conversions.md`. Two judgment calls changed
   behavior in the author's hands: Trick Room now also reverses the order of Priority
   Turns (closer to the official bracket-wise reversal), and Stealth Rock's trigger is
   now entering the area or ending a turn inside it (closing the stand-still loophole).
@@ -901,7 +901,7 @@ F-numbers; newer records keep the category-prefixed IDs of the current [RULES_AN
   0.9.5.5 source, 2026-10-30).** Only the Ranged Placement Type consumes a Move's Range field,
   but Stealth Rock listed Range 15 m with Projected placement. The author fixed it in the
   0.9.5.5 source document rather than cutting a new export: Stealth Rock's Placement Type is
-  now **Ranged** (confirmed in the saved [Rules/Mystery Quest ruleset 0_9_5_5.md](<../Rules/Older versions/Mystery Quest ruleset 0_9_5_5.md>) export).
+  now **Ranged** (confirmed in the saved [rules/Mystery Quest ruleset 0_9_5_5.md](<../rules/Older versions/Mystery Quest ruleset 0_9_5_5.md>) export).
 - **B3 — single-target vs AoE Power asymmetry (resolved by author clarification,
   2026-10-30).** Single-target Power Values convert at the top of each official bracket
   (e.g. 85–100 → 10 + d10, average 15.5 vs official midpoint 9.25, ~68% inflation) while AoE

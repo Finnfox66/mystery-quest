@@ -3,7 +3,7 @@
 **What the website contains, page by page.** This is the content plan: the pages the site
 has and what appears on each of them. For how the site is built (stack, build pipeline,
 data formats, tool internals, roadmap), see [TECHNICAL_PLAN.md](TECHNICAL_PLAN.md). The v1 site is
-implemented in `Website/site/` (all pages except the encounter builder); this document
+implemented in `website/site/` (all pages except the encounter builder); this document
 remains the content plan.
 
 The site presents the **Pokémon Mystery Quest** ruleset (currently v0.9.6.1): the full
@@ -64,7 +64,7 @@ size). The Home, Links and downloads and About pages are fully static; `/rules`,
 
 - The complete, current ruleset, rendered from the latest export. Only the latest ruleset
   version is viewable (decided). Changelogs between release versions live in
-  `Rules/Rules changelog/` and are not part of the site in v1.
+  `rules/Rules changelog/` and are not part of the site in v1.
 - **Two-column layout**: the left column is the document outline/contents list of all
   headings; the main column is the rules text itself. The two columns scroll
   independently. Per-section anchors are derived from headings (e.g.
@@ -91,7 +91,7 @@ size). The Home, Links and downloads and About pages are fully static; `/rules`,
 ### 2.3. Move browser `/moves`
 
 - All converted Moves: custom Moves first (alphabetical), then the ruleset's Example Move
-  conversions plus the hand-maintained Move library (Website/site/assets/data/
+  conversions plus the hand-maintained Move library (website/site/assets/data/
   move-library.json, converted from the latest official versions), alphabetically. Custom
   Move cards carry
   **Delete** and **Edit ›** buttons; a **New Move** button (right-aligned next to the
@@ -184,8 +184,8 @@ outside the rules text):
 - **Links to the Google Sheets character sheets**: the author's working sheet and the
   community copy (by u/gimlisab) — both links from the ruleset's "Links to material".
 - **The PNG version of the character sheet, displayed inline on this page** — the plain
-  site asset `Website/site/assets/images/character-sheet.png` (copied into the assets by
-  `Website/tools/update-ruleset.mjs` via the image manifest in `Website/ruleset/
+  site asset `website/site/assets/images/character-sheet.png` (copied into the assets by
+  `website/tools/update-ruleset.mjs` via the image manifest in `website/ruleset/
   images.json`). The image belongs here, not on the Home page and not embedded in the
   rules document.
 
@@ -196,14 +196,14 @@ fan-project disclaimer and licensing note (§1), and the acknowledgments.
 
 ## 3. Content pipeline (what feeds the pages)
 
-- **Rules**: the generically-named cleaned document [Website/ruleset/Mystery Quest ruleset.md](<ruleset/Mystery Quest ruleset.md>) (kept at the latest export by `Website/tools/update-ruleset.mjs`, without
+- **Rules**: the generically-named cleaned document [website/ruleset/Mystery Quest ruleset.md](<ruleset/Mystery Quest ruleset.md>) (kept at the latest export by `website/tools/update-ruleset.mjs`, without
   the Example Move conversions and "Contents and material" sections). The build renders it
   from the first "## Description" heading onward; the page header/banner/footer present
   name, author and version instead.
 - **Moves**: `moves.json` = the ruleset's Example Move conversions (parsed from
-  [Website/ruleset/example-move-conversions.md](ruleset/example-move-conversions.md)) plus the hand-maintained `Website/site/assets/data/move-library.json`
+  [website/ruleset/example-move-conversions.md](ruleset/example-move-conversions.md)) plus the hand-maintained `website/site/assets/data/move-library.json`
   (new Moves converted from the latest official versions, same entry format). Conversion
-  method and Move-entry formatting conventions: [AI context/MOVE_CONVERSIONS.md](<../AI context/MOVE_CONVERSIONS.md>).
+  method and Move-entry formatting conventions: [ai-context/MOVE_CONVERSIONS.md](../ai-context/MOVE_CONVERSIONS.md).
 - **Conventions carried over to the site's data**: weather has no standalone mechanics;
   Direct vs Indirect marking with a plain hyphen in the title; Move-entry formatting rules;
   curly apostrophes in generated prose.

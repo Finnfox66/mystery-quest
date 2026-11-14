@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// watch.mjs — development helper: run build.mjs once, then rebuild Website/dist/
+// watch.mjs — development helper: run build.mjs once, then rebuild website/dist/
 // whenever a watched source file changes. Stop with Ctrl+C.
 //
-// Usage (from Website/):    node tools/watch.mjs
-//      (from the repo root): node Website/tools/watch.mjs
+// Usage (from website/):    node tools/watch.mjs
+//      (from the repo root): node website/tools/watch.mjs
 //
 // Watched sources: site/ (recursive), ruleset/, tools/templates/, and the repo-root
 // LICENSE / LICENSING.md files. The build output dist/ is not watched, so a build
@@ -57,11 +57,11 @@ function watchTree(dir, label) {
 console.log("Building once…");
 runBuild();
 
-watchTree(join(website, "site"), "Website/site");
-watchTree(join(website, "ruleset"), "Website/ruleset");
-watchTree(join(here, "templates"), "Website/tools/templates");
+watchTree(join(website, "site"), "website/site");
+watchTree(join(website, "ruleset"), "website/ruleset");
+watchTree(join(here, "templates"), "website/tools/templates");
 watch(repo, (_event, filename) => {
   if (filename === "LICENSE" || filename === "LICENSING.md") scheduleBuild(filename);
 });
 console.log("Watching LICENSE, LICENSING.md (repo root)");
-console.log("\nWatching for changes — Ctrl+C to stop. Serve Website/dist/ in another terminal.");
+console.log("\nWatching for changes — Ctrl+C to stop. Serve website/dist/ in another terminal.");

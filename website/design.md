@@ -1,6 +1,6 @@
 # design.md — visual design reference for the Pokémon Mystery Quest website
 
-Design practices extracted from the screen examples in `Website/design-reference/`
+Design practices extracted from the screen examples in `website/design-reference/`
 (Home, Rules, "Character creator – characters list"; PNG + SVG). **The examples display
 primarily placeholder content and are basic style examples only — they are not final
 versions and should not be interpreted exactly.** Where the examples and the plans
@@ -53,7 +53,7 @@ Light theme only; no dark mode (consistent with TECHNICAL_PLAN §4).
   and small corner radii (~3.5–4 px — rounded, not pill); **no drop shadows** on ordinary
   content (matches TECHNICAL_PLAN §4).
 - **Home**: one centered card; the top of the card is the **hero image**
-  (`Website/site/assets/images/Hero image.jpg`), with text and the gradient logo/CTA
+  (`website/site/assets/images/Hero image.jpg`), with text and the gradient logo/CTA
   banner below it.
 - **Rules**: two-column layout on the gray background — left outline/contents column,
   main rules column in a card; blue `#33517C` used for accents (active outline item /

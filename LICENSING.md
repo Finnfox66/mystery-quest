@@ -10,16 +10,16 @@ not covered by that license and remain the property of their owners.**
 All original content of this repository is licensed under the [MIT License](LICENSE)
 (copyright (c) 2026 Finnfox66). That includes:
 
-- the website in `Website/site/` — HTML, CSS, JavaScript, and the images and icons
+- the website in `website/site/` — HTML, CSS, JavaScript, and the images and icons
   made for it;
-- the build and ruleset tools in `Website/tools/`;
-- the Mystery Quest ruleset text, as exported into `Rules/` (the exports are
+- the build and ruleset tools in `website/tools/`;
+- the Mystery Quest ruleset text, as exported into `rules/` (the exports are
   read-only copies of the author's Google Doc, which is the source of truth —
   the document itself is the author's original work and is likewise free to use
   under the MIT License);
-- the character sheet in `Rules/Character sheet/`;
-- the changelogs in `Rules/Rules changelog/`;
-- the planning and analysis documents in `Website/*.md` and `AI context/`;
+- the character sheet in `rules/Character sheet/`;
+- the changelogs in `rules/Rules changelog/`;
+- the planning and analysis documents in `website/*.md` and `ai-context/`;
 - this repository's [README.md](README.md) and [AGENTS.md](AGENTS.md).
 
 Under the MIT License you may use, copy, modify, merge, publish, distribute,
