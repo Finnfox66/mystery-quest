@@ -33,3 +33,14 @@ and open it in a browser. It presents the full ruleset with a searchable outline
 Moves browser with filters, and a character creator (player characters and NPCs, with
 JSON export/import) plus an editor for custom Moves. Everything runs locally in the
 browser and stores its data in `localStorage` — no accounts, no server.
+
+## License
+
+The original content of this repository — the ruleset text, the character sheet, the
+website and its code, and the planning and analysis documents — is licensed under the
+[MIT License](LICENSE) and is free to use, copy, modify, and distribute for any purpose.
+
+Pokémon and all related names and marks are trademarks of Nintendo, Game Freak, The
+Pokémon Company, and Creatures Inc. This is an unofficial fan-made project, not
+affiliated with or endorsed by them, and the MIT License grants no rights in those
+trademarks. See [LICENSING.md](LICENSING.md) for the full licensing documentation.
