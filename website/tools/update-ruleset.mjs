@@ -1,16 +1,17 @@
 #!/usr/bin/env node
-// update-ruleset.mjs — refresh Website/ruleset/ from the latest ruleset export.
+// update-ruleset.mjs — refresh website/ruleset/ from the latest ruleset export.
 //
-// Reads the newest "Mystery Quest ruleset 0_x_y_z.md" from Rules/, removes the
+// Reads the newest "Mystery Quest ruleset 0_x_y_z.md" from rules/, removes the
 // Google Docs → Markdown export artifacts, splits off the Example Move
 // conversions section (the website provides the Moves list separately), applies
-// the image manifest, and writes the results to Website/ruleset/:
+// the image manifest, and writes the results to website/ruleset/:
 //
 //   - Mystery Quest ruleset.md    — cleaned ruleset, WITHOUT the Example Move
 //     conversions section, under a generic name so references to it never
 //     change (replaced wholesale on each run)
 //   - example-move-conversions.md — the cleaned Example Move conversions
-//     section on its own (the build's source for moves.json)
+//     section on its own, kept as a standalone generated copy (the website's
+//     Moves list is the committed site/assets/data/moves.json)
 //   - version.json                — the true ruleset version (derived from the
 //     export FILENAME, e.g. 0_9_5_4 -> "0.9.5.4") plus the source export and
 //     update date, for the site's version banner
@@ -41,7 +42,7 @@
 //      material links separately, so the section must not be in the web copy.
 //
 // Images: the export's image references (![][imageN]) are mapped through
-// Website/ruleset/images.json — the manifest that specifies what each image
+// website/ruleset/images.json — the manifest that specifies what each image
 // link in the ruleset represents. Each entry gives the reference ID, alt text,
 // the website asset path to serve it from, and optionally a repo source file to
 // copy into the site's assets. If the export instead carries a base64 data
@@ -55,9 +56,9 @@ import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const repoRoot = join(here, "..", "..");
-const rulesDir = join(repoRoot, "Rules");
-const outDir = join(repoRoot, "Website", "ruleset");
-const siteDir = join(repoRoot, "Website", "site");
+const rulesDir = join(repoRoot, "rules");
+const outDir = join(repoRoot, "website", "ruleset");
+const siteDir = join(repoRoot, "website", "site");
 
 const EXPORT_NAME = /^Mystery Quest ruleset (\d+)_(\d+)_(\d+)_(\d+)\.md$/;
 const OUT_NAME = "Mystery Quest ruleset.md";
@@ -234,7 +235,7 @@ export function applyImages(text, manifest, imageData, { siteDir, report = conso
   const stale = [...byRef.keys()].filter((ref) => !found.has(ref));
   if (missing.length) {
     throw new Error(
-      "Image references without a manifest entry (add them to Website/ruleset/images.json): " +
+      "Image references without a manifest entry (add them to website/ruleset/images.json): " +
         [...new Set(missing)].join(", ")
     );
   }
@@ -291,7 +292,7 @@ function main() {
     ) + "\n"
   );
 
-  console.log(`Cleaned ${name} -> Website/ruleset/${OUT_NAME} (version ${versionString})`);
+  console.log(`Cleaned ${name} -> website/ruleset/${OUT_NAME} (version ${versionString})`);
   console.log(`  image definitions seen:           ${report.imageDefinitions} (${Object.keys(imageData).length} with base64 payloads)`);
   console.log(`  heading anchor tags removed:      ${report.headingAnchors}`);
   console.log(`  NOTICE boxes removed:            ${report.noticesRemoved}`);

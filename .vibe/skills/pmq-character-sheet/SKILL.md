@@ -1,13 +1,13 @@
 ---
 name: pmq-character-sheet
-description: Load before editing the Pokémon Mystery Quest character sheet workbook (Rules/Character sheet/Mystery Quest character sheet.xlsx) — changing values, layout, styles, merges, formulas, or inserting/moving rows. Contains the sheet's style guide, the author's recorded style corrections, openpyxl gotchas, and the required verification steps.
+description: Load before editing the Pokémon Mystery Quest character sheet workbook (rules/Character sheet/Mystery Quest character sheet.xlsx) — changing values, layout, styles, merges, formulas, or inserting/moving rows. Contains the sheet's style guide, the author's recorded style corrections, openpyxl gotchas, and the required verification steps.
 ---
 
 # PMQ character sheet (XLSX)
 
 ## Files
 
-- `Rules/Character sheet/Mystery Quest character sheet.xlsx` — the working
+- `rules/Character sheet/Mystery Quest character sheet.xlsx` — the working
   character sheet (per AGENTS.md, the maintained file), and the only xlsx: the
   author's style corrections of 2026-10-27 (recorded below) were made in an
   interim copy, "PMQ Character sheet fixed.xlsx", which the author then promoted

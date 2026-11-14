@@ -2,7 +2,7 @@ name: Deploy website to GitHub Pages
 on:
   push:
     branches: [main]
-    paths: ["Website/site/**", "Website/ruleset/**", "Website/tools/**"]
+    paths: ["website/site/**", "website/ruleset/**", "website/tools/**", "LICENSE", "LICENSING.md"]
   workflow_dispatch:
 
 permissions:
@@ -15,14 +15,19 @@ concurrency:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 26
+      - name: Build the static site
+        run: node website/tools/build.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: Website/site
+          path: website/dist
       - id: deployment
         uses: actions/deploy-pages@v4

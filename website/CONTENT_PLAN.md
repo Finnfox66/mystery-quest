@@ -2,8 +2,8 @@
 
 **What the website contains, page by page.** This is the content plan: the pages the site
 has and what appears on each of them. For how the site is built (stack, build pipeline,
-data formats, tool internals, roadmap), see `TECHNICAL_PLAN.md`. The v1 site is
-implemented in `Website/site/` (all pages except the encounter builder); this document
+data formats, tool internals, roadmap), see [TECHNICAL_PLAN.md](TECHNICAL_PLAN.md). The v1 site is
+implemented in `website/site/` (all pages except the encounter builder); this document
 remains the content plan.
 
 The site presents the **Pokémon Mystery Quest** ruleset (currently v0.9.6.2): the full
@@ -92,7 +92,7 @@ size). The Home, Links and downloads and About pages are fully static; `/rules`,
 
 - All converted Moves: custom Moves first (alphabetical), then the ruleset's Example Move
   conversions plus the hand-maintained Move library (merged into
-  `Website/site/assets/data/moves.json` by `local-only/move-conversion/build-moves.mjs` from the latest
+  `website/site/assets/data/moves.json` by `local-only/move-conversion/build-moves.mjs` from the latest
   official versions), alphabetically. Custom
   Move cards carry
   **Delete** and **Edit ›** buttons; a **New Move** button (right-aligned next to the
@@ -185,8 +185,8 @@ outside the rules text):
 - **Links to the Google Sheets character sheets**: the author's working sheet and the
   community copy (by u/gimlisab) — both links from the ruleset's "Links to material".
 - **The PNG version of the character sheet, displayed inline on this page** — the plain
-  site asset `Website/site/assets/images/character-sheet.png` (copied into the assets by
-  `Website/tools/update-ruleset.mjs` via the image manifest in `Website/ruleset/
+  site asset `website/site/assets/images/character-sheet.png` (copied into the assets by
+  `website/tools/update-ruleset.mjs` via the image manifest in `website/ruleset/
   images.json`). The image belongs here, not on the Home page and not embedded in the
   rules document.
 
@@ -197,17 +197,17 @@ fan-project disclaimer and licensing note (§1), and the acknowledgments.
 
 ## 3. Content pipeline (what feeds the pages)
 
-- **Rules**: the generically-named cleaned document `Website/ruleset/Mystery Quest
-  ruleset.md` (kept at the latest export by `Website/tools/update-ruleset.mjs`, without
+- **Rules**: the generically-named cleaned document [website/ruleset/Mystery Quest ruleset.md](<ruleset/Mystery Quest ruleset.md>) (kept at the latest export by `website/tools/update-ruleset.mjs`, without
   the Example Move conversions and "Contents and material" sections). The build renders it
   from the first "## Description" heading onward; the page header/banner/footer present
   name, author and version instead.
 - **Moves**: `moves.json` = the ruleset's Example Move conversions (parsed from
-  `Website/ruleset/example-move-conversions.md`) plus the hand-maintained `local-only/move-conversion/move-library.json`
+  [website/ruleset/example-move-conversions.md](ruleset/example-move-conversions.md)) plus the hand-maintained `local-only/move-conversion/move-library.json`
   (new Moves converted from the latest official versions, same entry format), with official
   flavor texts from `local-only/move-conversion/move-descriptions.json` — built and committed by
-  `local-only/move-conversion/build-moves.mjs` (`tools/build.mjs` does not touch it). Conversion
-  method and Move-entry formatting conventions: `AI context/MOVE_CONVERSIONS.md`.
+  `local-only/move-conversion/build-moves.mjs` (`website/tools/build.mjs` does not touch it; it copies the
+  committed file into `dist/`). Conversion
+  method and Move-entry formatting conventions: [ai-context/MOVE_CONVERSIONS.md](../ai-context/MOVE_CONVERSIONS.md).
 - **Conventions carried over to the site's data**: weather has no standalone mechanics;
   Direct vs Indirect marking with a plain hyphen in the title; Move-entry formatting rules;
   curly apostrophes in generated prose.

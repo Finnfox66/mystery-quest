@@ -15,9 +15,9 @@ editing.
 
 - The versioned ruleset exports are Markdown
   exports of the author's Google Doc. They are **not the source of truth**.
-  The latest export (currently `Rules/Mystery Quest ruleset 0_9_6_2.md`) sits at
-  the `Rules/` root. A few selected prior exports (currently the release baselines
-  `0_9_4_0`, `0_9_5_0` and `0_9_6_0`) are committed in `Rules/Older versions/`; all the
+  The latest export (currently [rules/Mystery Quest ruleset 0_9_6_2.md](<rules/Mystery Quest ruleset 0_9_6_2.md>)) sits at
+  the `rules/` root. A few selected prior exports (currently the release baselines
+  `0_9_4_0`, `0_9_5_0` and `0_9_6_0`) are committed in `rules/Older versions/`; all the
   other prior exports (the patch versions, e.g. `0_9_4_1`–`0_9_4_7`,
   `0_9_5_1`–`0_9_5_9`, `0_9_6_1`) are kept in
   `local-only/older-ruleset-versions/` (gitignored) for local archival
@@ -29,36 +29,43 @@ editing.
   "Pokémon"). Exports after the 0.9.5 release continue the 0.9.5.x numbering
   (`0_9_5_1.md` and up; the current latest is `0_9_6_2`). The 0.9.4 baseline
   predating the first export is `0_9_4_0`. The release baselines live in
-  `Rules/Older versions/`, the patch versions in `local-only/older-ruleset-versions/`,
-  the latest at the `Rules/` root. All documents in this repository use the corrected
+  `rules/Older versions/`, the patch versions in `local-only/older-ruleset-versions/`,
+  the latest at the `rules/` root. All documents in this repository use the corrected
   numbering.
-- **The website's rules documents** (`Website/ruleset/`) are *generated* files,
-  produced by `Website/tools/update-ruleset.mjs` from the newest export: the
-  artifact-cleaned ruleset under the generic name `Mystery Quest ruleset.md`
+- **The website's rules documents** (`website/ruleset/`) are *generated* files,
+  produced by `website/tools/update-ruleset.mjs` from the newest export: the
+  artifact-cleaned ruleset under the generic name [Mystery Quest ruleset.md](<website/ruleset/Mystery Quest ruleset.md>)
   (without the Example Move conversions section — the website's Moves list is
-  the extracted examples plus the library in `local-only/move-conversion/move-library.json` (new conversions
-  from the latest official versions, a gitignored working file; indirect ones wait in
-  `local-only/move-conversion/New versions.md`) — the committed `Website/site/assets/data/moves.json` is
-  generated from both by `local-only/move-conversion/build-moves.mjs` (a local-only script, so it only runs
-  where the working data exists) and is the data the website actually uses;
-  `Website/tools/build.mjs` does not touch it — and
+  the committed `website/site/assets/data/moves.json` — generated from the ruleset
+  examples plus the library in `local-only/move-conversion/move-library.json` (new
+  conversions from the latest official versions, a gitignored working file; indirect
+  ones wait in `local-only/move-conversion/New versions.md`) by
+  `local-only/move-conversion/build-moves.mjs` (a local-only script, so it only runs
+  where the working data exists) — and copied into `dist/` by `website/tools/build.mjs`,
+  which otherwise does not touch it — and
   without the "Contents and material" section: the site's contents listing,
   links to material, acknowledgments and character-sheet image are
   implemented site-side, separate from the rules text, and the
   character-sheet image asset is still copied into
-  `Website/site/assets/` via the manifest),
+  `website/site/assets/` via the manifest),
   `version.json` (the true version derived from the export filename — the
   document byline's "0.9.5+" placeholder is rewritten in the generated copy
   and never reaches the web page), and `images.json`, the image manifest that
   specifies what each image link in the ruleset represents (alt text, website
   asset path, optional repo source file copied into
-  `Website/site/assets/`; base64 payloads in an export are extracted
+  `website/site/assets/`; base64 payloads in an export are extracted
   automatically). Never hand-edit the generated documents; re-run the script
-  after a new export arrives. The raw exports in `Rules/` are never modified.
-  The site in `Website/site/` is deployed to GitHub Pages by
-  `.github/workflows/website-workflow.yml` (Pages source: GitHub Actions); its pages
-  use a per-page `<base>` tag and relative URLs, so the site works both at a domain
-  root and under a project subpath (`user.github.io/<repo>/`).
+  after a new export arrives. The raw exports in `rules/` are never modified.
+  `website/site/` holds only the website's committed source files (hand-written
+  pages, scripts, styles, images, source data). `website/tools/build.mjs` builds it
+  into `website/dist/` and `website/dist/` is gitignored as a whole. The Pages workflow
+  (`.github/workflows/website-workflow.yml`, Pages source: GitHub Actions) runs the
+  build after checkout and publishes `website/dist/` to GitHub Pages. The site's
+  pages use a per-page `<base>` tag and relative URLs, so the built site works both
+  at a domain root and under a project subpath (`user.github.io/<repo>/`). Local
+  development: run `node website/tools/build.mjs` — or
+  `node website/tools/watch.mjs` to rebuild automatically on every source change —
+  then serve `website/dist/` (see [website/README.md](website/README.md)).
   Never edit, reformat, lint, or "fix" these files — not even whitespace,
   escaped punctuation (`\+`, `\=`, `\.`), or vertical tabs inside tables.
   Those are export artifacts, not defects to repair locally. Prior exports
@@ -67,9 +74,9 @@ editing.
   Markdown conversion) are ignored; never report them. Base64 image data is
   the exception: if it appears in a rules export, remove it from the file
   silently, without reporting the removal.
-- The same applies to the character sheet exports under `Rules/Character sheet/`
+- The same applies to the character sheet exports under `rules/Character sheet/`
   (`Mystery Quest character sheet.pdf` / `.png`), which are not edited.
-  **Exception:** `Rules/Character sheet/Mystery Quest character sheet.xlsx` is the working
+  **Exception:** `rules/Character sheet/Mystery Quest character sheet.xlsx` is the working
   character sheet and is maintained in the repository; it may be iterated on the
   author's request to match the current ruleset (its converted values are verified
   against the ruleset's conversion tables and Example Move conversions; formulas
@@ -78,7 +85,7 @@ editing.
 - `local-only/move-conversion/New versions.md` holds
   rules text waiting to be implemented into the full ruleset and may be edited
   directly, including by the analysis agent. Ready rules text that could be
-  implemented into the ruleset is presented there, not in `AI context/RULES_ANALYSIS.md`, which
+  implemented into the ruleset is presented there, not in [ai-context/RULES_ANALYSIS.md](ai-context/RULES_ANALYSIS.md), which
   stays reserved for findings and change requests. `local-only/move-conversion/New versions.md` is the
   primary location for suggested rules text. If `local-only/move-conversion/New versions.md` contains
   ruletext that can already be found in the full ruleset document, remove it from
@@ -100,18 +107,18 @@ editing.
   library (`move-library.json`), the official flavor-text map (`move-descriptions.json`),
   the converter, description and build scripts (`convert-moves.mjs`, `fetch-descriptions.mjs`,
   `clean-descriptions.mjs`, `build-moves.mjs` — the last one builds the committed
-  `Website/site/assets/data/moves.json` from the ruleset examples plus the library), the
+  `website/site/assets/data/moves.json` from the ruleset examples plus the library), the
   saved official source data (`source-data/`), and the progress and review records
   (`Move conversion tasklist.md`, `New versions.md`, `indirect-moves-report.txt`,
   `effects-review-list.txt`, `never-convert.txt`).
 - The authoritative sources are the Google Docs / Drive links listed inside the
   ruleset document's "Links to material" section.
 - All rules feedback, corrections, and change requests go into
-  `AI context/RULES_ANALYSIS.md`. Never encode findings as edits to the
+  [ai-context/RULES_ANALYSIS.md](ai-context/RULES_ANALYSIS.md). Never encode findings as edits to the
   rules text.
-- `AI context/RULES_ANALYSIS.md` analyzes the **latest ruleset version only** — it contains
+- [ai-context/RULES_ANALYSIS.md](ai-context/RULES_ANALYSIS.md) analyzes the **latest ruleset version only** — it contains
   no per-version changelog or iteration history. Resolved findings are removed
-  from it and condensed under "Resolved findings" in `AI context/DESIGN_DECISIONS.md`.
+  from it and condensed under "Resolved findings" in [ai-context/DESIGN_DECISIONS.md](ai-context/DESIGN_DECISIONS.md).
 - **Changelogs** are generated only between **release versions** (e.g., 0.9.4 →
   0.9.5), one document per release pair in `local-only/rules-changelog/` (gitignored —
   changelogs are working documents and are not committed), named
@@ -119,7 +126,7 @@ editing.
   the **exact delta between the two named exports** (e.g., 0.9.4.0 → 0.9.5.0) and
   is **never updated when later versions arrive** (e.g., 0.9.5.1's changes are not
   folded into `changelog 0_9_4 - 0_9_5.md`) — later versions are treated like
-  older versions in this respect. The prior exports (in `Rules/Older versions/` and
+  older versions in this respect. The prior exports (in `rules/Older versions/` and
   `local-only/older-ruleset-versions/`) are archival and their individual differences
   are never documented; only the two latest of them are relevant, as context for
   interpreting the most recent changes (author instruction, 2026-10-26;
@@ -134,7 +141,7 @@ editing.
   or **Editorial**.
 - Verify every numerical claim (dice probabilities, conversion tables,
   advancement costs, worked examples) programmatically before reporting it.
-  State which checks were run in `AI context/RULES_ANALYSIS.md`.
+  State which checks were run in [ai-context/RULES_ANALYSIS.md](ai-context/RULES_ANALYSIS.md).
 - The ruleset is version 0.9.6.2 and explicitly pre-playtest. Layout issues and
   sections the author has marked incomplete are known gaps, not defects — report
   them as content gaps only.
@@ -143,8 +150,8 @@ editing.
   problem. Do not recommend changes that reverse those intents; recommend
   clarifications that preserve them.
 - Findings that have been resolved in the ruleset are removed from
-  `AI context/RULES_ANALYSIS.md` and recorded in condensed form under "Resolved findings"
-  in `AI context/DESIGN_DECISIONS.md`.
+  [ai-context/RULES_ANALYSIS.md](ai-context/RULES_ANALYSIS.md) and recorded in condensed form under "Resolved findings"
+  in [ai-context/DESIGN_DECISIONS.md](ai-context/DESIGN_DECISIONS.md).
 
 ## Game design conventions established during analysis
 
@@ -153,7 +160,7 @@ editing.
   prerequisites and conditions written into individual Moves (e.g., Thunder's
   Accuracy in Rain) and may justify GM-given Advantages/Disadvantages. Any
   converted Move may reference weather only through such conditionals in its
-  description. See `AI context/MOVE_CONVERSIONS.md` for the conversion
+  description. See [ai-context/MOVE_CONVERSIONS.md](ai-context/MOVE_CONVERSIONS.md) for the conversion
   method and the weather conventions.
 - **Conversion marking:** a Move conversion is **Direct** when every official
   specification maps onto ruleset mechanics via the conversion tables without
@@ -193,7 +200,7 @@ editing.
   leads the Description ("When a round starts, this Move can be used to..."),
   and simple terms matching defined ruleset terms are preferred ("Power", not
   "Attack Power"; "area", not "zone") (author revision, 2026-10-26; house
-  style recorded in `AI context/MOVE_CONVERSIONS.md`).
+  style recorded in [ai-context/MOVE_CONVERSIONS.md](ai-context/MOVE_CONVERSIONS.md)).
 - **Conversion simplification:** avoid accurate divisions of Max HP or other
   stats in Move conversions - use flat values instead (e.g., Stealth Rock's
   official 12.5% of max HP becomes a flat 4 True Damage), and do not apply
@@ -239,7 +246,7 @@ editing.
   interaction pick categories directly). A character's turn has an **Action
   Phase** and an **End Phase**, and restrictions never remove the End Phase:
   end-of-turn effects and Status Condition removal tests always resolve, even on
-  skipped turns. Design rationale: `AI context/DESIGN_DECISIONS.md` (D1-D9). Immobile is the
+  skipped turns. Design rationale: [ai-context/DESIGN_DECISIONS.md](ai-context/DESIGN_DECISIONS.md) (D1-D9). Immobile is the
   deliberate exception that also sets Speed 0 / Base Evasion 12, now stated in the
   section intro.
 - **Priority Turns:** a character that announces using a Priority Move at the
