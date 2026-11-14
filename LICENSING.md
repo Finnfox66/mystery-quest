@@ -18,7 +18,7 @@ All original content of this repository is licensed under the [MIT License](LICE
   the document itself is the author's original work and is likewise free to use
   under the MIT License);
 - the character sheet in `rules/Character sheet/`;
-- the changelogs in `rules/Rules changelog/`;
+- the changelogs (working documents kept in `local-only/rules-changelog/`, not committed);
 - the planning and analysis documents in `website/*.md` and `ai-context/`;
 - this repository's [README.md](README.md) and [AGENTS.md](AGENTS.md).
 

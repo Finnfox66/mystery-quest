@@ -22,8 +22,9 @@ Contents:
   version banner and footer present the name, author and version instead).
 - **[example-move-conversions.md](example-move-conversions.md)** — the cleaned Example Move
   conversions section on its own, kept as a standalone generated copy.
-  The website's Moves list is generated from a hand-maintained file
-  `website/site/assets/data/moves.json`, which the build copies into `dist/`
+  The website's Moves list is the committed `website/site/assets/data/moves.json`
+  (built from these examples plus the local-only conversion library by
+  `local-only/move-conversion/build-moves.mjs`), which the build copies into `dist/`
   (minified) and the site fetches at runtime.
 - **`version.json`** — the true ruleset version (derived from the export
   filename, e.g. `0_9_6_1.md` → `0.9.6.1`), the source export name and the

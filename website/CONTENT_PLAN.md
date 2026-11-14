@@ -6,7 +6,7 @@ data formats, tool internals, roadmap), see [TECHNICAL_PLAN.md](TECHNICAL_PLAN.m
 implemented in `website/site/` (all pages except the encounter builder); this document
 remains the content plan.
 
-The site presents the **Pokémon Mystery Quest** ruleset (currently v0.9.6.1): the full
+The site presents the **Pokémon Mystery Quest** ruleset (currently v0.9.6.2): the full
 rules, a browsable list of converted Moves, a character creator for player characters and
 NPCs, and an encounter builder for game masters. There is no backend — everything runs in
 the browser and character sheets are imported/exported as JSON files.
@@ -63,8 +63,8 @@ size). The Home, Links and downloads and About pages are fully static; `/rules`,
 ### 2.2. Rules `/rules`
 
 - The complete, current ruleset, rendered from the latest export. Only the latest ruleset
-  version is viewable (decided). Changelogs between release versions live in
-  `rules/Rules changelog/` and are not part of the site in v1.
+  version is viewable (decided). Changelogs between release versions are not part of the
+  repository and not part of the site in v1.
 - **Two-column layout**: the left column is the document outline/contents list of all
   headings; the main column is the rules text itself. The two columns scroll
   independently. Per-section anchors are derived from headings (e.g.
@@ -91,8 +91,9 @@ size). The Home, Links and downloads and About pages are fully static; `/rules`,
 ### 2.3. Move browser `/moves`
 
 - All converted Moves: custom Moves first (alphabetical), then the ruleset's Example Move
-  conversions plus the hand-maintained Move library (website/site/assets/data/
-  move-library.json, converted from the latest official versions), alphabetically. Custom
+  conversions plus the hand-maintained Move library (merged into
+  `website/site/assets/data/moves.json` by `local-only/move-conversion/build-moves.mjs` from the latest
+  official versions), alphabetically. Custom
   Move cards carry
   **Delete** and **Edit ›** buttons; a **New Move** button (right-aligned next to the
   filters) opens the editor at `/moves/editor`, and each custom Move has a preview page
@@ -201,8 +202,11 @@ fan-project disclaimer and licensing note (§1), and the acknowledgments.
   from the first "## Description" heading onward; the page header/banner/footer present
   name, author and version instead.
 - **Moves**: `moves.json` = the ruleset's Example Move conversions (parsed from
-  [website/ruleset/example-move-conversions.md](ruleset/example-move-conversions.md)) plus the hand-maintained `website/site/assets/data/move-library.json`
-  (new Moves converted from the latest official versions, same entry format). Conversion
+  [website/ruleset/example-move-conversions.md](ruleset/example-move-conversions.md)) plus the hand-maintained `local-only/move-conversion/move-library.json`
+  (new Moves converted from the latest official versions, same entry format), with official
+  flavor texts from `local-only/move-conversion/move-descriptions.json` — built and committed by
+  `local-only/move-conversion/build-moves.mjs` (`website/tools/build.mjs` does not touch it; it copies the
+  committed file into `dist/`). Conversion
   method and Move-entry formatting conventions: [ai-context/MOVE_CONVERSIONS.md](../ai-context/MOVE_CONVERSIONS.md).
 - **Conventions carried over to the site's data**: weather has no standalone mechanics;
   Direct vs Indirect marking with a plain hyphen in the title; Move-entry formatting rules;

@@ -11,15 +11,18 @@ The rules themselves live in the author's Google Doc (linked in the ruleset's
 
 ## What's in this repository
 
-- **`rules/`** — the versioned ruleset exports (`Mystery Quest ruleset 0_x_y_z.md`; the
-  latest sits at the folder root, all earlier ones in `Older versions/`), the
-  release-to-release changelogs in `Rules changelog/`, and the character sheet in
-  `rules/Character sheet/` (paper PDF/PNG prints plus the working `.xlsx`).
+- **`rules/`** — the current ruleset export (`Mystery Quest ruleset 0_x_y_z.md` at the
+  folder root; selected earlier release baselines in `Older versions/`), and the
+  character sheet in `rules/Character sheet/` (paper PDF/PNG prints plus the working
+  `.xlsx`). (Earlier patch exports and the release-to-release changelogs are kept
+  outside the repository.)
 - **`website/`** — the project's website: its source files in `site/`, the generated
   ruleset documents in `ruleset/` (built from the newest export by
   `tools/update-ruleset.mjs` — never edit those by hand), the build tools in
   `tools/`, and the planning documents ([CONTENT_PLAN.md](website/CONTENT_PLAN.md), [TECHNICAL_PLAN.md](website/TECHNICAL_PLAN.md),
-  [design.md](website/design.md) and the `design-reference/` screenshots). See [website/README.md](website/README.md)
+  [design.md](website/design.md) and the `design-reference/` screenshots). The build
+  (`tools/build.mjs`) compiles `site/` into the gitignored `dist/`; all data files,
+  including the Move list, are committed as-is. See [website/README.md](website/README.md)
   for how to build and run it locally.
 - **`ai-context/`** — working documents maintained together with an AI assistant:
   open findings on the current ruleset ([RULES_ANALYSIS.md](ai-context/RULES_ANALYSIS.md)), the design decision log

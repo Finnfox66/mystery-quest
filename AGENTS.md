@@ -2,7 +2,7 @@
 
 ## Project overview
 
-Analysis workspace for **Pokémon Mystery Quest** (v0.9.6.1), a fan-made Pokémon TTRPG
+Analysis workspace for **Pokémon Mystery Quest** (v0.9.6.2), a fan-made Pokémon TTRPG
 ruleset by u/Finnfox66. The repository holds exported copies of the ruleset and
 the character sheet. The purpose of this repo is **rules analysis**, not rules
 editing.
@@ -15,25 +15,34 @@ editing.
 
 - The versioned ruleset exports are Markdown
   exports of the author's Google Doc. They are **not the source of truth**.
-  The latest export (currently [rules/Mystery Quest ruleset 0_9_6_1.md](<rules/Mystery Quest ruleset 0_9_6_1.md>)) sits at
-  the `rules/` root; all prior exports (`0_9_4_0` through `0_9_4_7` and
-  `0_9_5_0` through `0_9_5_9`) are retained in `rules/Older versions/` for
-  archival and comparison purposes only.
+  The latest export (currently [rules/Mystery Quest ruleset 0_9_6_2.md](<rules/Mystery Quest ruleset 0_9_6_2.md>)) sits at
+  the `rules/` root. A few selected prior exports (currently the release baselines
+  `0_9_4_0`, `0_9_5_0` and `0_9_6_0`) are committed in `rules/Older versions/`; all the
+  other prior exports (the patch versions, e.g. `0_9_4_1`–`0_9_4_7`,
+  `0_9_5_1`–`0_9_5_9`, `0_9_6_1`) are kept in
+  `local-only/older-ruleset-versions/` (gitignored) for local archival
+  and comparison only.
 - Version numbering (author correction, 2026-10-27): the exports formerly labeled
   `0_9_5_1` through `0_9_5_8` were actually upgrades to 0.9.4 — they are
   `0_9_4_1` through `0_9_4_7`, and the final export (formerly `0_9_5_8`) was
   promoted to the actual 0.9.5 release as `0_9_5_0` (file names also dropped
   "Pokémon"). Exports after the 0.9.5 release continue the 0.9.5.x numbering
-  (`0_9_5_1.md` and up; the current latest is `0_9_6_1`). The 0.9.4 baseline
-  predating the first export is `0_9_4_0`. All of these live in
-  `rules/Older versions/`. All documents in this repository use the corrected
+  (`0_9_5_1.md` and up; the current latest is `0_9_6_2`). The 0.9.4 baseline
+  predating the first export is `0_9_4_0`. The release baselines live in
+  `rules/Older versions/`, the patch versions in `local-only/older-ruleset-versions/`,
+  the latest at the `rules/` root. All documents in this repository use the corrected
   numbering.
 - **The website's rules documents** (`website/ruleset/`) are *generated* files,
   produced by `website/tools/update-ruleset.mjs` from the newest export: the
   artifact-cleaned ruleset under the generic name [Mystery Quest ruleset.md](<website/ruleset/Mystery Quest ruleset.md>)
   (without the Example Move conversions section — the website's Moves list is
-  the committed, hand-maintained `website/site/assets/data/moves.json`, copied
-  into `dist/` by the build and never generated from intermediaries — and
+  the committed `website/site/assets/data/moves.json` — generated from the ruleset
+  examples plus the library in `local-only/move-conversion/move-library.json` (new
+  conversions from the latest official versions, a gitignored working file; indirect
+  ones wait in `local-only/move-conversion/New versions.md`) by
+  `local-only/move-conversion/build-moves.mjs` (a local-only script, so it only runs
+  where the working data exists) — and copied into `dist/` by `website/tools/build.mjs`,
+  which otherwise does not touch it — and
   without the "Contents and material" section: the site's contents listing,
   links to material, acknowledgments and character-sheet image are
   implemented site-side, separate from the rules text, and the
@@ -73,17 +82,17 @@ editing.
   against the ruleset's conversion tables and Example Move conversions; formulas
   are kept compatible with both Google Sheets and Excel — no Google-only functions).
   (author instruction, 2026-10-25)
-- `local-only/New versions.md` holds
+- `local-only/move-conversion/New versions.md` holds
   rules text waiting to be implemented into the full ruleset and may be edited
   directly, including by the analysis agent. Ready rules text that could be
   implemented into the ruleset is presented there, not in [ai-context/RULES_ANALYSIS.md](ai-context/RULES_ANALYSIS.md), which
-  stays reserved for findings and change requests. `local-only/New versions.md` is the
-  primary location for suggested rules text. If `local-only/New versions.md` contains
+  stays reserved for findings and change requests. `local-only/move-conversion/New versions.md` is the
+  primary location for suggested rules text. If `local-only/move-conversion/New versions.md` contains
   ruletext that can already be found in the full ruleset document, remove it from
-  `local-only/New versions.md`. Conversely, if ruletext goes missing from
-  `local-only/New versions.md`, check whether it has already been implemented into the
+  `local-only/move-conversion/New versions.md`. Conversely, if ruletext goes missing from
+  `local-only/move-conversion/New versions.md`, check whether it has already been implemented into the
   full ruleset document before restoring it. The Google Doc is the author's true
-  working draft, so overwriting `local-only/New versions.md` is always safe.
+  working draft, so overwriting `local-only/move-conversion/New versions.md` is always safe.
   Formatting in that file: every block's deliverable is the **new** rules text, in
   a fenced code block as a single unwrapped line holding the complete replacement
   text (full paragraph or table cell), so copy-pasting it into the rules document
@@ -94,6 +103,14 @@ editing.
   Suggested rules text uses curly apostrophes (’), matching the author's document,
   and omits Markdown export artifacts (escaped `\.`/`\+`/`\=`) that do not exist in
   the source document.
+- `local-only/move-conversion/` holds all the Move conversion working files: the conversion
+  library (`move-library.json`), the official flavor-text map (`move-descriptions.json`),
+  the converter, description and build scripts (`convert-moves.mjs`, `fetch-descriptions.mjs`,
+  `clean-descriptions.mjs`, `build-moves.mjs` — the last one builds the committed
+  `website/site/assets/data/moves.json` from the ruleset examples plus the library), the
+  saved official source data (`source-data/`), and the progress and review records
+  (`Move conversion tasklist.md`, `New versions.md`, `indirect-moves-report.txt`,
+  `effects-review-list.txt`, `never-convert.txt`).
 - The authoritative sources are the Google Docs / Drive links listed inside the
   ruleset document's "Links to material" section.
 - All rules feedback, corrections, and change requests go into
@@ -103,14 +120,15 @@ editing.
   no per-version changelog or iteration history. Resolved findings are removed
   from it and condensed under "Resolved findings" in [ai-context/DESIGN_DECISIONS.md](ai-context/DESIGN_DECISIONS.md).
 - **Changelogs** are generated only between **release versions** (e.g., 0.9.4 →
-  0.9.5), one document per release pair in `rules/Rules changelog/`, named
-  `changelog X - Y.md` (e.g., [changelog 0_9_4 - 0_9_5.md](<rules/Rules changelog/changelog 0_9_4 - 0_9_5.md>)). A changelog documents
+  0.9.5), one document per release pair in `local-only/rules-changelog/` (gitignored —
+  changelogs are working documents and are not committed), named
+  `changelog X - Y.md` (e.g., `changelog 0_9_4 - 0_9_5.md`). A changelog documents
   the **exact delta between the two named exports** (e.g., 0.9.4.0 → 0.9.5.0) and
   is **never updated when later versions arrive** (e.g., 0.9.5.1's changes are not
-  folded into [changelog 0_9_4 - 0_9_5.md](<rules/Rules changelog/changelog 0_9_4 - 0_9_5.md>)) — later versions are treated like
-  older versions in this respect. The exports in `rules/Older versions/` are
-  archival and their individual differences are never documented;
-  only the two latest of them are relevant, as context for
+  folded into `changelog 0_9_4 - 0_9_5.md`) — later versions are treated like
+  older versions in this respect. The prior exports (in `rules/Older versions/` and
+  `local-only/older-ruleset-versions/`) are archival and their individual differences
+  are never documented; only the two latest of them are relevant, as context for
   interpreting the most recent changes (author instruction, 2026-10-26;
   clarified 2026-10-29).
 
@@ -124,7 +142,7 @@ editing.
 - Verify every numerical claim (dice probabilities, conversion tables,
   advancement costs, worked examples) programmatically before reporting it.
   State which checks were run in [ai-context/RULES_ANALYSIS.md](ai-context/RULES_ANALYSIS.md).
-- The ruleset is version 0.9.6.1 and explicitly pre-playtest. Layout issues and
+- The ruleset is version 0.9.6.2 and explicitly pre-playtest. Layout issues and
   sections the author has marked incomplete are known gaps, not defects — report
   them as content gaps only.
 - Respect the author's stated design intents (classless, minimal worldbuilding,
@@ -211,11 +229,15 @@ editing.
   converting official level-based damage (Seismic Toss, Night Shade) may
   derive Power from the user's level ((X * 1.5) + 5, where X is the total
   Progress Modifiers), but only with both bounds - Seismic Toss uses
-  "Equal to half the user’s level (rounded up), to a maximum of 20.":
-  halving tracks the normal Move curve through progression and the cap is
-  reached at X = 23 Progress Modifiers instead of X = 10, after which the
-  Move stays at the top single-target tier (verified numerically,
-  2026-10-25).
+  "Equal to half the user’s level (rounded up), to a maximum of 30."
+  (ruleset 0.9.6.2): halving tracks the normal Move curve through progression
+  and the cap is reached at X = 36 Progress Modifiers (level 59; the full-level
+  variant caps at X = 17), after which the Move stays at the top single-target
+  tier. The cap was 20 (X = 23) until 0.9.6.1; verified numerically,
+  2026-10-25 and 2026-11-14.
+- **STAB for dice-less Power (ruleset 0.9.6.2):** a Physical or Special Move
+  whose type matches the user adds one set of its Power Dice to its Power, or a
+  d6 if the Power has no Power Dice (level-based, HP-based, counter-based Power).
 - **Restrictions** are named capability categories (Mute, Immobile, No Reactions,
   No Main Actions, Turn Skipped, Incapacitated) defined once under "Rounds, turns
   and actions" and referred to by name in other rules; conditions are expressed

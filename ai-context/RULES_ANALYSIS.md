@@ -1,11 +1,11 @@
 # RULES_ANALYSIS.md
 
-Rules analysis of **Pokémon Mystery Quest** v0.9.6.1
-([rules/Mystery Quest ruleset 0_9_6_1.md](<../rules/Mystery Quest ruleset 0_9_6_1.md>), the latest export). This document analyzes the
+Rules analysis of **Pokémon Mystery Quest** v0.9.6.2
+([rules/Mystery Quest ruleset 0_9_6_2.md](<../rules/Mystery Quest ruleset 0_9_6_2.md>), the latest export). This document analyzes the
 current ruleset version only — it contains no version history or iteration log: findings
 resolved in the ruleset are removed and recorded in condensed form under "Resolved
 findings" in [DESIGN_DECISIONS.md](DESIGN_DECISIONS.md), and changelogs between release versions live in
-`rules/Rules changelog/`. The ruleset documents are exports from the author's Google Doc
+`local-only/rules-changelog/`. The ruleset documents are exports from the author's Google Doc
 and were reviewed read-only; every recommendation below is a change to make **in the
 source document**, not in this repository's copies.
 
@@ -27,7 +27,7 @@ C, E) and never reused — a resolved ID's record lives under "Resolved findings
 
 ## 1. Scope and method
 
-- Every section of [rules/Mystery Quest ruleset 0_9_6_1.md](<../rules/Mystery Quest ruleset 0_9_6_1.md>) was read in full.
+- Every section of [rules/Mystery Quest ruleset 0_9_6_2.md](<../rules/Mystery Quest ruleset 0_9_6_2.md>) was read in full.
 - All checkable numerical claims were verified programmatically (exact d20 enumeration and
   dynamic programming, run in a sandbox):
   - **Percentage Tests** reproduce official chances exactly for every 5% step from 0% to
@@ -49,8 +49,10 @@ C, E) and never reused — a resolved ID's record lives under "Resolved findings
     four indirect conversions (Seismic Toss, Fly, Trick Room, Stealth Rock). Stealth Rock's
     values (Shape Size 5 m, Range 15 m, Ranged placement) match the Status rows of the AoE
     conversion table.
-  - **Seismic Toss cap**: Power = half the user's level (rounded up), max 20, is reached at
-    X = 23 total Progress Modifiers (level 40).
+  - **Seismic Toss cap**: Power = half the user's level (rounded up), max 30, is reached at
+    X = 36 total Progress Modifiers (level 59). (The cap was 20 at X = 23 until 0.9.6.1.)
+  - **STAB rule** (0.9.6.2): one set of Power Dice for a matching type, or a d6 when the
+    Move's Power has no Power Dice — verified against the Power section text.
   - **Hit chance at parity**: a 100%-accuracy damaging Move with (Sp.) Attack 6 vs Speed 6
     (Base Evasion 18) hits on d20+10+6 > 18, i.e. 90%; a 70%-accuracy Move hits 60%. A natural
     20 always hits and is a Critical Hit, so the extreme tails are 100%/0% by construction.

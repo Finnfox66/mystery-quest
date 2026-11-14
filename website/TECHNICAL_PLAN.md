@@ -4,7 +4,7 @@
 The site lives as static files in `website/site/`; `website/tools/build.mjs` builds only the rules page and its data files from `website/ruleset/` (the encounter builder is left out for now).
 
 Plan for a static website presenting the **Pokémon Mystery Quest** ruleset (currently
-v0.9.6.1). **There is no backend**: everything runs in the browser, and character sheets
+v0.9.6.2). **There is no backend**: everything runs in the browser, and character sheets
 are imported/exported as JSON files.
 
 ---
@@ -86,7 +86,7 @@ and hostable anywhere:
     [Mystery Quest ruleset.md](<ruleset/Mystery Quest ruleset.md>) so references to it never change (replaced
     wholesale on each run).
   - **[example-move-conversions.md](ruleset/example-move-conversions.md)** — the cleaned Example Move conversions
-    section on its own: the build's source for `moves.json`.
+    section on its own: the source for `moves.json` (built by `local-only/move-conversion/build-moves.mjs`).
   - **`version.json`** — the true ruleset version, derived from the export
     FILENAME (e.g. `0_9_6_1.md` → `0.9.6.1`), plus the source export and the
     update date. The document byline often carries a placeholder ("0.9.5+")
@@ -119,10 +119,9 @@ and hostable anywhere:
   During local development, `tools/watch.mjs` re-runs the same build automatically
   whenever a watched source changes (Node's built-in `fs.watch`, no dependencies).
   It:
-  1. takes the artifact-cleaned ruleset document and the extracted
-     [example-move-conversions.md](ruleset/example-move-conversions.md) from `website/ruleset/` (kept up to date by
-     `website/tools/update-ruleset.mjs` — the cleaning and Moves split are a
-     separate step so the pipeline renders stable, artifact-free inputs),
+  1. takes the artifact-cleaned ruleset document from `website/ruleset/` (kept up to
+     date by `website/tools/update-ruleset.mjs` — the cleaning step renders stable,
+     artifact-free inputs),
   2. renders the ruleset to HTML partials, **from the first "## Description"
      heading onward** — everything before it (the document title, the subtitle
      line and the author/version byline) is not rendered on the rules page,
@@ -131,10 +130,13 @@ and hostable anywhere:
      material so the v2 Markdown download (§11) stays a complete standalone
      document. Anchors derive from the section headings (the repo's canonical
      way to reference rules),
-  3. writes `website/dist/assets/data/moves.json` as the Example Move conversions parsed
-     from [website/ruleset/example-move-conversions.md](ruleset/example-move-conversions.md) plus the hand-maintained
-     `website/site/assets/data/move-library.json` (new Move conversions from the latest
-     official versions),
+  3. copies the committed `website/site/assets/data/moves.json` into
+     `website/dist/assets/data/moves.json` (minified on the way out) — the Move list is
+     a committed source file, not build output: `local-only/move-conversion/build-moves.mjs`
+     builds it from the Example Move conversions parsed from
+     [website/ruleset/example-move-conversions.md](ruleset/example-move-conversions.md) plus the working data in
+     `local-only/move-conversion/` — `move-library.json` (new Move conversions from the
+     latest official versions) and `move-descriptions.json` (official flavor texts);
   4. embeds the search index generated from the rendered rules (§3) and the version
      (from `website/ruleset/version.json` — never the document byline's placeholder)
      plus the build date into the rules page itself, via the template's inline JSON
@@ -499,7 +501,7 @@ the build script):
   Base Evasion 20 — the ruleset's own worked example.
 - Level table (X = 5/10/25/40/50/60 → levels 13/20/43/65/80/95), accuracy modifier
   table (100→+10 … 10→−8), full PV/PD mapping including the 18 → d10+d8 row, PP table.
-- **All 25 example conversions**: the build script checks `moves.json` field-by-field
+- **All 25 example conversions**: `moves.json` is checked field-by-field
   against the ruleset's "Example Move conversions" section (same normalization as the
   repo's existing verification: export artifacts and line wrapping only).
 - **Status Conditions and buffs/debuffs display data**: the sheet's effect/DC table for

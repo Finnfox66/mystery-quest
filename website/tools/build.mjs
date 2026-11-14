@@ -13,10 +13,12 @@
 //   dist/assets/data/moves.json  — minified copy of the committed site/assets/data/moves.json
 //   dist/LICENSE, dist/LICENSING.md — license documents copied from the repo root
 //
-// The site's only runtime data fetch is assets/data/moves.json: a committed,
-// hand-maintained source file under site/assets/data/ that the build copies like
-// every other site asset (minified on the way out). The search index / site data reach
-// the rules page inline (rules.js reads the #search-data / #site-data script blocks).
+// The site's only runtime data fetch is assets/data/moves.json: a committed source
+// file under site/assets/data/ (generated from the ruleset examples plus the local-only
+// Move library by local-only/move-conversion/build-moves.mjs, where the working data
+// exists) that the build copies like every other site asset (minified on the way out).
+// The search index / site data reach the rules page inline (rules.js reads the
+// #search-data / #site-data script blocks).
 
 import { readFileSync, writeFileSync, mkdirSync, copyFileSync, rmSync, cpSync } from "node:fs";
 import { join, dirname } from "node:path";
