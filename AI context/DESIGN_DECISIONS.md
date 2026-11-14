@@ -14,9 +14,10 @@ for cross-references.
 labeled 0.9.5.1-0.9.5.8 were in fact upgrades to 0.9.4: they are renumbered
 0.9.4.1-0.9.4.7, with the final export promoted to the actual 0.9.5 release as
 0.9.5.0; the 0.9.4 baseline itself is 0.9.4.0. (Exports after the 0.9.5 release
-continue the 0.9.5.x numbering — the current latest is 0.9.6.1.) All prior exports,
-including these, live in `Rules/Older versions/`; only the newest export
-(`Rules/Mystery Quest ruleset 0_9_6_1.md`) sits at the `Rules/` root. All version
+continue the 0.9.5.x numbering — the current latest is 0.9.6.2.) The release baselines
+live in `Rules/Older versions/`, the patch versions in
+`local-only/older-ruleset-versions/` (gitignored), and the newest export
+(`Rules/Mystery Quest ruleset 0_9_6_2.md`) at the `Rules/` root. All version
 references in this document use the corrected numbering (records written before the
 correction referred to the old labels: 0.9.4.x was written as 0.9.5.x, and 0.9.5.0
 as 0.9.5.8).
@@ -52,12 +53,12 @@ replacement for the Advantage (+4) to Accuracy against unconscious characters (w
 Unconscious characters have via Incapacitated). This decision's alternative (stats on
 Incapacitated) is rejected. The remaining fix is amending the section intro sentence,
 which still says restrictions "never change stat values" (F32 in RULES_ANALYSIS.md;
-ready text in local-only/New versions.md).
+ready text in local-only/move-conversion/New versions.md).
 
 **Status update (0.9.4.3).** Resolved: the intro now reads "Restrictions only remove
 capabilities (with the exception of Immobile, which also affects character's Speed and
 Base Evasion), and they never remove the End Phase of a character's turn" — the table and
-the intro agree. F32 is closed and the ready text is removed from local-only/New versions.md.
+the intro agree. F32 is closed and the ready text is removed from local-only/move-conversion/New versions.md.
 
 ## D3. Demand-driven category set: Mute, Immobile, No Reactions, No Main Actions, Turn Skipped, Incapacitated
 
@@ -106,7 +107,7 @@ action-poor (no Reaction, no Stance Effect), so this is a semantic fix, not a po
 fix.
 
 **Status update (0.9.4.2): withdrawn.** The sentence was never implemented and is
-removed from local-only/New versions.md. The implemented ruleset makes it unnecessary and, as
+removed from local-only/move-conversion/New versions.md. The implemented ruleset makes it unnecessary and, as
 drafted, harmful: (1) the only Stance-denying restriction is Incapacitated, which always
 bundles Turn Skipped, so while it is in force no Action Phase exists in which any
 action set could be used — the Restrictions alone prevent the default action set
@@ -140,7 +141,7 @@ else.
 **Status update (0.9.4.2).** Implemented: the Incapacitated row's "can't pay PP to
 maintain buffs or debuffs" plus "A character can't maintain buffs affecting them on a
 turn that has been skipped" in "Maintaining buffs and debuffs" realize the decision; the
-maintenance-agency block is removed from local-only/New versions.md.
+maintenance-agency block is removed from local-only/move-conversion/New versions.md.
 
 ## D6. Naming: "No Main Actions" stays a phrase
 
@@ -227,16 +228,16 @@ their turn" obligation; this interaction is undefined in the current ruleset eit
 **Status update (0.9.4.2).** Adopted: Turn Skipped is a category row, Incapacitated
 lists it, and the "Turns of Unconscious and Surprised characters are skipped" sentence
 is gone from the ruleset. The open edge case above is now reported as F36 in
-RULES_ANALYSIS.md, with ready text in local-only/New versions.md.
+RULES_ANALYSIS.md, with ready text in local-only/move-conversion/New versions.md.
 
 **Status update (0.9.4.3).** The open edge case is resolved: the Priority Turn model
 replaces the announcement obligation with "A character using a Priority Turn must use a
 Priority Move as part of their Action Phase. If the character is unable to use the
 required Priority Move, their Priority Turn is skipped along with the Action Phase."
 The inability/skipped case is defined by the ruleset itself; F36 is closed and the
-drafted sentence is removed from local-only/New versions.md.
+drafted sentence is removed from local-only/move-conversion/New versions.md.
 
-**Defect in the author's table (`local-only/New versions.md`): "can't choose a Stance" inside
+**Defect in the author's table (`local-only/move-conversion/New versions.md`): "can't choose a Stance" inside
 Turn Skipped.** Stance choice is a beginning-of-round decision; Turn Skipped is bound to
 a single turn. Same-round case (Flinch applied before the target has acted): the Stance
 is already chosen, so "can't choose" has nothing to apply to, and reading it as losing
@@ -247,7 +248,7 @@ current text. Recommendation: keep Stance denial inline in Incapacitated, whose 
 can span a round start; its only users (Unconscious, Surprised) are where the clause
 comes from.
 
-## D9. Author's table version (`local-only/New versions.md`): evaluation outcome
+## D9. Author's table version (`local-only/move-conversion/New versions.md`): evaluation outcome
 
 **Adopted.** (1) No Reactions as a category (see D3). (2) End Phase protection as a
 global sentence in the section intro instead of a per-row clause — covers Incapacitated
@@ -260,11 +261,11 @@ can't-lose-a-Stance-mid-round rule, the latter is stated by each imposing effect
 
 **Defect.** "Can't choose a Stance" inside Turn Skipped — see D8 for the analysis and
 the recommended fix (inline in Incapacitated). Resolved: the fix was applied directly
-in `local-only/New versions.md`.
+in `local-only/move-conversion/New versions.md`.
 
 **Editorial.** The table mixed straight and curly apostrophes; normalized to the ruleset's
 curly style during the migration below. The phase definitions, maintenance-agency rule
-and condition rewrites now live in local-only/New versions.md alongside the table (per D7).
+and condition rewrites now live in local-only/move-conversion/New versions.md alongside the table (per D7).
 
 **Status update (0.9.4.2).** The table was implemented into the ruleset with author
 deviations: the Immobile row gained the Speed 0 / Base Evasion 12 clause (contradicting
@@ -276,15 +277,15 @@ was in fact correct: the author's original text uses curly apostrophes (they are
 the author's keyboard outputs most easily into the Google Doc), so the straight
 apostrophes are the anomalies — most likely introduced through this project's suggested
 rule text. Suggested rules text uses curly apostrophes from now on, and the open F34
-fix normalizes the Restrictions table to curly style (see local-only/New versions.md).
+fix normalizes the Restrictions table to curly style (see local-only/move-conversion/New versions.md).
 
 **Status update (0.9.4.3).** All three deviations are addressed: the intro now carries the
 Immobile exception (F32 resolved), the NOTICE is removed (F35 resolved), and the
 apostrophe normalization remains the only editorial straggler (F34).
 
-## D10. `local-only/New versions.md` is the home of ready rules text
+## D10. `local-only/move-conversion/New versions.md` is the home of ready rules text
 
-**Decision (author instruction).** `local-only/New versions.md` holds rules text waiting to be
+**Decision (author instruction).** `local-only/move-conversion/New versions.md` holds rules text waiting to be
 implemented into the full ruleset and may be edited directly, including by the analysis
 agent. Ready rules text that could be implemented into the ruleset is presented there,
 not in `RULES_ANALYSIS.md`, which stays reserved for findings and change requests.
@@ -294,16 +295,16 @@ versions.md. The permission and convention are recorded in AGENTS.md.
 **Applied.** The F31 draft, the supporting edits (phase names in "Flow of a battle", the
 Stances sentence, the maintenance rule) and the condition rewrites (Unconscious,
 Surprised, Flinch, Paralysis, Pinned Down, Restrained) were migrated from
-RULES_ANALYSIS.md into local-only/New versions.md, organized by target section; the D8 fix was
+RULES_ANALYSIS.md into local-only/move-conversion/New versions.md, organized by target section; the D8 fix was
 applied during the migration. Notable consolidation during migration: the
 Advantage-to-Accuracy rule against Unconscious characters, currently stated only in the
 Freeze and Sleep parenthetical notes, moves into the Unconscious definition, allowing
 those notes to be removed.
 
-**Extended (author clarification).** `local-only/New versions.md` is the primary location for
+**Extended (author clarification).** `local-only/move-conversion/New versions.md` is the primary location for
 suggested rules text, and no duplicates of its content are kept in
 `RULES_ANALYSIS.md` — the Google Doc is the author's true working draft, so
-overwriting local-only/New versions.md is safe, and ruletext missing from it should prompt a
+overwriting local-only/move-conversion/New versions.md is safe, and ruletext missing from it should prompt a
 check of the full ruleset for whether it was already implemented. F30's
 Charging/Recharging draft was migrated there as the second block and aligned to the
 restriction categories during migration: "becomes Unconscious or Surprised" became
@@ -311,10 +312,10 @@ restriction categories during migration: "becomes Unconscious or Surprised" beca
 restriction", and "if that turn is skipped" became "if that turn is Turn Skipped".
 
 **Status update (0.9.4.2).** All migrated blocks were implemented into the ruleset and
-removed from local-only/New versions.md. The Advantage-to-Accuracy consolidation did not happen as
+removed from local-only/move-conversion/New versions.md. The Advantage-to-Accuracy consolidation did not happen as
 planned: the author deliberately dropped the rule instead, with Immobile's Base Evasion
 12 as the replacement (author clarification; see the resolved-findings record below).
-The restoration text has been removed from local-only/New versions.md.
+The restoration text has been removed from local-only/move-conversion/New versions.md.
 
 **Status update (0.9.4.3).** All remaining blocks were implemented and removed from New
 versions.md: the Restrictions intro revision (F32), the announced-Priority-with-skipped-
@@ -325,27 +326,27 @@ than the draft: the author's table drops the Recharging carry-over clause (No Ma
 Actions + Turn Skipped — confirmed deliberate, F37 resolved by author clarification) and the "two consecutive turns" framing of Charging
 (now F38, open), and restates the keywords in first-use/second-use terms. Only the
 apostrophe-normalization block and the new out-of-battle-turns rule (proposed by the
-author, 2026-10-25) remain in local-only/New versions.md.
+author, 2026-10-25) remain in local-only/move-conversion/New versions.md.
 
 **Status update (0.9.4.4).** Both remaining blocks were implemented in this minor-corrections
-release and removed from local-only/New versions.md: the out-of-battle turn-timing rule, in condensed
+release and removed from local-only/move-conversion/New versions.md: the out-of-battle turn-timing rule, in condensed
 author wording ("When a battle has ended, rules and effects with turn-based timing are
 resolved based on how many seconds have passed."), and the Restrictions apostrophe
 normalization to curly style — with two straight-apostrophe stragglers left in the Immobile
-and Incapacitated rows, so a reduced editorial block stays in local-only/New versions.md until they
+and Incapacitated rows, so a reduced editorial block stays in local-only/move-conversion/New versions.md until they
 are fixed. New finding from the condensed wording: F39 (the turn-to-seconds rate is not
-stated; ready text in local-only/New versions.md).
+stated; ready text in local-only/move-conversion/New versions.md).
 
 **Status update (0.9.4.4 in-place update, 2026-10-25).** The F39 ready text — the
 author's own iteration — was implemented into the export without a version bump, and the
 update also fixed the Hazardous Terrain "(6 seconds)" parenthetical, the "Chargin" typo
-and the Incapacitated row's straight apostrophe. The local-only/New versions.md F39 block is
+and the Incapacitated row's straight apostrophe. The local-only/move-conversion/New versions.md F39 block is
 removed; what remains there is the single Immobile straggler (F34) and the Counter
 triggered-use cost block (F40, added later the same day during the Trick Room conversion
 review).
 
 **Status update (0.9.4.5).** The Immobile straggler block (F34's last item) was implemented
-into the ruleset verbatim and removed from local-only/New versions.md, leaving the Counter
+into the ruleset verbatim and removed from local-only/move-conversion/New versions.md, leaving the Counter
 triggered-use cost block (F40) as the file's only content. F40's motivating case is now
 live in the ruleset itself: the Trick Room conversion sits in the Example Move conversions
 section with its beginning-of-round Counter trigger.
@@ -378,11 +379,11 @@ duration-counting rule is the author's own generalization of the duration conven
 (formerly spelled out in the Trick Room conversion), and it composes cleanly with the
 restriction framework: durations are properties of effects, not turns, so the rule
 touches none of the categories. F40 (Counter triggered-use cost) remains the only
-ready-text item in local-only/New versions.md — the Counter keyword row is untouched in 0.9.4.6.
+ready-text item in local-only/move-conversion/New versions.md — the Counter keyword row is untouched in 0.9.4.6.
 
 **Status update (2026-10-26, 0.9.4.7).** No framework changes; the "steps" → "stages"
 rename is purely terminological (the restriction framework never used the term).
-F40 (Counter triggered-use cost) remains the only ready-text item in local-only/New versions.md —
+F40 (Counter triggered-use cost) remains the only ready-text item in local-only/move-conversion/New versions.md —
 the Counter keyword row is untouched in 0.9.4.7.
 
 **Status update (2026-10-26, 0.9.5.0).** No framework changes, but two framework
@@ -390,7 +391,7 @@ alignments: F40's resolution puts the triggered-use cost in the Counter keyword 
 ("requires and expends PP and the user's Main Action normally"), matching Counter
 Stance's own reaction, and F38's resolution handles the charged state with the
 established maintenance convention (End Phase removal unless 1 PP is paid). F38, F40
-and F4 (Tiny/Large exclusion) are all resolved, and local-only/New versions.md no longer holds
+and F4 (Tiny/Large exclusion) are all resolved, and local-only/move-conversion/New versions.md no longer holds
 any ready-text blocks — the file now serves as the slot for future suggestions only.
 
 ---
@@ -608,7 +609,7 @@ F-numbers; newer records keep the category-prefixed IDs of the current `RULES_AN
   this record; the next export review should verify its wording). F3 is removed from
   `RULES_ANALYSIS.md`, and the ready-text block that extended Chip Damage to AoE
   Moves (drafted 2026-10-26 before the clarification) was removed from
-  `local-only/New versions.md` — it proposed the opposite of the design intent. Verified
+  `local-only/move-conversion/New versions.md` — it proposed the opposite of the design intent. Verified
   in 0.9.5.0: the To-Damage bullet now ends "AoE Moves can't cause Chip Damage."
 - **F6 — "one set of Power Dice" for multi-dice Powers (resolved by re-examination,
   2026-10-28).** The analysis read the Power table's multi-dice rows (e.g.,
@@ -624,7 +625,7 @@ F-numbers; newer records keep the category-prefixed IDs of the current `RULES_AN
   and no separate clarification in the STAB rule is needed. F6 is removed from
   `RULES_ANALYSIS.md`, and its ready-text block — which proposed adding only the
   largest die, the wrong resolution under the correct reading — is removed from
-  `local-only/New versions.md`.
+  `local-only/move-conversion/New versions.md`.
 - **F38 — Charging's missing charge-duration limit (resolved in 0.9.5.0).** The
   implemented keyword let the charged state be banked indefinitely for free (charge
   on first use, resolve on second, removed only by another Move or Incapacitated),
@@ -644,7 +645,7 @@ F-numbers; newer records keep the category-prefixed IDs of the current `RULES_AN
   Resolved by the author, aligned with Counter Stance's own reaction as recommended:
   the Counter keyword row now reads "Using a Counter Move requires and expends PP and
   the user's Main Action normally." The ready-text block is removed from
-  `local-only/New versions.md`. A minor grammar note on the sentence was reported to the
+  `local-only/move-conversion/New versions.md`. A minor grammar note on the sentence was reported to the
   author directly (not recorded as a finding).
 - **F1 — weather's role never stated (resolved in 0.9.5.1).** The analysis's
   longest-standing clarity gap: the ruleset implied weather had mechanics (Climate
@@ -653,7 +654,7 @@ F-numbers; newer records keep the category-prefixed IDs of the current `RULES_AN
   conditions (Harsh Sunlight, Rain, Sandstorm, Snow and Fog) do not have separate
   mechanics in this ruleset. Just like in the official video games, they exist
   simply to fulfill prerequisites and conditions written into individual Moves
-  and other effects." The ready-text block is removed from `local-only/New versions.md`
+  and other effects." The ready-text block is removed from `local-only/move-conversion/New versions.md`
   (the author's section omits the ready text's GM-narrative-Advantage sentence —
   the role statement and the condition list were the finding's requirements).
 - **Hail → Snow naming (adopted in 0.9.5.1).** During review the question was
@@ -766,13 +767,13 @@ F-numbers; newer records keep the category-prefixed IDs of the current `RULES_AN
   as the Status Condition remains". The finding was a definitional misread (like
   F6) and is withdrawn; its ready-text block, which proposed declaring a
   separate channel the Modifiers section already declares, is removed from
-  `local-only/New versions.md` — leaving F12 as the only open P1 finding.
+  `local-only/move-conversion/New versions.md` — leaving F12 as the only open P1 finding.
 - **F12 — the encounter table's power-level convention (resolved in 0.9.5.3).**
   The last open P1 finding. The table's "General power level" definition now
   reads "the average value of the Core stats of a character, **including both
   their general values and their exception modifiers**" — the final-values
   convention the ready text recommended, in the author's own phrasing. The
-  finding and its ready-text block are removed; `local-only/New versions.md` now
+  finding and its ready-text block are removed; `local-only/move-conversion/New versions.md` now
   holds no ready-text blocks. With F12 closed, no defects and no P1
   ambiguities remain open anywhere in the analysis.
 - **0.9.5.3 iteration record.** All three grammar notifications from the
@@ -793,13 +794,13 @@ F-numbers; newer records keep the category-prefixed IDs of the current `RULES_AN
   and Shove, Pin and Restrict are physical maneuvers requiring physical
   strength. The finding is withdrawn from `RULES_ANALYSIS.md`, its checklist
   block (which proposed the "(Sp.) Attack" replacement) is removed from
-  `local-only/New versions.md`, and the withdrawn recommendation is recorded here
+  `local-only/move-conversion/New versions.md`, and the withdrawn recommendation is recorded here
   so future re-reads of the three actions do not re-raise it. Update (0.9.5.4):
   the author polished the wording after all — Shove, Pin and Restrict now read
   "add your Attack" (singular), keeping the Attack-only intent and clearing the
   plural.
 - **F22, F23, F25, F34 and F42 — the editorial checklist (resolved in 0.9.5.4).**
-  The author implemented the checklist that lived in `local-only/New versions.md`:
+  The author implemented the checklist that lived in `local-only/move-conversion/New versions.md`:
   F22 — Basic attack now reads "Power 4 + d4" and "increase the Power" (both
   spots, as drafted); F23 — the PP costs section gained the rationale sentence
   in the author's own wording ("Moves with low official PP values are
@@ -815,7 +816,7 @@ F-numbers; newer records keep the category-prefixed IDs of the current `RULES_AN
   keywords" now stands alone, deferring to the keywords table) — so no
   keyword can go missing from the list again. The it's/its slip in the
   Accuracy example was also fixed ("so its Accuracy is +8"). The checklist is
-  removed from `local-only/New versions.md`; all findings are closed in
+  removed from `local-only/move-conversion/New versions.md`; all findings are closed in
   `RULES_ANALYSIS.md`.
 - **F24 — Form Change's "second Ability" (resolved in 0.9.5.4).** The author
   clarified it in their own way, and differently from the checklist draft's
@@ -928,7 +929,7 @@ F-numbers; newer records keep the category-prefixed IDs of the current `RULES_AN
   damage-less trappers aren't confused. The "trapped" state is defined inline in the
   keyword (precedent: the "charged" state), so no Restrictions-table entry was added; a
   single-use No Switching restriction category, Immobile, and a Movement-Action cap were
-  all considered and rejected. The ready-text block was removed from `local-only/New versions.md`.
+  all considered and rejected. The ready-text block was removed from `local-only/move-conversion/New versions.md`.
 - **C4 — structured Duration field on Move entries (rejected by author, 2026-10-31).** A
   separate Duration field ("Instant" / round or minute count, D&D-style) was considered and
   rejected: it would only ever describe effects already written in the Description, which is
@@ -951,3 +952,15 @@ F-numbers; newer records keep the category-prefixed IDs of the current `RULES_AN
   The End Phase definition's own lead-in ("**End Phase:** At the end of their turn, …") was
   left as the phase's definition. Also in 0.9.5.8: the "Standard effects" section was renamed
   to "Secondary effects" (heading, anchor and cross-references).
+
+- **B8 — level-based Move damage cap raised from 20 to 30 (resolved in 0.9.6.2).** Level-based
+  Power (Seismic Toss "half the user’s level", Night Shade "the user’s level", both "to a
+  maximum of 30") goes through the To-Damage test and is reduced by the target’s Defense,
+  unlike True Damage, so its cap can be higher than the True Damage cap. Verified: the
+  half-level cap binds at X = 36 (level 59, 666 AP), the full-level cap at X = 17 (level 31,
+  153 AP); at the cap, effective damage ≈ 30 + (Sp.) Attack − Defense, still below the top
+  single-target tier (26 + 2d10 + d6, avg 40.5). The True Damage cap stays at 20 (Ruination).
+- **B9 — STAB for Moves whose Power has no Power Dice (resolved in 0.9.6.2).** STAB now adds
+  one set of Power Dice, or a d6 if the Move’s Power has no Power Dice (level-based,
+  HP-based, counter-based Power). Verified minimal: +3.5 average, ≈ 12% on a cap-30 level
+  Move, vs +35–37% for a standard full die set; negligible on Counter-style Moves.

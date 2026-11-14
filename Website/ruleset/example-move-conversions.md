@@ -84,7 +84,7 @@
 - **PP cost:** 0  
 - **Range:** 1 m  
 - **Accuracy:** +10  
-- **Power:** Equal to half the user’s level (rounded up), to a maximum of 20.
+- **Power:** Equal to half the user’s level (rounded up), to a maximum of 30.
 
 #### Fly - indirect conversion
 

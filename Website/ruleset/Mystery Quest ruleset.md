@@ -1,7 +1,7 @@
 # Mystery Quest ruleset
 
 TTRPG ruleset for Mystery Dungeon and other Pokémon-only adventures.  
-By **u/Finnfox66**, version 0.9.6.1
+By **u/Finnfox66**, version 0.9.6.2
 
 ## Description
 
@@ -445,7 +445,7 @@ The Power of a Move is also created differently for **single-target** and **Area
 
 ***For example:** The Move “Hyper Beam” has a Power of 150 in the official video games, so its Power is 16 + d10 + d6 in this ruleset. If it were an AoE Move, its Power would have been 2d10 + 2d6. If the user is of the Normal type similarly to the Move, the Power is increased by an additional d10 + d6 due to the STAB bonus.*
 
-If the Move is of the same type as the character, one set of Power Dice is added to the Move’s Power. This is known as the **STAB bonus**.
+If a Physical or Special Move is of the same type as the character, one set of Power Dice is added to the Move’s Power. This is known as the **STAB bonus**. If a Move’s Power doesn’t include Power Dice, a d6 is added to the Move’s Power instead.
 
 If a Move states that its Power is halved, doubled or otherwise modified under certain conditions (like “Solar Beam” and “Rollout”), these modifications are applied to the Move’s total Power after the Power Dice have been rolled and summed together with the Power Value.
 

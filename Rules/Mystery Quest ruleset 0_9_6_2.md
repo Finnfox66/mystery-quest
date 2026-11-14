@@ -1,7 +1,7 @@
 # Mystery Quest ruleset
 
-TTRPG for Mystery Dungeon and other Pokémon-only adventures.  
-By **u/Finnfox66**, version 0.9.5+
+TTRPG ruleset for Mystery Dungeon and other Pokémon-only adventures.  
+By **u/Finnfox66**, version 0.9.6+
 
 ## Description {#description}
 
@@ -22,26 +22,25 @@ The system is based on the **d20** dice, uses **meters** as a unit of distance, 
 The basics of the ruleset share similarities with 5th edition D\&D. Compared to the other PMD TTRPGs like “[Pokémon Mystery Dungeon: Explorers of Fate](https://drive.google.com/file/d/18Zw5BQBiZNy8FS2N4LbotHFfhjtJCDa9/view)” and “[Explorers PMD RPG](https://www.explorers-pmd-rpg.com/)”, this ruleset is less tied to mechanics and themes specific to the Mystery Dungeon games, is entirely backgroundless/classless, lacks any kind of thematically inspirational material and probably feels more like D\&D. If you want combat that feels like the PMD games, or visually clean material that inspires your adventures, use the aforementioned rulesets instead of this one. If you want a more loosely PMD-themed adventure and total control over narrative elements, this ruleset can be worth a try.  
 Contents and material
 
-| NOTICE: The document is visually bare bones and sometimes the content is split horribly between pages. This is because the layout and visual style of the document will not be improved until the rules have been iterated and playtested sufficiently. |
-| :---- |
-
 [Description	1](#description)
 
 [Core rules	4](#core-rules)
 
-[Building and advancing characters	9](#building-and-advancing-characters)
+[Building and advancing characters	10](#building-and-advancing-characters)
 
-[Combat tests and Moves	13](#combat-tests-and-moves)
+[Combat tests and Moves	15](#combat-tests-and-moves)
 
-[Rounds, turns and actions	22](#rounds,-turns-and-actions)
+[Rounds, turns and actions	24](#rounds,-turns-and-actions)
 
-[Standard effects	28](#standard-effects)
+[Secondary effects	31](#secondary-effects)
 
-[Health and recovery	31](#health-and-recovery)
+[Health and recovery	34](#health-and-recovery)
 
-[Other mechanics	33](#other-mechanics)
+[Other mechanics	36](#other-mechanics)
 
-[Material for game masters	37](#material-for-game-masters)
+[Material for game masters	40](#material-for-game-masters)
+
+[Example Move conversions	44](#example-move-conversions)
 
 ### Links to material
 
@@ -145,7 +144,8 @@ In addition to their stats, characters have additional values for combat purpose
 - **Maximum Health Points** (Max HP) \= Health \* 4  
 - **Maximum Power Points** (Max PP) \= (Health \+ Attack \+ Special attack) / 2 (rounded up)  
 - **Movement Range** \= Speed / 2 (rounded up)  
-- **Base Evasion** \= 12 \+ Speed
+- **Base Evasion** \= 12 \+ Speed  
+- **Initiative modifier** \= Speed
 
 ### Bonus stats
 
@@ -203,7 +203,7 @@ Modifiers are plus or minus values that are added either to the value of a Stat 
 
 #### Buffs and debuffs
 
-**Buffs** and **debuffs** are temporary Core stat modifiers that represent sudden changes in a character’s combat capabilities. They are primarily gained through Moves. Their durations are handled using a Turn-End Decay mechanic (see the “Standard effects” section).
+**Buffs** and **debuffs** are temporary Core stat modifiers that represent sudden changes in a character’s combat capabilities. They are primarily gained through Moves. Their durations are handled using a Turn-End Decay mechanic (see the “Secondary effects” section).
 
 #### Advantages and Disadvantages
 
@@ -222,6 +222,14 @@ Modifiers that don’t fall into the named modifier types include for example mo
 ***For example**, a player character wearing a luxurious cape could be given \+2 to Elegant, or a player character that has a cookbook with them could be given \+4 to “Cooking” Bonus stat.*
 
 ***For example**, a character consuming a potion of strength could be given \+2 to their Attack stat for 10 minutes.*
+
+#### Unmodified values
+
+To make it easier to keep track of things during a game, there are a couple of values that modifiers are never applied to:
+
+- Initiatives and the rolls for determining them.  
+- Move Ranges and Shape Sizes.  
+- Maximum or current PP.
 
 ## Building and advancing characters {#building-and-advancing-characters}
 
@@ -335,7 +343,7 @@ All player characters can choose 2 Abilities for their characters from the list.
 
 #### Pokémon-specific
 
-- **Wonder Guard (Shedinja):** Your Max HP becomes 1\. You are immune to all direct Move damage except from elemental types you are Weak against. This Ability can’t be combined with the “Tiny” or “Large” Abilities.
+- **Wonder Guard (Shedinja):** Your Max HP becomes 1\. You are immune to all damage not caused by Status Conditions, except from Moves with elemental types you are Weak against. This Ability can’t be combined with the “Tiny” or “Large” Abilities.
 
 ### Natures
 
@@ -379,7 +387,7 @@ There are also additional rules for **Area of Effect (AoE)** Moves:
 
 - Damaging AoE Moves hit their targets even if the To-Hit test fails.
 
-A roll of natural 20 from the Accuracy roll of a damaging Move means that the attack is a Critical Hit, and one set of Power Dice is added to the Power of the Move for the attack. Critical Hits are resolved separately for each attack included in a Move and each target of a Move.
+A roll of natural 20 from the Accuracy roll of a damaging Move always hits and is a Critical Hit, and one set of Power Dice is added to the Power of the Move for the attack. Critical Hits are resolved separately for each attack included in a Move and each target of a Move.
 
 #### To-Damage tests
 
@@ -393,11 +401,15 @@ If the Move hits its target and it is damaging, a To-Damage test is made where t
 
 There are also additional rules for both Single-target and Area of Effect (AoE) Moves:
 
-- If the Attack Power of a **Single-target** Move fails to exceed the target’s Defense Power, it still deals 1 damage to the target. This is referred to as **Chip Damage**. Multi-attack Moves can cause Chip Damage only once. AoE Moves can’t cause Chip Damage.
+- If the Attack Power of a **Single-target** Move fails to exceed the target’s Defense Power, it still deals 1 damage to the target. This is referred to as **Chip Damage**. Multi-attack Moves can cause Chip Damage only once. AoE Moves can’t cause Chip Damage. Chip Damage is reduced to 0 by Immunities against the Move’s type.
 
 - Only one Attack Power is resolved for an **AoE** Move and this value is applied separately against the Defense Power of each target. If the To-Hit test of an AoE Move failed against a target, the Attack Power is halved (rounded up) against that target.
 
+#### True Damage
+
 Any damage referred to as **True Damage** skips the To-Damage test and is applied to the target as is.
+
+By default, True Damage doesn’t have a type, even if it is caused by a Move that has a type. If True Damage is explicitly mentioned to be of certain type, then it is modified by Resistances/Weaknesses similarly to how they affect normal damage in a To-Damage test, and it is reduced to 0 by Immunities.
 
 #### Tests for applying secondary effects
 
@@ -431,10 +443,13 @@ Moves consist of:
 - **Shape Size** (AoE only)  
 - **Placement Type** (AoE only)  
 - **Power** (Physical and Special Moves only)  
-- **Secondary effects**  
-  - Includes standard effects like buffs, debuffs and status effects. These are explained in the “Standard effects” section.  
+- **Effects**  
+  - **Secondary effects**  
+    - Includes buffs, debuffs and Status Conditions. These are explained in the “Secondary effects” section.  
+  - **Other effects**  
+    - Other effects and interactions.  
 - **Description**  
-  - Used for describing other effects and interactions.
+  - Descriptive text for how the Move appears in the game world. No rules text.
 
 #### PP costs
 
@@ -473,7 +488,7 @@ The Power of a Move is also created differently for **single-target** and **Area
 
 ***For example:** The Move “Hyper Beam” has a Power of 150 in the official video games, so its Power is 16 \+ d10 \+ d6 in this ruleset. If it were an AoE Move, its Power would have been 2d10 \+ 2d6. If the user is of the Normal type similarly to the Move, the Power is increased by an additional d10 \+ d6 due to the STAB bonus.*
 
-If the Move is of the same type as the character, one set of Power Dice is added to the Move’s Power. This is known as the **STAB bonus**.
+If a Physical or Special Move is of the same type as the character, one set of Power Dice is added to the Move’s Power. This is known as the **STAB bonus**. If a Move’s Power doesn’t include Power Dice, a d6 is added to the Move’s Power instead.
 
 If a Move states that its Power is halved, doubled or otherwise modified under certain conditions (like “Solar Beam” and “Rollout”), these modifications are applied to the Move’s total Power after the Power Dice have been rolled and summed together with the Power Value.
 
@@ -528,13 +543,15 @@ An AoE Move does not affect the user of the Move unless the user wants it to.
 | Keyword | Effect |
 | :---- | :---- |
 | **Counter** | Counter Moves have specific triggers for when they can be used, for example some form of activity performed by enemy characters. These triggers and therefore also the Counter Moves themselves can happen outside of the using character’s turn. Counter Moves are restricted in their use as they can only be used when the user has the Counter Stance and when the trigger of the Move occurs. Using a Counter Move requires and expends the Move’s PP cost and the user’s Main Action as normal. |
-| **Charging** | On the first use of a Charging Move, the Move is charged instead of resolved. On the second use of the Move, the “charged” state is removed and the Move is resolved. The PP cost of the Move is paid on the first use. Using any other Move or getting the Incapacitated restriction remove the “charged” state from the Move. The “charged” state is removed in the user’s End Phase if the user has not used the Move during the round, unless the user pays 1 PP to maintain the “charged” state. |
-| **Recharging** | After using a Recharging Move, the user has the No Main Actions restriction during their next turn. |
+| **Charging** | On the first use of a Charging Move, the Move is charged instead of resolved. On the second use of the Move, the Move is resolved and is no longer charged. The PP cost of the Move is paid on the first use. Using any other Move removes the “charged” state from the Move. The “charged” state is removed in the user’s End Phase if the user has not used the Move during the round, unless the user pays 1 PP to maintain the “charged” state. |
+| **Recharging** | After using a Recharging Move, the user has the No Main Actions restriction until their next End Phase. |
+| **Condition** | The Move’s effect is resolved as a Status Condition with a removal DC of 10\. |
+| **Trapping** | When a Trapping Move hits its target, the target becomes trapped and can’t voluntarily move more than 1 meter away from the position where they were hit. The “trapped” condition is removed from the target when the Trapping Move is no longer in effect or if the target is forcibly moved. |
 | **Pledge** | When a character uses a Pledge Move, another character within 1 meter of them can immediately use a Pledge Move to double the original Move’s Power. The second Move does not have any other effect. Using a Pledge Move outside of a character’s turn still requires and expends the Move’s PP cost and the user’s Main Action as normal. |
 
 #### Basic attack
 
-Every character always has access to a Move called a “Basic attack” that is a single-target Move with PP cost 0, Accuracy \+10 and Power 4 \+ d4 (plus 1d4 if STAB applies). The user can freely decide if the Move is a Physical Melee Move (with the Range of 1 m and includes one free Movement Action) or a Special Ranged Move (with the Range of 20 m \+ 2x (Sp.) Attack) when using it. Additionally, the type of the Move can be any one of the using character’s types. This Move is not counted towards how many learnt Moves a character has.
+Every character always has access to a Move called a “Basic attack” that is a Single-target Move with PP cost 0, Accuracy \+10, Power 4 \+ d4 (plus 1d4 if STAB applies). The user can freely decide if the Move is a Physical Melee Move (with the Range of 1 m and includes one free Movement Action) or a Special Ranged Move (with the Range of 20 m \+ 2x (Sp.) Attack) when using it. Additionally, the type of the Move can be any one of the using character’s types. This Move is not counted towards how many learnt Moves a character has.
 
 Basic attack replaces low-level Moves with official Power value of 40 like “Tackle” and “Ember”. However, this does not prevent characters from having such Moves in addition to “Basic attack” if they want to get more type coverage.
 
@@ -596,7 +613,7 @@ A single round of combat lasts 6 seconds of in-game time. When a battle has ende
 
 A character using a Priority Turn must use a Priority Move as part of their Action Phase. If the character is unable to use the required Priority Move, their Priority Turn is skipped along with the Action Phase. If a character is not using a Priority Turn and is playing their turn normally, they can still choose to use a Priority Move during their turn without its Priority. In such a case, the Move is simply not counted as being a Priority Move.
 
-**End Phase:** At the end of their turn, buffs and debuffs affecting characters are reduced through Turn-End Decay and characters can spend PP to prevent it, their Status Conditions inflict their end-of-turn effects, and their attempts to remove Status Conditions are rolled. These mechanics are explained under “Standard effects”.
+**End Phase:** At the end of their turn, buffs and debuffs affecting characters are reduced through Turn-End Decay and characters can spend PP to prevent it, their Status Conditions inflict their end-of-turn effects, and their attempts to remove Status Conditions are rolled. These mechanics are explained under “Secondary effects”.
 
 **Outside their turn**, characters can use a Reaction if their Stance allows them to do so. Reactions are used as responses to actions performed by other characters. By default, Reactions are resolved before the triggering action is resolved (Counter Stance can create exceptions to this). If a Reaction is performed as a response to a Movement Action, the movement is interrupted until the Reaction has been resolved.
 
@@ -613,7 +630,7 @@ Some effects restrict what a character can do. These restrictions are defined on
 | **No Reactions** | The character can’t use Reactions. |
 | **No Main Actions** | The character can’t use Main Actions. |
 | **Turn Skipped** | The character’s Action Phase is skipped. |
-| **Incapacitated** | The character can’t act or make decisions. An Incapacitated character has the **Turn Skipped**, **No Main Actions**, **No Reactions**, **Immobile** and **Mute** restrictions. In addition, they can’t choose a Stance and can’t pay PP to maintain buffs or debuffs. |
+| **Incapacitated** | The character can’t act or make decisions. An Incapacitated character has the **Turn Skipped**, **No Main Actions**, **No Reactions**, **Immobile** and **Mute** restrictions. In addition, they can’t choose a Stance and can’t pay PP to maintain buffs, debuffs or “charged” states of Moves |
 
 ### Hidden information
 
@@ -642,7 +659,7 @@ Stances determine how many Movement Actions, Main Actions and Reactions a charac
 | Quick Stance | You have \+4 to Initiative | 1 | 1 | 1 |
 | Power Stance | You have \+4 to Attack Power | 1 | 1 | 1 |
 | Defensive Stance | You have \+4 to Defense Power | 1 | 1 | 1 |
-| Resist Stance | New debuffs applied to you are immediately reduced by one stage, and you roll attempts to remove Status Conditions both when you receive them (before they are applied) and at the end of your turn. | 1 | 1 | 1 |
+| Resist Stance | New debuffs applied to you are immediately reduced by one stage, and you roll attempts to remove Status Conditions both when you receive them (before they are applied) and in your End Phase. | 1 | 1 | 1 |
 | Fleet Stance | You have \+4 to Evasion and Movement Range | 2 | **0** | 1 |
 
 **Situational Stances**
@@ -676,7 +693,7 @@ When using Disengage, your Movement Actions do not provoke Opportunity Attacks f
 
 #### Shove (Main Action)
 
-When using Shove, both you and the target character roll a d20 and add your Attack to your rolls. If your result is higher than the target character’s result, they are pushed away from you by a distance in meters equal to the difference in the two results. The direction of this forced movement can be any direction that is not in an upwards angle and where the distance between you and the target does not decrease at any point during the movement. This is interrupted by objects or other characters. To Shove a target, you need to be within 1 meter of the target.
+When using Shove, both you and the target character roll a d20 and add your Attack to your rolls. If your result is higher than the target character’s result, they are forcibly moved away from you by a distance in meters equal to the difference in the two results. The direction of the forced movement can be any direction that is not in an upwards angle and where the distance between you and the target does not decrease at any point during the movement. To Shove a target, you need to be within 1 meter of the target.
 
 #### Pin (Main Action)
 
@@ -688,7 +705,7 @@ Characters stop imposing Pinned Down if they are more than 1 meter away from the
 
 #### Restrict (Main Action)
 
-When using Restrict, both you and the target character roll a d20 and add your Attack to your rolls. If your result is higher than the target character’s result, they gain the No Main Actions and No Reactions restrictions until the end of their next turn.
+When using Restrict, both you and the target character roll a d20 and add your Attack to your rolls. If your result is higher than the target character’s result, they gain the No Main Actions and No Reactions restrictions until their next End Phase.
 
 #### Item Interaction (Main Action)
 
@@ -708,15 +725,19 @@ If an ally character near you is targeted by a Move (or forced movement from a S
 
 You only need to touch the ally character to provide the effect. Neither you nor the ally character can be targeted with further Shielding An Ally actions during the round. To perform a Shielding An Ally reaction, you need to be able to move.
 
+#### Catch (Reaction)
+
+If an ally character near you is being forcibly moved and you could reach the ally character at any point of the movement using a Movement Action, you can perform a free Movement Action to move to the ally character and stop the forced movement. You can’t perform this reaction if you are being forcibly moved by the same source, or if your weight is less than half of the ally character’s weight.
+
 ### Other interactions during combat
 
 The Movement Action or Main Action costs of other types of interactions performed during battle are decided by the game master.
 
 Generally, characters talking to each other does not have a cost defined to it by the rules, but the game master might want to limit the amount of time available for talking during combat situations.
 
-## Standard effects {#standard-effects}
+## Secondary effects {#secondary-effects}
 
-When converting Moves to be used in the ruleset, the chances of applying standard effects are kept unchanged. These chances are handled by using Percentage Test (d20 \+ modifier \> 10).
+When converting Moves to be used in the ruleset, the chances of applying secondary effects are kept unchanged. These chances are handled by using Percentage Test (d20 \+ modifier \> 10).
 
 ***For example**, The Move “Volt Tackle” has a 10% chance of applying Paralysis to the target. This is resolved using a Percentage Test where the modifier is \-8. Therefore, the final formula for the test is d20 \- 8 \> 10\. This chance is not affected by the stats of the user or the target.*
 
@@ -728,27 +749,21 @@ As an exception, Accuracy and Evasion buffs and debuffs use stages of 4 instead 
 
 Buffs and debuffs are not tracked individually. This means that if there are multiple buffs and/or debuffs affecting a single stat, they are simply summed together into one buff with multiple stages and the original sources are forgotten. The total sums are still referred to as buffs or debuffs depending on if they are positive or negative in value. A buff or debuff that is 0 is removed.
 
-To make it easier to keep track of things during a game, there are a couple of places where buffs and debuffs don’t apply:
-
-- Initiatives and the rolls for determining it.  
-- Move distances and radiuses.  
-- Maximum or current PP.
-
 #### Turn-End Decay
 
-At the end of a character’s turn, all buffs and debuffs experience Turn-End Decay. It is handled by reducing the buffs and debuffs by one stage (normally 2, but 4 in the case of Accuracy and Evasion). Turn-End Decay is skipped on the turn a buff or debuff is initially applied (gained from 0, or flipped between a buff and a debuff). Increasing an already existing buff or debuff does not prevent Turn-End Decay at the end of that turn.
+In the End Phase of a character’s turn, all buffs and debuffs experience Turn-End Decay. It is handled by reducing the buffs and debuffs by one stage (normally 2, but 4 in the case of Accuracy and Evasion). Turn-End Decay is skipped on the turn a buff or debuff is initially applied (gained from 0, or flipped between a buff and a debuff). Increasing an already existing buff or debuff does not prevent Turn-End Decay in the End Phase of that turn.
 
 #### Maintaining buffs and debuffs
 
-Characters can pay PP to prevent any buffs affecting them from decaying through Turn-End Decay by paying 1 PP. This cost has to be paid separately for each maintained buff and prevents a single occurrence of Turn-End Decay. A character can’t maintain buffs affecting them on a turn that has been skipped.
+Characters can pay PP to prevent any buffs affecting them from decaying through Turn-End Decay by paying 1 PP. This cost has to be paid separately for each maintained buff and prevents a single occurrence of Turn-End Decay.
 
-Characters can also pay 1 PP to prevent any debuffs affecting enemies within 1 meter of them from decaying through Turn-End Decay. This cost has to be paid separately for each maintained debuff and prevents a single occurrence of Turn-End Decay. The decisions to maintain debuffs affecting enemy characters are done as the Turn-End Decays of the debuffs happen, so at the end of the affected enemy characters’ turns. This means that the enemy character can try to take distance from any characters that could maintain their debuffs before the Turn-End Decay happens.
+Characters can also pay 1 PP to prevent any debuffs affecting enemies within 1 meter of them from decaying through Turn-End Decay. This cost has to be paid separately for each maintained debuff and prevents a single occurrence of Turn-End Decay. The decisions to maintain debuffs affecting enemy characters are done as the Turn-End Decays of the debuffs happen, so in the End Phases of the affected enemy character’s turns. This means that the enemy character can try to take distance from any characters that could maintain their debuffs before the Turn-End Decay happens.
 
 ### Status Conditions
 
 Status Conditions are temporary harmful special conditions caused by some Moves. Their effects range from damaging to immobilizing the affected character.
 
-Characters can attempt to remove all status conditions affecting them at the end of their turn, after any potential end-of-turn effects from the Status Conditions have been resolved. The test for removing a Status Condition is done for every condition individually, and is done simply by rolling a d20 and comparing it to the DC of removing the condition. If the result of the roll exceeds the DC of removing the condition, the condition is removed from the character.
+In their End Phase, characters can attempt to remove all status conditions affecting them. The test for removing a Status Condition is done for every condition individually, and is done simply by rolling a d20 and comparing it to the DC of removing the condition. If the result of the roll exceeds the DC of removing the condition, the condition is removed from the character.
 
 **The test for removing a Status Condition:**  
 d20 \> Difficulty Class
@@ -757,13 +772,13 @@ d20 \> Difficulty Class
 
 | Name | DC of removing | Effect |
 | :---- | :---- | :---- |
-| Burn | 10 | Inflicts 3 True Damage to the affected character at the end of their every turn and reduces the Power of their Physical Moves by 4 as long as the Status Condition remains. Can’t affect characters with Fire-type. |
+| Burn | 10 | Inflicts 3 True Damage to the affected character at the start of their every End Phase and reduces the Power of their Physical Moves by 4 as long as the Status Condition remains. Can’t affect characters with Fire-type. |
 | Freeze | 15 | The affected character has the Incapacitated restriction. If they are damaged, the condition ends. Can’t affect characters with Ice-type. |
 | Paralysis | 10 | Reduces the affected character’s Speed by 4\. If the character uses a Move on their turn, they roll a d20. If the result of the roll does not exceed 5, the character’s Action Phase ends and any PP required for the attempted Move is spent. Can’t affect characters with Electric-type. |
-| Poison | 15 | Inflicts 2 True Damage to the affected character at the end of their every turn. Can’t affect characters with Poison-type or Steel-type. |
-| Badly poisoned | 15 | Inflicts 1 True Damage to the affected character at the end of their every turn. The amount of damage is increased by 1 after every test of removing the condition. Can’t affect characters with Poison-type or Steel-type. |
+| Poison | 15 | Inflicts 2 True Damage to the affected character at the start of their every End Phase. Can’t affect characters with Poison-type or Steel-type. |
+| Badly poisoned | 15 | Inflicts 1 True Damage to the affected character at the start of their every End Phase. The amount of damage is increased by 1 after every test of removing the condition. Can’t affect characters with Poison-type or Steel-type. |
 | Sleep | 10 | The affected character has the Incapacitated restriction. If they are damaged, the condition ends. |
-| Flinch | \- | The affected character has the Turn Skipped restriction. This Status Condition is always removed at the end of the affected character’s turn. |
+| Flinch | \- | The affected character has the Turn Skipped restriction. This Status Condition is always removed in the affected character’s End Phase. |
 
 A character can’t be given a Status Condition that they already have.
 
@@ -805,13 +820,19 @@ Some Pokémon species fare better without eating or sleeping than others. The ga
 
 Fate Points are used to overcome unfortunate moments where it matters the most. A Fate Point can be expended to grant any single player one reroll to any of their d20 dice rolls. The decision to use a Fate Point for a test can be made after knowing the end result of the test. Multiple Fate Points can be used for a single roll.
 
-Player characters start their journeys with 0 Fate Points and gain a new Fate Point at the beginning of every session. Fate Points can also be given to players by the game master as rewards for exceptional roleplaying. The maximum number of unspent Fate Points a player character can have is 4\.
+Player characters start their journeys with 0 Fate Points and gain a new Fate Point at the beginning of every session. Fate Points can also be given to players by the game master as rewards for exceptional roleplaying. The maximum number of unspent Fate Points a player character can have is 2\.
+
+### Forced movement
+
+When a character is moved in away that they themselves can’t affect, the movement is referred to as forced movement. Forced movement is done in a straight line and is interrupted by environmental obstacles blocking the movement, but is not interrupted by other characters unless they use the “Catch” Reaction. If characters end up overlapping after being forcibly moved, they are repositioned to the nearest possible position.
+
+The game master determines when forced movement makes characters to slide across surfaces and when characters either get detached from surfaces or have their forced movement interrupted by them.
 
 ### Clash
 
 Clashes happen when two characters use Moves against each other simultaneously. This can happen for example when characters use the Counter Stance. In a Clash, both characters use their Moves against each other normally, but the damage and any other effects from the Moves are applied only after both Moves have been resolved. This means that both of the involved characters can end up fainting simultaneously.
 
-In a Clash, Melee Single-target Moves hit their targets automatically.
+In a Clash, Melee Single-target Moves hit their targets automatically, but the rolls of d20 included in To-Hit tests are still made to see if either Move is a Critical Hit.
 
 ### Difficult Terrain
 
@@ -835,7 +856,7 @@ Hazardous Terrains cause True Damage to characters who spend time inside them. T
 
 The test timer for when the test is made has two options: **Slow** and **Instant**. Slow means that the test is performed after every full hour spent inside the area. Instant means that the test is performed when a character enters the area and after every full turn spent inside the area.
 
-Each Hazardous Terrain also has a type. As an exception to True Damage, the Resistances and Weaknesses of characters are applied to the damage caused by Hazardous Terrains. Other modifiers (such as Defense Power modifiers from Stances or items) do not affect this damage. Flying characters are also not affected by ground-based Hazardous Terrain.
+Each Hazardous Terrain also has a type. True Damage caused by Hazardous Terrains has the type of the terrain, so it is affected by Resistances, Weaknesses and Immunities. Other modifiers (such as Defense Power modifiers from Stances or items) do not affect this damage. Flying characters are also not affected by ground-based Hazardous Terrain.
 
 ***For example**, Hazardous Terrain based on extreme cold can vary between “Harmful” and “Dangerous”, has the “Ice” type, and its test timer is “Slow”, which means that a test is performed against it after every full hour spent inside the area.*
 
@@ -869,7 +890,7 @@ The game master determines when a character is restrained and has one or more re
 
 ### Falling
 
-A character can safely drop 5 meters during a fall. If they would drop more than that, they enter free fall. If a character is free falling, they are moved towards the ground at the end of their every End Phase. On the first time the character is moved towards the ground, the falling distance is 25 meters, and on every consecutive time this number is multiplied by 2 until it becomes 200 meters. Falling to the ground deals True Damage to the character equal to the full distance they would have fallen during that End Phase if the fall had not been interrupted, divided by 5 and further reduced by the character’s Speed Progress Modifier.
+A character can safely drop 5 meters during a fall. If they would drop more than that, they enter free fall. If a character is free falling, they are forcibly moved towards the ground at the end of their every End Phase. On the first time the character is forcibly moved towards the ground, the falling distance is 25 meters, and on every consecutive time this number is multiplied by 2 until it becomes 200 meters. Falling to the ground deals True Damage to the character equal to the full distance they would have fallen during that End Phase if the fall had not been interrupted, divided by 5 and further reduced by the character’s Speed Progress Modifier.
 
 A flying character is falling if they are restrained or if their Speed drops to 0\.
 
@@ -933,7 +954,7 @@ Here are suggestions for the general power levels of enemies when building encou
 
 #### Legendary Actions
 
-Strong NPCs can be given Legendary Actions to make them capable of fighting multiple player characters on their own. Legendary Actions are “Basic attack” Moves that can only be performed immediately after another character has completed their turn. This means that they are used outside the using character’s own turn. After using, they are refreshed at the start of the using character’s next turn. Legendary Actions do not expend Main Actions or Reactions from the character.
+Strong NPCs can be given Legendary Actions to make them capable of fighting multiple player characters on their own. Legendary Actions are “Basic attack” Moves that can only be performed immediately after another character has completed their turn. This means that they are used outside the using character’s own turn. After using, they are refreshed at the start of the using character’s next Action Phase. Legendary Actions do not expend Main Actions or Reactions from the character.
 
 A character can’t use Legendary Actions if they are considered unable to use Reactions.
 
@@ -986,7 +1007,7 @@ Bonuses provided by items do not decay through Turn-End Decay.
 | Very expensive | Passive (wearable) | Provides \+3 for a predefined Social stat or \+2 for other predefined stat |
 | Very expensive | Passive (wearable) | Provides \+4 Defense Power against one predefined element |
 
-## Example Move conversions
+## Example Move conversions {#example-move-conversions}
 
 ### Physical Moves
 
@@ -1011,7 +1032,7 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **Range:** 1 m  
 - **Accuracy:** \+10  
 - **Power:** 10 \+ d10  
-- **Secondary effect:** Has a 30% (-4) chance of applying the Paralysis condition to the target.
+- **Secondary effects:** Has a 30% (-4) chance of applying the Paralysis condition to the target.
 
 #### Iron Head
 
@@ -1023,7 +1044,7 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **Range:** 1 m  
 - **Accuracy:** \+10  
 - **Power:** 8 \+ d8  
-- **Secondary effect:** Has a 30% (-4) chance of applying the Flinch condition to the target.
+- **Secondary effects:** Has a 30% (-4) chance of applying the Flinch condition to the target.
 
 #### Crunch
 
@@ -1035,7 +1056,7 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **Range:** 1 m  
 - **Accuracy:** \+10  
 - **Power:** 8 \+ d8  
-- **Secondary effect:** Has a 20% (-6) chance of applying a Defense debuff of one stage (-2 Defense) to the target.
+- **Secondary effects:** Has a 20% (-6) chance of applying a Defense debuff of one stage (-2 Defense) to the target.
 
 #### Close Combat
 
@@ -1047,7 +1068,7 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **Range:** 1 m  
 - **Accuracy:** \+10  
 - **Power:** 12 \+ d12  
-- **Secondary effect:** Applies a Defense debuff of one stage (-2) and a Special defense debuff of one stage (-2) to the user.
+- **Secondary effects:** Applies a Defense debuff of one stage (-2) and a Special defense debuff of one stage (-2) to the user.
 
 #### Earthquake
 
@@ -1072,7 +1093,7 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **PP cost:** 0  
 - **Range:** 1 m  
 - **Accuracy:** \+10  
-- **Power:** Equal to half the user’s level (rounded up), to a maximum of 20\.
+- **Power:** Equal to half the user’s level (rounded up), to a maximum of 30\.
 
 #### Fly \- indirect conversion
 
@@ -1084,7 +1105,7 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **Range:** 1 m  
 - **Accuracy:** \+9  
 - **Power:** 10 \+ d10  
-- **Description:** On the turn the Move is charged, the user has Advantage (+4) to Evasion.
+- **Other effects:** On the turn the Move is charged, the user has Advantage (+4) to Evasion. While the Move is charged, the user has the Flight Ability if they don’t have it already.
 
 ### Special Moves
 
@@ -1112,7 +1133,7 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **Range:** 20 m \+ 2x the user’s Special attack  
 - **Accuracy:** \+10  
 - **Power:** 10 \+ d10  
-- **Secondary effect:** Has a 10% (-8) chance of applying the Paralysis condition to the target.
+- **Secondary effects:** Has a 10% (-8) chance of applying the Paralysis condition to the target.
 
 #### Thunder
 
@@ -1124,8 +1145,8 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **Range:** 20 m \+ 2x the user’s Special attack  
 - **Accuracy:** \+4  
 - **Power:** 12 \+ d12  
-- **Secondary effect:** Has a 10% (-8) chance of applying the Paralysis condition to the target.  
-- **Description:** During Rain, the Move’s Accuracy modifier is \+10. During Harsh Sunlight, the Move’s Accuracy modifier is \+0.
+- **Secondary effects:** Has a 10% (-8) chance of applying the Paralysis condition to the target.  
+- **Other effects:** During Rain, the Move’s Accuracy modifier is \+10. During Harsh Sunlight, the Move’s Accuracy modifier is \+0.
 
 #### Flamethrower
 
@@ -1137,7 +1158,7 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **Range:** 20 m \+ 2x the user’s Special attack  
 - **Accuracy:** \+10  
 - **Power:** 10 \+ d10  
-- **Secondary effect:** Has a 10% (-8) chance of applying the Burn condition to the target.
+- **Secondary effects:** Has a 10% (-8) chance of applying the Burn condition to the target.
 
 #### Ice Beam
 
@@ -1149,7 +1170,7 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **Range:** 20 m \+ 2x the user’s Special attack  
 - **Accuracy:** \+10  
 - **Power:** 10 \+ d10  
-- **Secondary effect:** Has a 10% (-8) chance of applying the Freeze condition to the target.
+- **Secondary effects:** Has a 10% (-8) chance of applying the Freeze condition to the target.
 
 #### Blizzard
 
@@ -1164,8 +1185,8 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **Range:** 10 m \+ the user’s Special attack  
 - **Accuracy:** \+4  
 - **Power:** 2d12  
-- **Secondary effect:** Has a 10% (-8) chance of applying the Freeze condition to the target.  
-- **Description:** During Snow, the To-Hit test succeeds automatically against all targets.
+- **Secondary effects:** Has a 10% (-8) chance of applying the Freeze condition to the target.  
+- **Other effects:** During Snow, the To-Hit test succeeds automatically against all targets.
 
 #### Hyper Beam
 
@@ -1188,7 +1209,7 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **Range:** 20 m \+ 2x the user’s Special attack  
 - **Accuracy:** \+10  
 - **Power:** 14 \+ d10 \+ d4  
-- **Description:** Does not need to be charged during Harsh Sunlight weather condition. During Rain, Sandstorm, Snow or Fog weather conditions, the Move’s Power is halved.
+- **Other effects:** Does not need to be charged during Harsh Sunlight weather condition. During Rain, Sandstorm, Snow or Fog weather conditions, the Move’s Power is halved.
 
 ### Status Moves
 
@@ -1201,7 +1222,7 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **PP cost:** 0  
 - **Range:** 15 m  
 - **Accuracy:** \+8  
-- **Description:** Applies the Paralysis condition to the target.
+- **Other effects:** Applies the Paralysis condition to the target.
 
 #### Will-O-Wisp
 
@@ -1212,7 +1233,7 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **PP cost:** 1  
 - **Range:** 15 m  
 - **Accuracy:** \+7  
-- **Description:** Applies the Burn condition to the target.
+- **Other effects:** Applies the Burn condition to the target.
 
 #### Toxic
 
@@ -1223,7 +1244,7 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **PP cost:** 2  
 - **Range:** 15 m  
 - **Accuracy:** \+8  
-- **Description:** Applies the Badly poisoned condition to the target. If the user is a Poison-type character, the To-Hit test succeeds automatically.
+- **Other effects:** Applies the Badly poisoned condition to the target. If the user is a Poison-type character, the To-Hit test succeeds automatically.
 
 #### Swords Dance
 
@@ -1233,7 +1254,7 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **Keywords:** Single-target (self), Status  
 - **PP cost:** 0  
 - **Range:** Self  
-- **Description:** Applies an Attack buff of two stages (+4) to the user.
+- **Other effects:** Applies an Attack buff of two stages (+4) to the user.
 
 #### Recover
 
@@ -1243,7 +1264,7 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **Keywords:** Single-target (self), Status  
 - **PP cost:** 2  
 - **Range:** Self  
-- **Description:** Restores HP equal to the user’s Health \* 2\.
+- **Other effects:** Restores HP equal to the user’s Health \* 2\.
 
 #### Rain Dance
 
@@ -1257,7 +1278,7 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **Placement Type:** Radial  
 - **Range:** \-  
 - **Accuracy:** Hits automatically  
-- **Description:** Sets the Rain weather condition in the area. The weather condition lasts for 1 hour and removes all previous weather conditions from the area.
+- **Other effects:** Sets the Rain weather condition in the area. The weather condition lasts for 1 hour and removes all previous weather conditions from the area.
 
 #### Sunny Day
 
@@ -1271,7 +1292,7 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **Placement Type:** Radial  
 - **Range:** \-  
 - **Accuracy:** Hits automatically  
-- **Description:** Sets the Harsh Sunlight weather condition in the area. The weather condition lasts for 1 hour and removes all previous weather conditions from the area.
+- **Other effects:** Sets the Harsh Sunlight weather condition in the area. The weather condition lasts for 1 hour and removes all previous weather conditions from the area.
 
 #### Trick Room \- indirect conversion
 
@@ -1285,7 +1306,7 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **Placement Type:** Radial  
 - **Range:** \-  
 - **Accuracy:** Hits automatically  
-- **Description:** When a round starts, this Move can be used to reverse the turn order. Initiative modifiers of affected characters are ignored while the effect lasts. Priority Turns are still taken before normal turns, but their order is also reversed. The effect lasts for 5 rounds. If this Move is used while its effect is active, the effect ends instead.
+- **Other effects:** When a round starts, this Move can be used to reverse the turn order. Initiative modifiers of affected characters are ignored while the effect lasts. Priority Turns are still taken before normal turns, but their order is also reversed. The effect lasts for 5 rounds. If this Move is used while its effect is active, the effect ends instead.
 
 #### Stealth Rock \- indirect conversion
 
@@ -1295,8 +1316,8 @@ Bonuses provided by items do not decay through Turn-End Decay.
 - **Keywords:** Area of Effect, Status, Long Range  
 - **PP cost:** 0  
 - **Shape:** Blast (small)  
-- **Shape Size:** 2 m \+ half the user’s (Sp.) Attack  
-- **Placement Type:** Projected  
-- **Range:** 10 m \+ the user’s (Sp.) Attack  
+- **Shape Size:** 5 m  
+- **Placement Type:** Ranged  
+- **Range:** 15 m  
 - **Accuracy:** Hits automatically  
-- **Description:** Creates an area that lasts for 5 rounds. A character that enters the area or ends their turn inside the area takes 4 True Damage. A character can be affected by this Move only once per turn.
+- **Other effects:** Creates an area that lasts for 5 rounds. A character that enters the area or is inside the area during their End Phase takes 4 True Damage. A character can be affected by this Move only once per round.
