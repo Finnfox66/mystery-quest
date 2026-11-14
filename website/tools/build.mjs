@@ -258,7 +258,7 @@ cpSync(siteDir, distDir, { recursive: true, filter: (src) => !buildOnlyData.incl
 mkdirSync(join(distDir, "rules"), { recursive: true });
 mkdirSync(join(distDir, "assets", "data"), { recursive: true });
 writeFileSync(join(distDir, "rules", "index.html"), rulesPage);
-writeFileSync(join(distDir, "assets", "data", "moves.json"), JSON.stringify(moves, null, 2));
+writeFileSync(join(distDir, "assets", "data", "moves.json"), JSON.stringify(moves)); // minified: smaller download, faster JSON.parse
 
 // License documents: copied from the repo root so the deployed site serves them at its
 // root; the static pages link to them with relative URLs, which work on any host.
