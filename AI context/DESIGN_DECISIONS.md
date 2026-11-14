@@ -1,12 +1,12 @@
 # DESIGN_DECISIONS.md
 
 Design decision log for the **restriction framework** originally proposed in
-`RULES_ANALYSIS.md` (F31), adopted in the ruleset with 0.9.4.2 and mirrored into
-AGENTS.md. This file records *why* the framework is shaped the way it is —
-accepted and rejected alternatives — so that `RULES_ANALYSIS.md` stays reserved
+[RULES_ANALYSIS.md](RULES_ANALYSIS.md) (F31), adopted in the ruleset with 0.9.4.2 and mirrored into
+[AGENTS.md](../AGENTS.md). This file records *why* the framework is shaped the way it is —
+accepted and rejected alternatives — so that [RULES_ANALYSIS.md](RULES_ANALYSIS.md) stays reserved
 for findings and changes that need to be made to the ruleset. It also holds the
 **resolved-findings record** ("Resolved findings" below): findings that were
-open in `RULES_ANALYSIS.md` and have since been resolved in the ruleset are
+open in [RULES_ANALYSIS.md](RULES_ANALYSIS.md) and have since been resolved in the ruleset are
 removed from that document and condensed here, with their numbers kept stable
 for cross-references.
 
@@ -16,7 +16,7 @@ labeled 0.9.5.1-0.9.5.8 were in fact upgrades to 0.9.4: they are renumbered
 0.9.5.0; the 0.9.4 baseline itself is 0.9.4.0. (Exports after the 0.9.5 release
 continue the 0.9.5.x numbering — the current latest is 0.9.6.1.) All prior exports,
 including these, live in `Rules/Older versions/`; only the newest export
-(`Rules/Mystery Quest ruleset 0_9_6_1.md`) sits at the `Rules/` root. All version
+([Rules/Mystery Quest ruleset 0_9_6_1.md](<../Rules/Mystery Quest ruleset 0_9_6_1.md>)) sits at the `Rules/` root. All version
 references in this document use the corrected numbering (records written before the
 correction referred to the old labels: 0.9.4.x was written as 0.9.5.x, and 0.9.5.0
 as 0.9.5.8).
@@ -51,7 +51,7 @@ Immobile row is deliberate — Immobile's Speed 0 / Base Evasion 12 is the inten
 replacement for the Advantage (+4) to Accuracy against unconscious characters (which
 Unconscious characters have via Incapacitated). This decision's alternative (stats on
 Incapacitated) is rejected. The remaining fix is amending the section intro sentence,
-which still says restrictions "never change stat values" (F32 in RULES_ANALYSIS.md;
+which still says restrictions "never change stat values" (F32 in [RULES_ANALYSIS.md](RULES_ANALYSIS.md);
 ready text in local-only/New versions.md).
 
 **Status update (0.9.4.3).** Resolved: the intro now reads "Restrictions only remove
@@ -227,7 +227,7 @@ their turn" obligation; this interaction is undefined in the current ruleset eit
 **Status update (0.9.4.2).** Adopted: Turn Skipped is a category row, Incapacitated
 lists it, and the "Turns of Unconscious and Surprised characters are skipped" sentence
 is gone from the ruleset. The open edge case above is now reported as F36 in
-RULES_ANALYSIS.md, with ready text in local-only/New versions.md.
+[RULES_ANALYSIS.md](RULES_ANALYSIS.md), with ready text in local-only/New versions.md.
 
 **Status update (0.9.4.3).** The open edge case is resolved: the Priority Turn model
 replaces the announcement obligation with "A character using a Priority Turn must use a
@@ -287,14 +287,14 @@ apostrophe normalization remains the only editorial straggler (F34).
 **Decision (author instruction).** `local-only/New versions.md` holds rules text waiting to be
 implemented into the full ruleset and may be edited directly, including by the analysis
 agent. Ready rules text that could be implemented into the ruleset is presented there,
-not in `RULES_ANALYSIS.md`, which stays reserved for findings and change requests.
+not in [RULES_ANALYSIS.md](RULES_ANALYSIS.md), which stays reserved for findings and change requests.
 Ruletext that can already be found in the full ruleset document is removed from New
-versions.md. The permission and convention are recorded in AGENTS.md.
+versions.md. The permission and convention are recorded in [AGENTS.md](../AGENTS.md).
 
 **Applied.** The F31 draft, the supporting edits (phase names in "Flow of a battle", the
 Stances sentence, the maintenance rule) and the condition rewrites (Unconscious,
 Surprised, Flinch, Paralysis, Pinned Down, Restrained) were migrated from
-RULES_ANALYSIS.md into local-only/New versions.md, organized by target section; the D8 fix was
+[RULES_ANALYSIS.md](RULES_ANALYSIS.md) into local-only/New versions.md, organized by target section; the D8 fix was
 applied during the migration. Notable consolidation during migration: the
 Advantage-to-Accuracy rule against Unconscious characters, currently stated only in the
 Freeze and Sleep parenthetical notes, moves into the Unconscious definition, allowing
@@ -302,7 +302,7 @@ those notes to be removed.
 
 **Extended (author clarification).** `local-only/New versions.md` is the primary location for
 suggested rules text, and no duplicates of its content are kept in
-`RULES_ANALYSIS.md` — the Google Doc is the author's true working draft, so
+[RULES_ANALYSIS.md](RULES_ANALYSIS.md) — the Google Doc is the author's true working draft, so
 overwriting local-only/New versions.md is safe, and ruletext missing from it should prompt a
 check of the full ruleset for whether it was already implemented. F30's
 Charging/Recharging draft was migrated there as the second block and aligned to the
@@ -354,18 +354,18 @@ section with its beginning-of-round Counter trigger.
 
 Once the framework is adopted in the source document, the durable conventions
 (restriction categories, the two-phase turn model, the demand-driven criterion for new
-categories) should be mirrored into AGENTS.md under "Game design conventions
+categories) should be mirrored into [AGENTS.md](../AGENTS.md) under "Game design conventions
 established during analysis", following the precedent of the weather conventions.
 
 **Status (2026-10-21).** The framework is adopted in the source document (0.9.4.2). The
-durable conventions have been mirrored into AGENTS.md; D4 (the Stances sentence) was
+durable conventions have been mirrored into [AGENTS.md](../AGENTS.md); D4 (the Stances sentence) was
 withdrawn rather than adopted, and the D2 stat-change decision is superseded by the
 author's Immobile row (F32, resolved in 0.9.4.3 — see below).
 
 **Status update (2026-10-25, 0.9.4.3).** F32 is resolved (the intro carries the Immobile
 exception), and the framework's remaining fix-ups (F30, F35, F36) are all closed — see
 the resolved-findings record below. The 0.9.4.3 Priority Turn model and
-Charging/Recharging keywords have been mirrored into AGENTS.md alongside the existing
+Charging/Recharging keywords have been mirrored into [AGENTS.md](../AGENTS.md) alongside the existing
 conventions. The 0.9.4.4 out-of-battle timing rule (F39) is likewise mirrored there.
 
 **Status update (2026-10-25, 0.9.4.5).** F18 is resolved (the example conversion set is in
@@ -397,10 +397,10 @@ any ready-text blocks — the file now serves as the slot for future suggestions
 
 ## Resolved findings (condensed record)
 
-Findings that were open in `RULES_ANALYSIS.md` and have since been resolved in the ruleset
+Findings that were open in [RULES_ANALYSIS.md](RULES_ANALYSIS.md) and have since been resolved in the ruleset
 are removed from that document and recorded here in condensed form. Numbers are kept
 stable for cross-references. ID schemes: the historical records below use sequential
-F-numbers; newer records keep the category-prefixed IDs of the current `RULES_ANALYSIS.md`
+F-numbers; newer records keep the category-prefixed IDs of the current [RULES_ANALYSIS.md](RULES_ANALYSIS.md)
 (D defect, A ambiguity, B balance, C content gap, E editorial), and IDs are never reused.
 
 - **F2 — skipped turns vs. end-of-turn effects (resolved in 0.9.4.2).** In 0.9.4.1, Sleep and
@@ -500,7 +500,7 @@ F-numbers; newer records keep the category-prefixed IDs of the current `RULES_AN
   apostrophe, the last F34 straggler. The worked-examples file remains as the
   companion document with standing notes (weather, STAB, formatting conventions);
   it was later restructured (2026-10-26, author instruction): renamed to
-  `MOVE_CONVERSIONS.md` at the project root, examples removed, refocused on the
+  [MOVE_CONVERSIONS.md](MOVE_CONVERSIONS.md) at the project root, examples removed, refocused on the
   general conversion method and entry formatting.
 - **F27 — ruleset vs. character sheet naming (resolved, 2026-10-25).** The character sheet
   files were named "Mystery Dungeon TTRPG character sheet" while the ruleset is
@@ -556,7 +556,7 @@ F-numbers; newer records keep the category-prefixed IDs of the current `RULES_AN
   or 'Large' Abilities") and gave both Abilities minimum bounds (Tiny's Max HP
   reduction to a minimum of 1; Large's Base Evasion reduction to a minimum of 0), so
   the degenerate Max HP 13 build is impossible twice over. F4 is closed and removed
-  from `RULES_ANALYSIS.md`.
+  from [RULES_ANALYSIS.md](RULES_ANALYSIS.md).
 - **Example Move wording revision (0.9.4.6, recorded for the description conventions).**
   16 of the 25 example conversions were reworded with no converted value changed
   (verified per Move against both exports). The revision establishes the house style for
@@ -567,7 +567,7 @@ F-numbers; newer records keep the category-prefixed IDs of the current `RULES_AN
   condition to the target."), Placement Type as its own field, and no restating of
   global rules or other Moves' conditionals (Trick Room dropped its counting clause now
   that General logic states duration counting globally; Sunny Day dropped Thunder's and
-  Solar Beam's weather clauses) — mirrored into AGENTS.md and recorded with
+  Solar Beam's weather clauses) — mirrored into [AGENTS.md](../AGENTS.md) and recorded with
   per-Move notes in `Rules/Example Move Conversions.md`. Two judgment calls changed
   behavior in the author's hands: Trick Room now also reverses the order of Priority
   Turns (closer to the official bracket-wise reversal), and Stealth Rock's trigger is
@@ -606,7 +606,7 @@ F-numbers; newer records keep the category-prefixed IDs of the current `RULES_AN
   take damage even when the Move does not properly hit them. The author has added a
   clarifying text to the Google Doc (not yet in a repository export at the time of
   this record; the next export review should verify its wording). F3 is removed from
-  `RULES_ANALYSIS.md`, and the ready-text block that extended Chip Damage to AoE
+  [RULES_ANALYSIS.md](RULES_ANALYSIS.md), and the ready-text block that extended Chip Damage to AoE
   Moves (drafted 2026-10-26 before the clarification) was removed from
   `local-only/New versions.md` — it proposed the opposite of the design intent. Verified
   in 0.9.5.0: the To-Damage bullet now ends "AoE Moves can't cause Chip Damage."
@@ -622,7 +622,7 @@ F-numbers; newer records keep the category-prefixed IDs of the current `RULES_AN
   Punch example (single-target 8 + d8, AoE 2d8, STAB "an additional d8"). Both
   the STAB bonus and Critical Hits therefore add a full copy of the Power Dice,
   and no separate clarification in the STAB rule is needed. F6 is removed from
-  `RULES_ANALYSIS.md`, and its ready-text block — which proposed adding only the
+  [RULES_ANALYSIS.md](RULES_ANALYSIS.md), and its ready-text block — which proposed adding only the
   largest die, the wrong resolution under the correct reading — is removed from
   `local-only/New versions.md`.
 - **F38 — Charging's missing charge-duration limit (resolved in 0.9.5.0).** The
@@ -791,7 +791,7 @@ F-numbers; newer records keep the category-prefixed IDs of the current `RULES_AN
   actions deliberately use only the Attack stat, because Attack mirrors
   physical strength while Special Attack mirrors strength with special powers,
   and Shove, Pin and Restrict are physical maneuvers requiring physical
-  strength. The finding is withdrawn from `RULES_ANALYSIS.md`, its checklist
+  strength. The finding is withdrawn from [RULES_ANALYSIS.md](RULES_ANALYSIS.md), its checklist
   block (which proposed the "(Sp.) Attack" replacement) is removed from
   `local-only/New versions.md`, and the withdrawn recommendation is recorded here
   so future re-reads of the three actions do not re-raise it. Update (0.9.5.4):
@@ -816,7 +816,7 @@ F-numbers; newer records keep the category-prefixed IDs of the current `RULES_AN
   keyword can go missing from the list again. The it's/its slip in the
   Accuracy example was also fixed ("so its Accuracy is +8"). The checklist is
   removed from `local-only/New versions.md`; all findings are closed in
-  `RULES_ANALYSIS.md`.
+  [RULES_ANALYSIS.md](RULES_ANALYSIS.md).
 - **F24 — Form Change's "second Ability" (resolved in 0.9.5.4).** The author
   clarified it in their own way, and differently from the checklist draft's
   flagged assumption (which guessed the character's *other* Ability is shared
@@ -837,8 +837,8 @@ F-numbers; newer records keep the category-prefixed IDs of the current `RULES_AN
   be covered by **Substitute** (the one-time damage negation — the analysis
   had attributed it to Form Change), and Aegislash's Stance Change by Form
   Change; weather-setting Abilities are covered by Weather Setter. The finding
-  is removed from `RULES_ANALYSIS.md`; the deliberate scope is recorded as a
-  design convention in AGENTS.md.
+  is removed from [RULES_ANALYSIS.md](RULES_ANALYSIS.md); the deliberate scope is recorded as a
+  design convention in [AGENTS.md](../AGENTS.md).
 - **F21 — d3 guidance (withdrawn as moot, 2026-10-29).** The finding asked for
   d3-rolling guidance to parallel the existing d2 guidance. Verified
   programmatically: **no rule in any export version — from the 0.9.4 baseline
@@ -847,7 +847,7 @@ F-numbers; newer records keep the category-prefixed IDs of the current `RULES_AN
   method). The d2 guidance exists because the Power conversion table's lowest
   bracket produces Power Dice d2, and the table jumps straight to d4, so no
   conversion output can ever be a d3. The finding was speculative — guidance
-  for rolls that no rule requires — and is removed from `RULES_ANALYSIS.md`.
+  for rolls that no rule requires — and is removed from [RULES_ANALYSIS.md](RULES_ANALYSIS.md).
 - **A1 — Shielding An Ally vs damaging AoE Moves (resolved by author clarification, 2026-10-30).**
   The 0.9.5.4-pass analysis read the AoE rules ("damaging AoE Moves hit even on a failed
   To-Hit, halved") together with Shielding An Ally ("replace them as the target… fails
@@ -901,20 +901,20 @@ F-numbers; newer records keep the category-prefixed IDs of the current `RULES_AN
   0.9.5.5 source, 2026-10-30).** Only the Ranged Placement Type consumes a Move's Range field,
   but Stealth Rock listed Range 15 m with Projected placement. The author fixed it in the
   0.9.5.5 source document rather than cutting a new export: Stealth Rock's Placement Type is
-  now **Ranged** (confirmed in the saved `Rules/Mystery Quest ruleset 0_9_5_5.md` export).
+  now **Ranged** (confirmed in the saved [Rules/Mystery Quest ruleset 0_9_5_5.md](<../Rules/Older versions/Mystery Quest ruleset 0_9_5_5.md>) export).
 - **B3 — single-target vs AoE Power asymmetry (resolved by author clarification,
   2026-10-30).** Single-target Power Values convert at the top of each official bracket
   (e.g. 85–100 → 10 + d10, average 15.5 vs official midpoint 9.25, ~68% inflation) while AoE
   Powers are two dice sets with no flat value, making single-target Moves systematically
   stronger per target. Author clarification: **deliberate** — AoE Moves are weaker per
-  target but hit potentially more targets. No change; kept in `RULES_ANALYSIS.md` marked
+  target but hit potentially more targets. No change; kept in [RULES_ANALYSIS.md](RULES_ANALYSIS.md) marked
   accepted by design.
 - **B4 — Fate Point maximum too high (resolved in 0.9.5.6).** The 0.9.5.5 analysis flagged
   the Fate Point economy (1/session, cap 4, after-the-fact, stackable — up to 16 guaranteed
   rerolls for a 4-player party) as a strong safety net that would soften "difficult"
   encounter tuning. Resolved in the ruleset: the maximum number of unspent Fate Points is
   now **2**. The character sheet's side-panel label was updated to match ("Fate Points:
-  Max 2"). Finding removed from `RULES_ANALYSIS.md`.
+  Max 2"). Finding removed from [RULES_ANALYSIS.md](RULES_ANALYSIS.md).
 - **C3 — keyword candidates for shared Move mechanics (resolved in 0.9.5.7).** Hazards,
   weather-setting and recoil stay custom Description text (too many dependent variables;
   a Move's main purpose should not become a keyword — keywords describe an additional

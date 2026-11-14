@@ -18,21 +18,24 @@ are imported/exported as JSON files.
   the site uses a per-page `<base>` tag plus relative URLs, so it works both at a domain
   root and under a GitHub Pages project subpath (`user.github.io/<repo>/`). It is
   deployed to GitHub Pages by `.github/workflows/website-workflow.yml` (Pages source:
-  GitHub Actions), which publishes `Website/site/` on pushes to `main` that touch the
-  website.
+  GitHub Actions), which builds `Website/dist/` from the sources in `Website/site/`
+  and publishes it on pushes to `main` that touch the website.
 - **Predefined data libraries, bundled at build time — except species base stats.**
   Species names and types, the type chart (resistance/weakness levels), the Ability
-  list, the Base Value Arrays and the Move library ship as static JSON under
-  `Website/site/assets/data/`. No runtime lookup and no external API — the site stays
+  list, the Base Value Arrays and the Move library ship as static JSON source under
+  `Website/site/assets/data/`. The build reads that source data but does not copy it
+  into `Website/dist/` — the site serves only the generated
+  `dist/assets/data/moves.json` (parsed Example Move conversions merged with the
+  hand-maintained Move library). No runtime lookup and no external API — the site stays
   dependency-free and hostable anywhere. **Species base stats are deliberately not
   included**: official creature stats can change between game versions, and bundling
   them would create a second source that drifts from the ruleset's conversion input —
   so the earlier "no official base-stat lookup" exception stands for stats, and Core
   base values are entered by hand. Factual game data only — no artwork, per
-  CONTENT_PLAN.md §1.)
+  [CONTENT_PLAN.md](CONTENT_PLAN.md) §1.)
 - **The Google Docs are the source of truth** for the rules; the repo's `Rules/*.md`
   exports are inputs, never outputs. Website content is *generated* from them (see
-  CONTENT_PLAN.md §3); generated HTML/JSON is committed but never hand-edited.
+  [CONTENT_PLAN.md](CONTENT_PLAN.md) §3); generated HTML/JSON is committed but never hand-edited.
 - **Custom Moves are first-class.** Because any character can have invented or
   home-converted Moves, a character's import/export **never stores Move reference IDs** —
   every Move is embedded in full (§5). The Move library on the site is a convenience
@@ -51,7 +54,7 @@ are imported/exported as JSON files.
   rosters and keeps no combat state, which stays within this constraint.
 - Non-goals for v1: hosting the character sheet PDF (a link suffices), dark mode, and
   the fan-project naming/disclaimer content itself (that is content policy — see
-  CONTENT_PLAN.md §1).
+  [CONTENT_PLAN.md](CONTENT_PLAN.md) §1).
 
 ## 2. Proposed stack
 
@@ -70,7 +73,7 @@ and hostable anywhere:
   (partials), committed but never hand-edited.
 - **The website's rules documents live in `Website/ruleset/`** (decided),
   maintained by **`Website/tools/update-ruleset.mjs`** (run after each new
-  export arrives; see `Website/ruleset/README.md`). The script picks the newest
+  export arrives; see [Website/ruleset/README.md](ruleset/README.md)). The script picks the newest
   `Rules/Mystery Quest ruleset 0_x_y_z.md` and produces:
   - **the ruleset document** — the artifact-cleaned copy of the latest export
     (escaped punctuation, vertical-tab table cells → `<br>`, heading anchor
@@ -79,10 +82,10 @@ and hostable anywhere:
     website provides the Moves list separately) and **without the
     "Contents and material" section** (the document's own ToC, links to
     material, acknowledgments and character-sheet image — that material is
-    presented site-side, see CONTENT_PLAN.md §2.1), under the generic name
-    `Mystery Quest ruleset.md` so references to it never change (replaced
+    presented site-side, see [CONTENT_PLAN.md](CONTENT_PLAN.md) §2.1), under the generic name
+    [Mystery Quest ruleset.md](<ruleset/Mystery Quest ruleset.md>) so references to it never change (replaced
     wholesale on each run).
-  - **`example-move-conversions.md`** — the cleaned Example Move conversions
+  - **[example-move-conversions.md](ruleset/example-move-conversions.md)** — the cleaned Example Move conversions
     section on its own: the build's source for `moves.json`.
   - **`version.json`** — the true ruleset version, derived from the export
     FILENAME (e.g. `0_9_6_1.md` → `0.9.6.1`), plus the source export and the
@@ -103,14 +106,21 @@ and hostable anywhere:
     when their reference is no longer in the generated rules copy — the
     character-sheet image's reference lived inside the removed "Contents and
     material" section, but its asset is still copied and the site references
-    it by path directly (CONTENT_PLAN.md §2.6).
+    it by path directly ([CONTENT_PLAN.md](CONTENT_PLAN.md) §2.6).
   The raw exports in `Rules/` are never touched; the generated documents are
   never hand-edited. The build (below) consumes these files, and the v2
   Markdown download is the ruleset document itself.
 - **One build script** (`Website/tools/build.mjs`, Node) run on demand when the
-  ruleset documents change. It:
+  ruleset documents change (and by the Pages workflow after every checkout). It
+  copies the whole of `Website/site/` (the committed source) into `Website/dist/`
+  and writes its outputs there (`dist/rules/`, `dist/assets/data/moves.json`,
+  and the `LICENSE`/[LICENSING.md](../LICENSING.md) copies);
+  `Website/dist/` is gitignored as a whole, so no build output is ever committed.
+  During local development, `tools/watch.mjs` re-runs the same build automatically
+  whenever a watched source changes (Node's built-in `fs.watch`, no dependencies).
+  It:
   1. takes the artifact-cleaned ruleset document and the extracted
-     `example-move-conversions.md` from `Website/ruleset/` (kept up to date by
+     [example-move-conversions.md](ruleset/example-move-conversions.md) from `Website/ruleset/` (kept up to date by
      `Website/tools/update-ruleset.mjs` — the cleaning and Moves split are a
      separate step so the pipeline renders stable, artifact-free inputs),
   2. renders the ruleset to HTML partials, **from the first "## Description"
@@ -121,14 +131,15 @@ and hostable anywhere:
      material so the v2 Markdown download (§11) stays a complete standalone
      document. Anchors derive from the section headings (the repo's canonical
      way to reference rules),
-  3. writes `Website/site/assets/data/moves.json` as the Example Move conversions parsed
-     from `Website/ruleset/example-move-conversions.md` plus the hand-maintained
+  3. writes `Website/dist/assets/data/moves.json` as the Example Move conversions parsed
+     from [Website/ruleset/example-move-conversions.md](ruleset/example-move-conversions.md) plus the hand-maintained
      `Website/site/assets/data/move-library.json` (new Move conversions from the latest
      official versions),
-  4. generates `Website/site/assets/data/search-index.json` from the rendered rules (§3), and
-  5. stamps the version (from `Website/ruleset/version.json` — never the
-     document byline's placeholder) and the build date into
-     `Website/site/assets/data/site.json`.
+  4. embeds the search index generated from the rendered rules (§3) and the version
+     (from `Website/ruleset/version.json` — never the document byline's placeholder)
+     plus the build date into the rules page itself, via the template's inline JSON
+     script blocks (`#search-data`, `#site-data`) — no standalone JSON files are
+     written for them, because no page fetches them at runtime.
 - **Build-time Markdown parsing:** a small hand-written renderer inside
   `tools/build.mjs` (headings/tables/lists/inline formatting) — the cleaned export's
   markdown is regular enough that no parser dependency is needed, keeping even the
@@ -156,8 +167,9 @@ and hostable anywhere:
   anchor; only ">" navigates. Both columns use `overflow-y: scroll` so the scrollbar is
   always reserved (no layout shift). The rules page itself is excluded from the global
   `html { overflow-y: scroll }` fix (its columns scroll instead).
-- The build also emits a **search index** (`search-index.json`): one entry per section
-  (heading, anchor, section breadcrumb, normalized text).
+- The build also builds a **search index**: one entry per section (heading, anchor,
+  section breadcrumb, normalized text), embedded inline into the rules page as the
+  `#search-data` JSON block — no standalone `search-index.json` is emitted.
 - **Search**: the search box live-filters client-side against the prebuilt index —
   instant, no server. While a query is active, the left column shows **search results
   instead of the outline**: each result shows its heading breadcrumb (e.g. "Secondary
@@ -196,7 +208,7 @@ decoration:
   hold WCAG AA contrast, focus states must be clearly visible on the rounded inputs,
   and the layout must work down to phone width (the creator tool is the narrow-layout
   stress case).
-- No official Pokémon artwork or sprites anywhere (CONTENT_PLAN.md §1); placeholder
+- No official Pokémon artwork or sprites anywhere ([CONTENT_PLAN.md](CONTENT_PLAN.md) §1); placeholder
   graphics are generic silhouettes drawn in the site's own flat style.
 
 ### 4.1. The character sheet page: efficiently spaced and moderately print-ready
@@ -321,7 +333,7 @@ Portrait handling with no backend, keeping "one character = one file" true:
 ## 7. Creator tool internals
 
 PC/NPC modes sharing one component library. Page content is described in
-CONTENT_PLAN.md §2.4.
+[CONTENT_PLAN.md](CONTENT_PLAN.md) §2.4.
 
 ### 7.0. Sheet modes: edit and preview
 
@@ -521,7 +533,7 @@ pure-quality-of-life item, kept in v2 because of its difficulty:
   in the Moves browser and the creator's Move palette alongside the official
   conversions.
 - **Exporting the ruleset as Markdown** — a download of the current, display-normalized
-  ruleset (the content pipeline's input format, CONTENT_PLAN.md §3), so users and AI
+  ruleset (the content pipeline's input format, [CONTENT_PLAN.md](CONTENT_PLAN.md) §3), so users and AI
   tools always have the latest text without scraping the site.
 - **Exporting the full Moves library as JSON** — the site's Move data (schema of §5's
   Move object) as a single downloadable file, for reuse in the creator, home tools, or
@@ -547,7 +559,7 @@ explicitly revisited (§1).
 
 Decided already: hosting (GitHub Pages via the GitHub Actions workflow `.github/workflows/website-workflow.yml`; no effect on the build), no
 predefined static data libraries (species names/types, resistance/weakness levels, Abilities, Base Value Arrays, Moves) bundled at build time with no runtime lookup — species base stats excluded (official stats may change; entered manually), fan-project naming and disclaimers with the "MQ" short form
-(CONTENT_PLAN.md §1), only the latest ruleset version viewable, rules input format
+([CONTENT_PLAN.md](CONTENT_PLAN.md) §1), only the latest ruleset version viewable, rules input format
 (Markdown throughout: the export is script-cleaned into `Website/ruleset/`, then rendered
 to generated HTML partials; §2), rules search
 tools (§3), visual

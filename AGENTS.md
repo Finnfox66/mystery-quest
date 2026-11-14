@@ -15,7 +15,7 @@ editing.
 
 - The versioned ruleset exports are Markdown
   exports of the author's Google Doc. They are **not the source of truth**.
-  The latest export (currently `Rules/Mystery Quest ruleset 0_9_6_1.md`) sits at
+  The latest export (currently [Rules/Mystery Quest ruleset 0_9_6_1.md](<Rules/Mystery Quest ruleset 0_9_6_1.md>)) sits at
   the `Rules/` root; all prior exports (`0_9_4_0` through `0_9_4_7` and
   `0_9_5_0` through `0_9_5_9`) are retained in `Rules/Older versions/` for
   archival and comparison purposes only.
@@ -30,7 +30,7 @@ editing.
   numbering.
 - **The website's rules documents** (`Website/ruleset/`) are *generated* files,
   produced by `Website/tools/update-ruleset.mjs` from the newest export: the
-  artifact-cleaned ruleset under the generic name `Mystery Quest ruleset.md`
+  artifact-cleaned ruleset under the generic name [Mystery Quest ruleset.md](<Website/ruleset/Mystery Quest ruleset.md>)
   (without the Example Move conversions section — the website's Moves list is
   the extracted examples plus the hand-maintained `Website/site/assets/data/move-library.json`
   (new conversions from the latest official versions; indirect ones wait in
@@ -48,10 +48,16 @@ editing.
   `Website/site/assets/`; base64 payloads in an export are extracted
   automatically). Never hand-edit the generated documents; re-run the script
   after a new export arrives. The raw exports in `Rules/` are never modified.
-  The site in `Website/site/` is deployed to GitHub Pages by
-  `.github/workflows/website-workflow.yml` (Pages source: GitHub Actions); its pages
-  use a per-page `<base>` tag and relative URLs, so the site works both at a domain
-  root and under a project subpath (`user.github.io/<repo>/`).
+  `Website/site/` holds only the website's committed source files (hand-written
+  pages, scripts, styles, images, source data). `Website/tools/build.mjs` builds it
+  into `Website/dist/` and `Website/dist/` is gitignored as a whole. The Pages workflow
+  (`.github/workflows/website-workflow.yml`, Pages source: GitHub Actions) runs the
+  build after checkout and publishes `Website/dist/` to GitHub Pages. The site's
+  pages use a per-page `<base>` tag and relative URLs, so the built site works both
+  at a domain root and under a project subpath (`user.github.io/<repo>/`). Local
+  development: run `node Website/tools/build.mjs` — or
+  `node Website/tools/watch.mjs` to rebuild automatically on every source change —
+  then serve `Website/dist/` (see [Website/README.md](Website/README.md)).
   Never edit, reformat, lint, or "fix" these files — not even whitespace,
   escaped punctuation (`\+`, `\=`, `\.`), or vertical tabs inside tables.
   Those are export artifacts, not defects to repair locally. Prior exports
@@ -71,7 +77,7 @@ editing.
 - `local-only/New versions.md` holds
   rules text waiting to be implemented into the full ruleset and may be edited
   directly, including by the analysis agent. Ready rules text that could be
-  implemented into the ruleset is presented there, not in `AI context/RULES_ANALYSIS.md`, which
+  implemented into the ruleset is presented there, not in [AI context/RULES_ANALYSIS.md](<AI context/RULES_ANALYSIS.md>), which
   stays reserved for findings and change requests. `local-only/New versions.md` is the
   primary location for suggested rules text. If `local-only/New versions.md` contains
   ruletext that can already be found in the full ruleset document, remove it from
@@ -92,17 +98,17 @@ editing.
 - The authoritative sources are the Google Docs / Drive links listed inside the
   ruleset document's "Links to material" section.
 - All rules feedback, corrections, and change requests go into
-  `AI context/RULES_ANALYSIS.md`. Never encode findings as edits to the
+  [AI context/RULES_ANALYSIS.md](<AI context/RULES_ANALYSIS.md>). Never encode findings as edits to the
   rules text.
-- `AI context/RULES_ANALYSIS.md` analyzes the **latest ruleset version only** — it contains
+- [AI context/RULES_ANALYSIS.md](<AI context/RULES_ANALYSIS.md>) analyzes the **latest ruleset version only** — it contains
   no per-version changelog or iteration history. Resolved findings are removed
-  from it and condensed under "Resolved findings" in `AI context/DESIGN_DECISIONS.md`.
+  from it and condensed under "Resolved findings" in [AI context/DESIGN_DECISIONS.md](<AI context/DESIGN_DECISIONS.md>).
 - **Changelogs** are generated only between **release versions** (e.g., 0.9.4 →
   0.9.5), one document per release pair in `Rules/Rules changelog/`, named
-  `changelog X - Y.md` (e.g., `changelog 0_9_4 - 0_9_5.md`). A changelog documents
+  `changelog X - Y.md` (e.g., [changelog 0_9_4 - 0_9_5.md](<Rules/Rules changelog/changelog 0_9_4 - 0_9_5.md>)). A changelog documents
   the **exact delta between the two named exports** (e.g., 0.9.4.0 → 0.9.5.0) and
   is **never updated when later versions arrive** (e.g., 0.9.5.1's changes are not
-  folded into `changelog 0_9_4 - 0_9_5.md`) — later versions are treated like
+  folded into [changelog 0_9_4 - 0_9_5.md](<Rules/Rules changelog/changelog 0_9_4 - 0_9_5.md>)) — later versions are treated like
   older versions in this respect. The exports in `Rules/Older versions/` are
   archival and their individual differences are never documented;
   only the two latest of them are relevant, as context for
@@ -118,7 +124,7 @@ editing.
   or **Editorial**.
 - Verify every numerical claim (dice probabilities, conversion tables,
   advancement costs, worked examples) programmatically before reporting it.
-  State which checks were run in `AI context/RULES_ANALYSIS.md`.
+  State which checks were run in [AI context/RULES_ANALYSIS.md](<AI context/RULES_ANALYSIS.md>).
 - The ruleset is version 0.9.6.1 and explicitly pre-playtest. Layout issues and
   sections the author has marked incomplete are known gaps, not defects — report
   them as content gaps only.
@@ -127,8 +133,8 @@ editing.
   problem. Do not recommend changes that reverse those intents; recommend
   clarifications that preserve them.
 - Findings that have been resolved in the ruleset are removed from
-  `AI context/RULES_ANALYSIS.md` and recorded in condensed form under "Resolved findings"
-  in `AI context/DESIGN_DECISIONS.md`.
+  [AI context/RULES_ANALYSIS.md](<AI context/RULES_ANALYSIS.md>) and recorded in condensed form under "Resolved findings"
+  in [AI context/DESIGN_DECISIONS.md](<AI context/DESIGN_DECISIONS.md>).
 
 ## Game design conventions established during analysis
 
@@ -137,7 +143,7 @@ editing.
   prerequisites and conditions written into individual Moves (e.g., Thunder's
   Accuracy in Rain) and may justify GM-given Advantages/Disadvantages. Any
   converted Move may reference weather only through such conditionals in its
-  description. See `AI context/MOVE_CONVERSIONS.md` for the conversion
+  description. See [AI context/MOVE_CONVERSIONS.md](<AI context/MOVE_CONVERSIONS.md>) for the conversion
   method and the weather conventions.
 - **Conversion marking:** a Move conversion is **Direct** when every official
   specification maps onto ruleset mechanics via the conversion tables without
@@ -177,7 +183,7 @@ editing.
   leads the Description ("When a round starts, this Move can be used to..."),
   and simple terms matching defined ruleset terms are preferred ("Power", not
   "Attack Power"; "area", not "zone") (author revision, 2026-10-26; house
-  style recorded in `AI context/MOVE_CONVERSIONS.md`).
+  style recorded in [AI context/MOVE_CONVERSIONS.md](<AI context/MOVE_CONVERSIONS.md>)).
 - **Conversion simplification:** avoid accurate divisions of Max HP or other
   stats in Move conversions - use flat values instead (e.g., Stealth Rock's
   official 12.5% of max HP becomes a flat 4 True Damage), and do not apply
@@ -219,7 +225,7 @@ editing.
   interaction pick categories directly). A character's turn has an **Action
   Phase** and an **End Phase**, and restrictions never remove the End Phase:
   end-of-turn effects and Status Condition removal tests always resolve, even on
-  skipped turns. Design rationale: `AI context/DESIGN_DECISIONS.md` (D1-D9). Immobile is the
+  skipped turns. Design rationale: [AI context/DESIGN_DECISIONS.md](<AI context/DESIGN_DECISIONS.md>) (D1-D9). Immobile is the
   deliberate exception that also sets Speed 0 / Base Evasion 12, now stated in the
   section intro.
 - **Priority Turns:** a character that announces using a Priority Move at the

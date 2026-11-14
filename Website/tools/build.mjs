@@ -1,17 +1,25 @@
 #!/usr/bin/env node
-// build.mjs — build the static site in Website/site/ from the generated ruleset
-// documents in Website/ruleset/.
+// build.mjs — build the deployable static site in Website/dist/ from the source files
+// in Website/site/ and the generated ruleset documents in Website/ruleset/.
 //
-// Outputs:
-//   site/rules/index.html        — rules page (rendered rules + headings data + search index embedded)
-//   site/assets/data/site.json   — version + build date
-//   site/assets/data/moves.json  — the Move list: ruleset examples + hand-maintained move-library.json
-//   site/assets/data/search-index.json
+// The whole of Website/site/ (hand-written pages, scripts, styles, images, source data)
+// is copied to Website/dist/ first, then the generated files are written into it.
+// Everything under Website/dist/ is gitignored — never commit build output.
 //
-// The other pages (home, moves, creator, links-and-downloads, about) are static files
-// and are not touched by this script.
+// Outputs (under Website/dist/):
+//   dist/rules/index.html        — rules page (rendered rules + headings data, with the
+//                                  search index and site version/build date embedded
+//                                  inline via the template's JSON script blocks)
+//   dist/assets/data/moves.json  — the Move list: ruleset examples + hand-maintained move-library.json
+//   dist/LICENSE, dist/LICENSING.md — license documents copied from the repo root
+//
+// No other data files are emitted: the site's only runtime data fetch is
+// assets/data/moves.json. The search index / site data reach the rules page inline
+// (rules.js reads the #search-data / #site-data script blocks), and the source data
+// files site/assets/data/move-library.json and move-descriptions.json are build inputs
+// only — they are merged into moves.json and are NOT copied to dist/.
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync, copyFileSync, rmSync, cpSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -20,6 +28,7 @@ const website = join(here, "..");
 const repo = join(website, "..");
 const rulesetDir = join(website, "ruleset");
 const siteDir = join(website, "site");
+const distDir = join(website, "dist");
 
 // ---------- minimal Markdown renderer (subset sufficient for the cleaned ruleset) ----------
 
@@ -240,11 +249,21 @@ const rulesPage = rulesTemplate
   .replace("<!--SEARCH_DATA-->", JSON.stringify(searchIndex.sections))
   .replace("<!--SITE_DATA-->", JSON.stringify(siteJson));
 
-mkdirSync(join(siteDir, "rules"), { recursive: true });
-mkdirSync(join(siteDir, "assets", "data"), { recursive: true });
-writeFileSync(join(siteDir, "rules", "index.html"), rulesPage);
-writeFileSync(join(siteDir, "assets", "data", "site.json"), JSON.stringify(siteJson, null, 2));
-writeFileSync(join(siteDir, "assets", "data", "moves.json"), JSON.stringify(moves, null, 2));
-writeFileSync(join(siteDir, "assets", "data", "search-index.json"), JSON.stringify(searchIndex, null, 2));
+// Fresh output directory: copy the site source, then write the generated files into it.
+// Build-time-only source data is excluded from the copy — it is merged into the
+// generated moves.json, and the site never fetches the source files at runtime.
+const buildOnlyData = ["move-library.json", "move-descriptions.json"].map((f) => join(siteDir, "assets", "data", f));
+rmSync(distDir, { recursive: true, force: true });
+cpSync(siteDir, distDir, { recursive: true, filter: (src) => !buildOnlyData.includes(src) });
+mkdirSync(join(distDir, "rules"), { recursive: true });
+mkdirSync(join(distDir, "assets", "data"), { recursive: true });
+writeFileSync(join(distDir, "rules", "index.html"), rulesPage);
+writeFileSync(join(distDir, "assets", "data", "moves.json"), JSON.stringify(moves, null, 2));
 
-console.log(`Built site v${version.version}: rules page (${rules.headings.length} headings, ${rules.sections.length} sections), ${moves.length} moves -> assets/data/moves.json`);
+// License documents: copied from the repo root so the deployed site serves them at its
+// root; the static pages link to them with relative URLs, which work on any host.
+for (const name of ["LICENSE", "LICENSING.md"]) {
+  copyFileSync(join(repo, name), join(distDir, name));
+}
+
+console.log(`Built site v${version.version} into Website/dist/: rules page (${rules.headings.length} headings, ${rules.sections.length} sections), ${moves.length} moves -> dist/assets/data/moves.json`);
