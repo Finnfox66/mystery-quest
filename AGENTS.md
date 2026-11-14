@@ -32,9 +32,8 @@ editing.
   produced by `website/tools/update-ruleset.mjs` from the newest export: the
   artifact-cleaned ruleset under the generic name [Mystery Quest ruleset.md](<website/ruleset/Mystery Quest ruleset.md>)
   (without the Example Move conversions section — the website's Moves list is
-  the extracted examples plus the hand-maintained `website/site/assets/data/move-library.json`
-  (new conversions from the latest official versions; indirect ones wait in
-  `local-only/New versions.md`) — and
+  the committed, hand-maintained `website/site/assets/data/moves.json`, copied
+  into `dist/` by the build and never generated from intermediaries — and
   without the "Contents and material" section: the site's contents listing,
   links to material, acknowledgments and character-sheet image are
   implemented site-side, separate from the rules text, and the

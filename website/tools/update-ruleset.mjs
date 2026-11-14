@@ -10,7 +10,8 @@
 //     conversions section, under a generic name so references to it never
 //     change (replaced wholesale on each run)
 //   - example-move-conversions.md — the cleaned Example Move conversions
-//     section on its own (the build's source for moves.json)
+//     section on its own, kept as a standalone generated copy (the website's
+//     Moves list is the committed site/assets/data/moves.json)
 //   - version.json                — the true ruleset version (derived from the
 //     export FILENAME, e.g. 0_9_5_4 -> "0.9.5.4") plus the source export and
 //     update date, for the site's version banner

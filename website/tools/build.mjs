@@ -10,16 +10,15 @@
 //   dist/rules/index.html        — rules page (rendered rules + headings data, with the
 //                                  search index and site version/build date embedded
 //                                  inline via the template's JSON script blocks)
-//   dist/assets/data/moves.json  — the Move list: ruleset examples + hand-maintained move-library.json
+//   dist/assets/data/moves.json  — minified copy of the committed site/assets/data/moves.json
 //   dist/LICENSE, dist/LICENSING.md — license documents copied from the repo root
 //
-// No other data files are emitted: the site's only runtime data fetch is
-// assets/data/moves.json. The search index / site data reach the rules page inline
-// (rules.js reads the #search-data / #site-data script blocks), and the source data
-// files site/assets/data/move-library.json and move-descriptions.json are build inputs
-// only — they are merged into moves.json and are NOT copied to dist/.
+// The site's only runtime data fetch is assets/data/moves.json: a committed,
+// hand-maintained source file under site/assets/data/ that the build copies like
+// every other site asset (minified on the way out). The search index / site data reach
+// the rules page inline (rules.js reads the #search-data / #site-data script blocks).
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync, copyFileSync, rmSync, cpSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, copyFileSync, rmSync, cpSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -161,69 +160,15 @@ function renderMarkdown(md, { fromHeading = null } = {}) {
   return { html, sections, headings };
 }
 
-// ---------- Move examples parser ----------
-
-function parseMoves(md) {
-  const moves = [];
-  const blocks = md.split(/^#### /m).slice(1);
-  for (const b of blocks) {
-    const lines = b.split("\n");
-    let name = lines[0].trim();
-    let conversion = "direct";
-    if (name.endsWith("- indirect conversion")) {
-      conversion = "indirect";
-      name = name.slice(0, -"- indirect conversion".length).trim();
-    }
-    const m = { name, conversion, official: "", type: "", keywords: [], ppCost: null, range: "", shape: "", shapeSize: "", placementType: "", accuracy: "", power: "", secondaryEffects: "", otherEffects: "", description: "" };
-    for (const line of lines.slice(1)) {
-      const fm = line.match(/^- \*\*([^*]+?)\*\*:?\s*(.*)$/);
-      if (!fm) {
-        const om = line.match(/^\*\*Official:\*\*\s*(.*)$/);
-        if (om) m.official = om[1].trim();
-        continue;
-      }
-      const key = fm[1].trim().replace(/:+$/, "").toLowerCase();
-      const val = fm[2].trim();
-      switch (key) {
-        case "type": m.type = val; break;
-        case "keywords": m.keywords = val.split(",").map((k) => k.trim()).filter(Boolean); break;
-        case "pp cost": m.ppCost = parseInt(val, 10); break;
-        case "range": m.range = val; break;
-        case "shape": m.shape = val; break;
-        case "shape size": m.shapeSize = val; break;
-        case "placement type": m.placementType = val; break;
-        case "accuracy": m.accuracy = val; break;
-        case "power": m.power = val; break;
-        case "secondary effects": m.secondaryEffects = val; break;
-        case "other effects": m.otherEffects = val; break;
-        case "description": m.description = val; break;
-      }
-    }
-    moves.push(m);
-  }
-  return moves;
-}
-
 // ---------- build ----------
 
 const version = JSON.parse(readFileSync(join(rulesetDir, "version.json"), "utf8"));
 const rulesMd = readFileSync(join(rulesetDir, "Mystery Quest ruleset.md"), "utf8");
-const movesMd = readFileSync(join(rulesetDir, "example-move-conversions.md"), "utf8");
-// The website's Move list = the ruleset's Example Move conversions + the hand-maintained
-// library of new conversions from the latest official versions (move-library.json).
-const libraryPath = join(siteDir, "assets", "data", "move-library.json");
 
 // Rules page: render from the first "## " heading onward (page header presents title/author/version)
 const bodyStart = rulesMd.indexOf("\n## ");
 const rulesBody = rulesMd.slice(bodyStart + 1);
 const rules = renderMarkdown(rulesBody);
-
-const moves = parseMoves(movesMd).concat(existsSync(libraryPath) ? JSON.parse(readFileSync(libraryPath, "utf8")) : []);
-// Lore Descriptions come from official flavor text (move-descriptions.json, built by
-// local-only/fetch-descriptions.mjs from PokeAPI); ruleset examples carry none themselves.
-const descPath = join(siteDir, "assets", "data", "move-descriptions.json");
-const descriptions = existsSync(descPath) ? JSON.parse(readFileSync(descPath, "utf8")) : {};
-for (const m of moves) if (!m.description && descriptions[m.name]) m.description = descriptions[m.name];
 
 const siteJson = { version: version.version, buildDate: new Date().toISOString() };
 const searchIndex = {
@@ -249,16 +194,17 @@ const rulesPage = rulesTemplate
   .replace("<!--SEARCH_DATA-->", JSON.stringify(searchIndex.sections))
   .replace("<!--SITE_DATA-->", JSON.stringify(siteJson));
 
-// Fresh output directory: copy the site source, then write the generated files into it.
-// Build-time-only source data is excluded from the copy — it is merged into the
-// generated moves.json, and the site never fetches the source files at runtime.
-const buildOnlyData = ["move-library.json", "move-descriptions.json"].map((f) => join(siteDir, "assets", "data", f));
+// Fresh output directory: copy the site source (the committed moves.json included),
+// then write the generated files into it.
 rmSync(distDir, { recursive: true, force: true });
-cpSync(siteDir, distDir, { recursive: true, filter: (src) => !buildOnlyData.includes(src) });
+cpSync(siteDir, distDir, { recursive: true });
 mkdirSync(join(distDir, "rules"), { recursive: true });
-mkdirSync(join(distDir, "assets", "data"), { recursive: true });
 writeFileSync(join(distDir, "rules", "index.html"), rulesPage);
-writeFileSync(join(distDir, "assets", "data", "moves.json"), JSON.stringify(moves)); // minified: smaller download, faster JSON.parse
+// The Move list is a committed source file, not build output — minify it on the way
+// into dist/ (the source in site/ stays pretty-printed; minified: smaller download,
+// faster JSON.parse).
+const movesJson = JSON.parse(readFileSync(join(siteDir, "assets", "data", "moves.json"), "utf8"));
+writeFileSync(join(distDir, "assets", "data", "moves.json"), JSON.stringify(movesJson));
 
 // License documents: copied from the repo root so the deployed site serves them at its
 // root; the static pages link to them with relative URLs, which work on any host.
@@ -266,4 +212,4 @@ for (const name of ["LICENSE", "LICENSING.md"]) {
   copyFileSync(join(repo, name), join(distDir, name));
 }
 
-console.log(`Built site v${version.version} into website/dist/: rules page (${rules.headings.length} headings, ${rules.sections.length} sections), ${moves.length} moves -> dist/assets/data/moves.json`);
+console.log(`Built site v${version.version} into website/dist/: rules page (${rules.headings.length} headings, ${rules.sections.length} sections), ${movesJson.length} moves -> dist/assets/data/moves.json (minified copy of the committed source)`);

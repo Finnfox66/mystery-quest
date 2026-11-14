@@ -20,13 +20,11 @@ Contents:
   completeness — the v2 Markdown download needs it — but the rules web page
   renders from the first "## Description" heading onward (the page header,
   version banner and footer present the name, author and version instead).
-- **[example-move-conversions.md](example-move-conversions.md)** — the cleaned Example Move conversions
-  section on its own; the build's source for the generated
-  `dist/assets/data/moves.json`, which also merges in the hand-maintained
-  `website/site/assets/data/move-library.json`. That library file is source data,
-  not generated output — it is edited by hand, no script produces it, and it is
-  not copied into `dist/` (the site serves only the generated `moves.json`, so the
-  Moves list is not fully generated: it is the parsed examples plus the library).
+- **[example-move-conversions.md](example-move-conversions.md)** — the cleaned Example Move
+  conversions section on its own, kept as a standalone generated copy.
+  The website's Moves list is generated from a hand-maintained file
+  `website/site/assets/data/moves.json`, which the build copies into `dist/`
+  (minified) and the site fetches at runtime.
 - **`version.json`** — the true ruleset version (derived from the export
   filename, e.g. `0_9_6_1.md` → `0.9.6.1`), the source export name and the
   update date. The site's version banner reads the version from here — never
