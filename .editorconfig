@@ -1,0 +1,6 @@
+# EditorConfig — https://editorconfig.org
+root = true
+
+# All text files use Unix (LF) line endings
+[*]
+end_of_line = lf

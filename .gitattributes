@@ -1,2 +1,13 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Auto detect text files and force Unix (LF) line endings, in the repo and on checkout
+* text=auto eol=lf
+
+# Binary files are never treated as text or normalized
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.xlsx binary
+*.xls binary
+*.zip binary
