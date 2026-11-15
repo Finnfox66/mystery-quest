@@ -58,7 +58,7 @@ function slugify(text) {
 // sections: one per heading, { anchor, level, text, breadcrumb, textContent }
 // headings: flat list { level, text, anchor, parent } (parent = index of parent heading or -1)
 function renderMarkdown(md, { fromHeading = null } = {}) {
-  const lines = md.split("\n");
+  const lines = md.replace(/\r\n/g, "\n").split("\n"); // tolerate CRLF checkouts (Windows)
   let html = "";
   const headings = [];
   const sections = [];

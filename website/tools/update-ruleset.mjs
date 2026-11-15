@@ -263,7 +263,7 @@ export function verify(text) {
 function main() {
   const { name, version } = latestExport();
   const versionString = version.join(".");
-  const source = readFileSync(join(rulesDir, name), "utf8");
+  const source = readFileSync(join(rulesDir, name), "utf8").replace(/\r\n/g, "\n"); // tolerate CRLF checkouts (Windows)
   const manifest = JSON.parse(readFileSync(join(outDir, "images.json"), "utf8"));
   const imageData = parseImageData(source);
 
