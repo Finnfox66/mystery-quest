@@ -15,7 +15,7 @@ editing.
 
 - The versioned ruleset exports are Markdown
   exports of the author's Google Doc. They are **not the source of truth**.
-  The latest export (currently [rules/Mystery Quest ruleset 0_9_6_2.md](<rules/Mystery Quest ruleset 0_9_6_2.md>)) sits at
+  The latest export (currently [the 0.9.6.2 ruleset export](<rules/Mystery Quest ruleset 0_9_6_2.md>)) sits at
   the `rules/` root. A few selected prior exports (currently the release baselines
   `0_9_4_0`, `0_9_5_0` and `0_9_6_0`) are committed in `rules/Older versions/`; all the
   other prior exports (the patch versions, e.g. `0_9_4_1`–`0_9_4_7`,
@@ -34,7 +34,7 @@ editing.
   numbering.
 - **The website's rules documents** (`website/ruleset/`) are *generated* files,
   produced by `website/tools/update-ruleset.mjs` from the newest export: the
-  artifact-cleaned ruleset under the generic name [Mystery Quest ruleset.md](<website/ruleset/Mystery Quest ruleset.md>)
+  artifact-cleaned ruleset under the generic name [the generated ruleset document](<website/ruleset/Mystery Quest ruleset.md>)
   (without the Example Move conversions section — the website's Moves list is
   the committed `website/site/assets/data/moves.json` — generated from the ruleset
   examples plus the library in `local-only/move-conversion/move-library.json` (new
@@ -65,7 +65,7 @@ editing.
   at a domain root and under a project subpath (`user.github.io/<repo>/`). Local
   development: run `node website/tools/build.mjs` — or
   `node website/tools/watch.mjs` to rebuild automatically on every source change —
-  then serve `website/dist/` (see [website/README.md](website/README.md)).
+  then serve `website/dist/` (see [the website README](website/README.md)).
   Never edit, reformat, lint, or "fix" these files — not even whitespace,
   escaped punctuation (`\+`, `\=`, `\.`), or vertical tabs inside tables.
   Those are export artifacts, not defects to repair locally. Prior exports
@@ -85,7 +85,7 @@ editing.
 - `local-only/move-conversion/New versions.md` holds
   rules text waiting to be implemented into the full ruleset and may be edited
   directly, including by the analysis agent. Ready rules text that could be
-  implemented into the ruleset is presented there, not in [ai-context/RULES_ANALYSIS.md](ai-context/RULES_ANALYSIS.md), which
+  implemented into the ruleset is presented there, not in [the rules analysis](ai-context/RULES_ANALYSIS.md), which
   stays reserved for findings and change requests. `local-only/move-conversion/New versions.md` is the
   primary location for suggested rules text. If `local-only/move-conversion/New versions.md` contains
   ruletext that can already be found in the full ruleset document, remove it from
@@ -114,11 +114,11 @@ editing.
 - The authoritative sources are the Google Docs / Drive links listed inside the
   ruleset document's "Links to material" section.
 - All rules feedback, corrections, and change requests go into
-  [ai-context/RULES_ANALYSIS.md](ai-context/RULES_ANALYSIS.md). Never encode findings as edits to the
+  [the rules analysis](ai-context/RULES_ANALYSIS.md). Never encode findings as edits to the
   rules text.
-- [ai-context/RULES_ANALYSIS.md](ai-context/RULES_ANALYSIS.md) analyzes the **latest ruleset version only** — it contains
+- [The rules analysis](ai-context/RULES_ANALYSIS.md) analyzes the **latest ruleset version only** — it contains
   no per-version changelog or iteration history. Resolved findings are removed
-  from it and condensed under "Resolved findings" in [ai-context/DESIGN_DECISIONS.md](ai-context/DESIGN_DECISIONS.md).
+  from it and condensed under "Resolved findings" in [the design decision log](ai-context/DESIGN_DECISIONS.md).
 - **Changelogs** are generated only between **release versions** (e.g., 0.9.4 →
   0.9.5), one document per release pair in `local-only/rules-changelog/` (gitignored —
   changelogs are working documents and are not committed), named
@@ -141,7 +141,7 @@ editing.
   or **Editorial**.
 - Verify every numerical claim (dice probabilities, conversion tables,
   advancement costs, worked examples) programmatically before reporting it.
-  State which checks were run in [ai-context/RULES_ANALYSIS.md](ai-context/RULES_ANALYSIS.md).
+  State which checks were run in [the rules analysis](ai-context/RULES_ANALYSIS.md).
 - The ruleset is version 0.9.6.2 and explicitly pre-playtest. Layout issues and
   sections the author has marked incomplete are known gaps, not defects — report
   them as content gaps only.
@@ -150,8 +150,8 @@ editing.
   problem. Do not recommend changes that reverse those intents; recommend
   clarifications that preserve them.
 - Findings that have been resolved in the ruleset are removed from
-  [ai-context/RULES_ANALYSIS.md](ai-context/RULES_ANALYSIS.md) and recorded in condensed form under "Resolved findings"
-  in [ai-context/DESIGN_DECISIONS.md](ai-context/DESIGN_DECISIONS.md).
+  [the rules analysis](ai-context/RULES_ANALYSIS.md) and recorded in condensed form under "Resolved findings"
+  in [the design decision log](ai-context/DESIGN_DECISIONS.md).
 
 ## Game design conventions established during analysis
 
@@ -160,7 +160,7 @@ editing.
   prerequisites and conditions written into individual Moves (e.g., Thunder's
   Accuracy in Rain) and may justify GM-given Advantages/Disadvantages. Any
   converted Move may reference weather only through such conditionals in its
-  description. See [ai-context/MOVE_CONVERSIONS.md](ai-context/MOVE_CONVERSIONS.md) for the conversion
+  description. See [the Move conversions document](ai-context/MOVE_CONVERSIONS.md) for the conversion
   method and the weather conventions.
 - **Conversion marking:** a Move conversion is **Direct** when every official
   specification maps onto ruleset mechanics via the conversion tables without
@@ -200,7 +200,7 @@ editing.
   leads the Description ("When a round starts, this Move can be used to..."),
   and simple terms matching defined ruleset terms are preferred ("Power", not
   "Attack Power"; "area", not "zone") (author revision, 2026-10-26; house
-  style recorded in [ai-context/MOVE_CONVERSIONS.md](ai-context/MOVE_CONVERSIONS.md)).
+  style recorded in [the Move conversions document](ai-context/MOVE_CONVERSIONS.md)).
 - **Conversion simplification:** avoid accurate divisions of Max HP or other
   stats in Move conversions - use flat values instead (e.g., Stealth Rock's
   official 12.5% of max HP becomes a flat 4 True Damage), and do not apply
@@ -246,7 +246,7 @@ editing.
   interaction pick categories directly). A character's turn has an **Action
   Phase** and an **End Phase**, and restrictions never remove the End Phase:
   end-of-turn effects and Status Condition removal tests always resolve, even on
-  skipped turns. Design rationale: [ai-context/DESIGN_DECISIONS.md](ai-context/DESIGN_DECISIONS.md) (D1-D9). Immobile is the
+  skipped turns. Design rationale: [the design decision log](ai-context/DESIGN_DECISIONS.md) (D1-D9). Immobile is the
   deliberate exception that also sets Speed 0 / Base Evasion 12, now stated in the
   section intro.
 - **Priority Turns:** a character that announces using a Priority Move at the

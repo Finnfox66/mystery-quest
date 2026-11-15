@@ -2,7 +2,7 @@
 
 How Moves of the official Pokémon games are converted into **Pokémon Mystery Quest**
 mechanics, and how converted Move entries are formatted. Companion to
-[RULES_ANALYSIS.md](RULES_ANALYSIS.md); the ruleset document is the authority — this file summarizes
+[the rules analysis](RULES_ANALYSIS.md); the ruleset document is the authority — this file summarizes
 its conversion method (the current ruleset's "Moves" section) so conversions can be made
 without re-deriving it, and records the house style for entry texts. The ruleset's
 own "Example Move conversions" section holds the worked examples and is not

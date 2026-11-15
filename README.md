@@ -19,16 +19,16 @@ The rules themselves live in the author's Google Doc (linked in the ruleset's
 - **`website/`** — the project's website: its source files in `site/`, the generated
   ruleset documents in `ruleset/` (built from the newest export by
   `tools/update-ruleset.mjs` — never edit those by hand), the build tools in
-  `tools/`, and the planning documents ([CONTENT_PLAN.md](website/CONTENT_PLAN.md), [TECHNICAL_PLAN.md](website/TECHNICAL_PLAN.md),
-  [design.md](website/design.md) and the `design-reference/` screenshots). The build
+  `tools/`, and the planning documents ([the content plan](website/CONTENT_PLAN.md), [the technical plan](website/TECHNICAL_PLAN.md),
+  [the design reference](website/design.md) and the `design-reference/` screenshots). The build
   (`tools/build.mjs`) compiles `site/` into the gitignored `dist/`; all data files,
-  including the Move list, are committed as-is. See [website/README.md](website/README.md)
+  including the Move list, are committed as-is. See [the website README](website/README.md)
   for how to build and run it locally.
 - **`ai-context/`** — working documents maintained together with an AI assistant:
-  open findings on the current ruleset ([RULES_ANALYSIS.md](ai-context/RULES_ANALYSIS.md)), the design decision log
-  and resolved-findings record ([DESIGN_DECISIONS.md](ai-context/DESIGN_DECISIONS.md)), the Move conversion method
-  ([MOVE_CONVERSIONS.md](ai-context/MOVE_CONVERSIONS.md)).
-- **[AGENTS.md](AGENTS.md)** — instructions for AI coding assistants working in this repository.
+  open findings on the current ruleset ([the rules analysis](ai-context/RULES_ANALYSIS.md)), the design decision log
+  and resolved-findings record ([the design decision log](ai-context/DESIGN_DECISIONS.md)), the Move conversion method
+  ([the Move conversions document](ai-context/MOVE_CONVERSIONS.md)).
+- **[Agent instructions](AGENTS.md)** — instructions for AI coding assistants working in this repository.
 
 ## License
 
@@ -39,4 +39,4 @@ website and its code, and the planning and analysis documents — is licensed un
 Pokémon and all related names and marks are trademarks of Nintendo, Game Freak, The
 Pokémon Company, and Creatures Inc. This is an unofficial fan-made project, not
 affiliated with or endorsed by them, and the MIT License grants no rights in those
-trademarks. See [LICENSING.md](LICENSING.md) for the full licensing documentation.
+trademarks. See [the licensing notes](LICENSING.md) for the full licensing documentation.

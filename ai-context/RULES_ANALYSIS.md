@@ -1,10 +1,10 @@
 # RULES_ANALYSIS.md
 
 Rules analysis of **Pokémon Mystery Quest** v0.9.6.2
-([rules/Mystery Quest ruleset 0_9_6_2.md](<../rules/Mystery Quest ruleset 0_9_6_2.md>), the latest export). This document analyzes the
+([the 0.9.6.2 ruleset export](<../rules/Mystery Quest ruleset 0_9_6_2.md>)). This document analyzes the
 current ruleset version only — it contains no version history or iteration log: findings
 resolved in the ruleset are removed and recorded in condensed form under "Resolved
-findings" in [DESIGN_DECISIONS.md](DESIGN_DECISIONS.md), and changelogs between release versions live in
+findings" in [the design decision log](DESIGN_DECISIONS.md), and changelogs between release versions live in
 `local-only/rules-changelog/`. The ruleset documents are exports from the author's Google Doc
 and were reviewed read-only; every recommendation below is a change to make **in the
 source document**, not in this repository's copies.
@@ -13,7 +13,7 @@ Findings are categorized as: **Rules defect** (undefined or contradictory mechan
 **Ambiguity**, **Balance concern**, **Content gap**, **Editorial**. Sections of the ruleset
 are referenced by heading, not line number. Finding IDs are prefixed by category (D, A, B,
 C, E) and never reused — a resolved ID's record lives under "Resolved findings" in
-[DESIGN_DECISIONS.md](DESIGN_DECISIONS.md) (older records there use the historical F-numbers).
+[the design decision log](DESIGN_DECISIONS.md) (older records there use the historical F-numbers).
 
 ## Contents
 
@@ -27,7 +27,7 @@ C, E) and never reused — a resolved ID's record lives under "Resolved findings
 
 ## 1. Scope and method
 
-- Every section of [rules/Mystery Quest ruleset 0_9_6_2.md](<../rules/Mystery Quest ruleset 0_9_6_2.md>) was read in full.
+- Every section of [the 0.9.6.2 ruleset export](<../rules/Mystery Quest ruleset 0_9_6_2.md>) was read in full.
 - All checkable numerical claims were verified programmatically (exact d20 enumeration and
   dynamic programming, run in a sandbox):
   - **Percentage Tests** reproduce official chances exactly for every 5% step from 0% to
@@ -118,7 +118,7 @@ intended, but a cap or GM guidance would prevent rules-lawyer stacking.
 Verified: the 85–100 bracket converts to 10 + d10 (average 15.5) vs the official midpoint
 9.25 — about 68% inflation — while AoE Powers are two dice sets with no flat value.
 *Author clarification:* deliberate — AoE Moves are weaker per target but hit potentially
-more targets. Recorded in [DESIGN_DECISIONS.md](DESIGN_DECISIONS.md); no change needed.
+more targets. Recorded in [the design decision log](DESIGN_DECISIONS.md); no change needed.
 
 **B5. Example Move PP-efficiency spread is inherited from official data.**
 *Where:* Example Move conversions.

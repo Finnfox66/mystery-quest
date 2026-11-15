@@ -2,7 +2,7 @@
 
 **What the website contains, page by page.** This is the content plan: the pages the site
 has and what appears on each of them. For how the site is built (stack, build pipeline,
-data formats, tool internals, roadmap), see [TECHNICAL_PLAN.md](TECHNICAL_PLAN.md). The v1 site is
+data formats, tool internals, roadmap), see [the technical plan](TECHNICAL_PLAN.md). The v1 site is
 implemented in `website/site/` (all pages except the encounter builder); this document
 remains the content plan.
 
@@ -197,17 +197,17 @@ fan-project disclaimer and licensing note (§1), and the acknowledgments.
 
 ## 3. Content pipeline (what feeds the pages)
 
-- **Rules**: the generically-named cleaned document [website/ruleset/Mystery Quest ruleset.md](<ruleset/Mystery Quest ruleset.md>) (kept at the latest export by `website/tools/update-ruleset.mjs`, without
+- **Rules**: the generically-named cleaned document [the generated ruleset document](<ruleset/Mystery Quest ruleset.md>) (kept at the latest export by `website/tools/update-ruleset.mjs`, without
   the Example Move conversions and "Contents and material" sections). The build renders it
   from the first "## Description" heading onward; the page header/banner/footer present
   name, author and version instead.
 - **Moves**: `moves.json` = the ruleset's Example Move conversions (parsed from
-  [website/ruleset/example-move-conversions.md](ruleset/example-move-conversions.md)) plus the hand-maintained `local-only/move-conversion/move-library.json`
+  [the Example Move conversions extract](ruleset/example-move-conversions.md)) plus the hand-maintained `local-only/move-conversion/move-library.json`
   (new Moves converted from the latest official versions, same entry format), with official
   flavor texts from `local-only/move-conversion/move-descriptions.json` — built and committed by
   `local-only/move-conversion/build-moves.mjs` (`website/tools/build.mjs` does not touch it; it copies the
   committed file into `dist/`). Conversion
-  method and Move-entry formatting conventions: [ai-context/MOVE_CONVERSIONS.md](../ai-context/MOVE_CONVERSIONS.md).
+  method and Move-entry formatting conventions: [the Move conversions document](../ai-context/MOVE_CONVERSIONS.md).
 - **Conventions carried over to the site's data**: weather has no standalone mechanics;
   Direct vs Indirect marking with a plain hyphen in the title; Move-entry formatting rules;
   curly apostrophes in generated prose.

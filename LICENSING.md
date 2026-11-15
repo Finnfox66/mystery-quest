@@ -20,7 +20,7 @@ All original content of this repository is licensed under the [MIT License](LICE
 - the character sheet in `rules/Character sheet/`;
 - the changelogs (working documents kept in `local-only/rules-changelog/`, not committed);
 - the planning and analysis documents in `website/*.md` and `ai-context/`;
-- this repository's [README.md](README.md) and [AGENTS.md](AGENTS.md).
+- this repository's [README](README.md) and [agent instructions](AGENTS.md).
 
 Under the MIT License you may use, copy, modify, merge, publish, distribute,
 sublicense, and sell this content for any purpose, commercial or not, as long as
