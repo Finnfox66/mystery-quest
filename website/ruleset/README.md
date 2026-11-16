@@ -8,7 +8,7 @@ of truth), and the raw exports in `rules/` are never modified.
 
 Contents:
 
-- **[Mystery Quest ruleset.md](<Mystery Quest ruleset.md>)** — the artifact-cleaned ruleset, under a
+- **[The generated ruleset document](<Mystery Quest ruleset.md>)** — the artifact-cleaned ruleset, under a
   generic name so references to it never change. It does **not** include the
   Example Move conversions section (the website provides the Moves list
   separately) or the **Contents and material** section (the document's own
@@ -20,7 +20,7 @@ Contents:
   completeness — the v2 Markdown download needs it — but the rules web page
   renders from the first "## Description" heading onward (the page header,
   version banner and footer present the name, author and version instead).
-- **[example-move-conversions.md](example-move-conversions.md)** — the cleaned Example Move
+- **[The Example Move conversions extract](example-move-conversions.md)** — the cleaned Example Move
   conversions section on its own, kept as a standalone generated copy.
   The website's Moves list is the committed `website/site/assets/data/moves.json`
   (built from these examples plus the local-only conversion library by
@@ -43,4 +43,4 @@ Contents:
   material" section, but the manifest still copies the asset to
   `website/site/assets/images/character-sheet.png`, where the site uses it
   directly by path (it is placed on the site's Links and downloads page —
-  [CONTENT_PLAN.md](../CONTENT_PLAN.md) §2.6 — instead of inside the rules text).
+  [the content plan](../CONTENT_PLAN.md) §2.6 — instead of inside the rules text).

@@ -4,7 +4,7 @@ Design practices extracted from the screen examples in `website/design-reference
 (Home, Rules, "Character creator – characters list"; PNG + SVG). **The examples display
 primarily placeholder content and are basic style examples only — they are not final
 versions and should not be interpreted exactly.** Where the examples and the plans
-disagree, [CONTENT_PLAN.md](CONTENT_PLAN.md) / [TECHNICAL_PLAN.md](TECHNICAL_PLAN.md) win on content and behavior.
+disagree, [the content plan](CONTENT_PLAN.md) / [the technical plan](TECHNICAL_PLAN.md) win on content and behavior.
 
 ## Palette (extracted from the SVG fills/stops and PNG pixels)
 

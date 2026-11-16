@@ -32,10 +32,10 @@ are imported/exported as JSON files.
   them would create a second source that drifts from the ruleset's conversion input —
   so the earlier "no official base-stat lookup" exception stands for stats, and Core
   base values are entered by hand. Factual game data only — no artwork, per
-  [CONTENT_PLAN.md](CONTENT_PLAN.md) §1.)
+  [the content plan](CONTENT_PLAN.md) §1.)
 - **The Google Docs are the source of truth** for the rules; the repo's `rules/*.md`
   exports are inputs, never outputs. Website content is *generated* from them (see
-  [CONTENT_PLAN.md](CONTENT_PLAN.md) §3); generated HTML/JSON is committed but never hand-edited.
+  [the content plan](CONTENT_PLAN.md) §3); generated HTML/JSON is committed but never hand-edited.
 - **Custom Moves are first-class.** Because any character can have invented or
   home-converted Moves, a character's import/export **never stores Move reference IDs** —
   every Move is embedded in full (§5). The Move library on the site is a convenience
@@ -54,7 +54,7 @@ are imported/exported as JSON files.
   rosters and keeps no combat state, which stays within this constraint.
 - Non-goals for v1: hosting the character sheet PDF (a link suffices), dark mode, and
   the fan-project naming/disclaimer content itself (that is content policy — see
-  [CONTENT_PLAN.md](CONTENT_PLAN.md) §1).
+  [the content plan](CONTENT_PLAN.md) §1).
 
 ## 2. Proposed stack
 
@@ -73,7 +73,7 @@ and hostable anywhere:
   (partials), committed but never hand-edited.
 - **The website's rules documents live in `website/ruleset/`** (decided),
   maintained by **`website/tools/update-ruleset.mjs`** (run after each new
-  export arrives; see [website/ruleset/README.md](ruleset/README.md)). The script picks the newest
+  export arrives; see [the ruleset README](ruleset/README.md)). The script picks the newest
   `rules/Mystery Quest ruleset 0_x_y_z.md` and produces:
   - **the ruleset document** — the artifact-cleaned copy of the latest export
     (escaped punctuation, vertical-tab table cells → `<br>`, heading anchor
@@ -82,10 +82,10 @@ and hostable anywhere:
     website provides the Moves list separately) and **without the
     "Contents and material" section** (the document's own ToC, links to
     material, acknowledgments and character-sheet image — that material is
-    presented site-side, see [CONTENT_PLAN.md](CONTENT_PLAN.md) §2.1), under the generic name
-    [Mystery Quest ruleset.md](<ruleset/Mystery Quest ruleset.md>) so references to it never change (replaced
+    presented site-side, see [the content plan](CONTENT_PLAN.md) §2.1), under the generic name
+    [the generated ruleset document](<ruleset/Mystery Quest ruleset.md>) so references to it never change (replaced
     wholesale on each run).
-  - **[example-move-conversions.md](ruleset/example-move-conversions.md)** — the cleaned Example Move conversions
+  - **[the Example Move conversions extract](ruleset/example-move-conversions.md)** — the cleaned Example Move conversions
     section on its own: the source for `moves.json` (built by `local-only/move-conversion/build-moves.mjs`).
   - **`version.json`** — the true ruleset version, derived from the export
     FILENAME (e.g. `0_9_6_1.md` → `0.9.6.1`), plus the source export and the
@@ -106,7 +106,7 @@ and hostable anywhere:
     when their reference is no longer in the generated rules copy — the
     character-sheet image's reference lived inside the removed "Contents and
     material" section, but its asset is still copied and the site references
-    it by path directly ([CONTENT_PLAN.md](CONTENT_PLAN.md) §2.6).
+    it by path directly ([the content plan](CONTENT_PLAN.md) §2.6).
   The raw exports in `rules/` are never touched; the generated documents are
   never hand-edited. The build (below) consumes these files, and the v2
   Markdown download is the ruleset document itself.
@@ -114,7 +114,7 @@ and hostable anywhere:
   ruleset documents change (and by the Pages workflow after every checkout). It
   copies the whole of `website/site/` (the committed source) into `website/dist/`
   and writes its outputs there (`dist/rules/`, `dist/assets/data/moves.json`,
-  and the `LICENSE`/[LICENSING.md](../LICENSING.md) copies);
+  and the `LICENSE`/[the licensing notes](../LICENSING.md) copies);
   `website/dist/` is gitignored as a whole, so no build output is ever committed.
   During local development, `tools/watch.mjs` re-runs the same build automatically
   whenever a watched source changes (Node's built-in `fs.watch`, no dependencies).
@@ -134,7 +134,7 @@ and hostable anywhere:
      `website/dist/assets/data/moves.json` (minified on the way out) — the Move list is
      a committed source file, not build output: `local-only/move-conversion/build-moves.mjs`
      builds it from the Example Move conversions parsed from
-     [website/ruleset/example-move-conversions.md](ruleset/example-move-conversions.md) plus the working data in
+     [the Example Move conversions extract](ruleset/example-move-conversions.md) plus the working data in
      `local-only/move-conversion/` — `move-library.json` (new Move conversions from the
      latest official versions) and `move-descriptions.json` (official flavor texts);
   4. embeds the search index generated from the rendered rules (§3) and the version
@@ -210,7 +210,7 @@ decoration:
   hold WCAG AA contrast, focus states must be clearly visible on the rounded inputs,
   and the layout must work down to phone width (the creator tool is the narrow-layout
   stress case).
-- No official Pokémon artwork or sprites anywhere ([CONTENT_PLAN.md](CONTENT_PLAN.md) §1); placeholder
+- No official Pokémon artwork or sprites anywhere ([the content plan](CONTENT_PLAN.md) §1); placeholder
   graphics are generic silhouettes drawn in the site's own flat style.
 
 ### 4.1. The character sheet page: efficiently spaced and moderately print-ready
@@ -335,7 +335,7 @@ Portrait handling with no backend, keeping "one character = one file" true:
 ## 7. Creator tool internals
 
 PC/NPC modes sharing one component library. Page content is described in
-[CONTENT_PLAN.md](CONTENT_PLAN.md) §2.4.
+[the content plan](CONTENT_PLAN.md) §2.4.
 
 ### 7.0. Sheet modes: edit and preview
 
@@ -535,7 +535,7 @@ pure-quality-of-life item, kept in v2 because of its difficulty:
   in the Moves browser and the creator's Move palette alongside the official
   conversions.
 - **Exporting the ruleset as Markdown** — a download of the current, display-normalized
-  ruleset (the content pipeline's input format, [CONTENT_PLAN.md](CONTENT_PLAN.md) §3), so users and AI
+  ruleset (the content pipeline's input format, [the content plan](CONTENT_PLAN.md) §3), so users and AI
   tools always have the latest text without scraping the site.
 - **Exporting the full Moves library as JSON** — the site's Move data (schema of §5's
   Move object) as a single downloadable file, for reuse in the creator, home tools, or
@@ -561,7 +561,7 @@ explicitly revisited (§1).
 
 Decided already: hosting (GitHub Pages via the GitHub Actions workflow `.github/workflows/website-workflow.yml`; no effect on the build), no
 predefined static data libraries (species names/types, resistance/weakness levels, Abilities, Base Value Arrays, Moves) bundled at build time with no runtime lookup — species base stats excluded (official stats may change; entered manually), fan-project naming and disclaimers with the "MQ" short form
-([CONTENT_PLAN.md](CONTENT_PLAN.md) §1), only the latest ruleset version viewable, rules input format
+([the content plan](CONTENT_PLAN.md) §1), only the latest ruleset version viewable, rules input format
 (Markdown throughout: the export is script-cleaned into `website/ruleset/`, then rendered
 to generated HTML partials; §2), rules search
 tools (§3), visual
