@@ -20,7 +20,7 @@
 // The search index / site data reach the rules page inline (rules.js reads the
 // #search-data / #site-data script blocks).
 
-import { readFileSync, writeFileSync, mkdirSync, copyFileSync, rmSync, cpSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, copyFileSync, rmSync, cpSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -123,18 +123,27 @@ function renderMarkdown(md, { fromHeading = null } = {}) {
     if (/^\s*-\s+/.test(line)) {
       // list (one nesting level via 2-space indent)
       let list = "<ul>", plain = [];
+      let liOpen = false, ulOpen = false;
+      const closeUl = () => { if (ulOpen) { list += "</ul>"; ulOpen = false; } };
+      const closeLi = () => { if (liOpen) { list += "</li>"; liOpen = false; } };
       while (i < lines.length && /^\s*-\s+/.test(lines[i])) {
         const m = lines[i].match(/^(\s*)-\s+(.*)$/);
         const indent = m[1].length;
         const item = m[2];
-        if (indent >= 2) {
-          list += `<li><ul><li>${inline(item)}</li></ul></li>`;
-        } else {
+        if (indent >= 2 && liOpen) {
+          // nested item: the sub-list hangs inside the open top-level <li>
+          // (an empty wrapper <li> would render a second, filled bullet)
+          if (!ulOpen) { list += "<ul>"; ulOpen = true; }
           list += `<li>${inline(item)}</li>`;
+        } else {
+          closeUl(); closeLi();
+          list += `<li>${inline(item)}`;
+          liOpen = true;
         }
         plain.push(item);
         i++;
       }
+      closeUl(); closeLi();
       list += "</ul>";
       addBlock(list, plain.join(" "));
       continue;
@@ -198,7 +207,10 @@ const rulesPage = rulesTemplate
 
 // Fresh output directory: copy the site source (the committed moves.json included),
 // then write the generated files into it.
-rmSync(distDir, { recursive: true, force: true });
+// Empty dist/ in place instead of removing the directory itself: on Windows a
+// directory cannot be renamed/removed while a dev server or shell has it as its cwd.
+mkdirSync(distDir, { recursive: true });
+for (const e of readdirSync(distDir)) rmSync(join(distDir, e), { recursive: true, force: true });
 cpSync(siteDir, distDir, { recursive: true });
 mkdirSync(join(distDir, "rules"), { recursive: true });
 writeFileSync(join(distDir, "rules", "index.html"), rulesPage);
