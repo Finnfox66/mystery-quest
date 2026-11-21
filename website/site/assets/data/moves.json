@@ -1221,7 +1221,7 @@
     "accuracy": "+10",
     "power": "8 + d8",
     "secondaryEffects": "",
-    "otherEffects": "This Move scores a Critical Hit on a roll of 19 or 20 instead of only on a natural 20.",
+    "otherEffects": "This Move scores a Critical Hit on a roll of 18, 19 or 20 instead of only on a natural 20.",
     "description": "The user expels pressurized water to cut at the target like a blade. This move has a heightened chance of landing a critical hit."
   },
   {
@@ -3455,7 +3455,7 @@
     "accuracy": "+10",
     "power": "8 + d8",
     "secondaryEffects": "Applies a Speed buff of one stage (+2) to the user.",
-    "otherEffects": "This Move scores a Critical Hit on a roll of 19 or 20 instead of only on a natural 20.",
+    "otherEffects": "This Move scores a Critical Hit on a roll of 18, 19 or 20 instead of only on a natural 20.",
     "description": "The user slashes the target with aura-enriched wings. This also boosts the user's Speed stat. This move has a heightened chance of landing a critical hit."
   },
   {
@@ -5277,7 +5277,7 @@
     "accuracy": "+10",
     "power": "10 + d10",
     "secondaryEffects": "",
-    "otherEffects": "This Move scores a Critical Hit on a roll of 19 or 20 instead of only on a natural 20.",
+    "otherEffects": "This Move scores a Critical Hit on a roll of 18, 19 or 20 instead of only on a natural 20.",
     "description": "The user strikes with an ivy-wrapped cudgel. This move's type changes depending on the mask worn by the user, and it has a heightened chance of landing a critical hit."
   },
   {
@@ -9796,7 +9796,7 @@
     "accuracy": "+10",
     "power": "10 + d10",
     "secondaryEffects": "",
-    "otherEffects": "This Move scores a Critical Hit on a roll of 19 or 20 instead of only on a natural 20.",
+    "otherEffects": "This Move scores a Critical Hit on a roll of 18, 19 or 20 instead of only on a natural 20.",
     "description": "The user kicks, then fires three arrows. This move has a heightened chance of landing a critical hit and may also lower the target’s Defense stat or make it flinch."
   },
   {
@@ -10512,5 +10512,217 @@
     "secondaryEffects": "",
     "otherEffects": "After the Move is resolved, the user is reduced to 0 HP.",
     "description": "The user attacks everything around it by causing a tremendous explosion. The user faints upon using this move."
+  },
+  {
+    "name": "Sky Attack",
+    "conversion": "indirect",
+    "official": "Flying | Physical | Power 140 | Accuracy 90% | PP 5 | User charges for one turn before attacking; has an increased chance for a critical hit and a 30% chance to make the target flinch | No contact",
+    "type": "Flying",
+    "keywords": [
+      "Single-target",
+      "Physical",
+      "Long Range",
+      "Charging"
+    ],
+    "ppCost": 3,
+    "range": "20 m + 2x (Sp.) Attack",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+8",
+    "power": "14 + d10 + d4",
+    "secondaryEffects": "Has a 30% (-4) chance of applying the Flinch condition to the target.",
+    "otherEffects": "This Move scores a Critical Hit on a roll of 18, 19 or 20 instead of only on a natural 20.",
+    "description": "The user attacks the turn after using this move. This move has a heightened chance of landing a critical hit and may also make the target flinch."
+  },
+  {
+    "name": "Freeze Shock",
+    "conversion": "direct",
+    "official": "Ice | Physical | Power 140 | Accuracy 90% | PP 5 | Requires a turn to charge before attacking; 30% chance to paralyze the target | No contact",
+    "type": "Ice",
+    "keywords": [
+      "Single-target",
+      "Physical",
+      "Long Range",
+      "Charging"
+    ],
+    "ppCost": 3,
+    "range": "20 m + 2x (Sp.) Attack",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+8",
+    "power": "14 + d10 + d4",
+    "secondaryEffects": "Has a 30% (-4) chance of applying the Paralysis condition to the target.",
+    "otherEffects": "",
+    "description": "The turn after using this move, the user hits the target with electrically charged ice to inflict damage. This may also leave the target with paralysis."
+  },
+  {
+    "name": "Solar Blade",
+    "conversion": "direct",
+    "official": "Grass | Physical | Power 125 | Accuracy 100% | PP 10 | Requires a turn to charge before attacking | Contact",
+    "type": "Grass",
+    "keywords": [
+      "Single-target",
+      "Physical",
+      "Melee",
+      "Charging"
+    ],
+    "ppCost": 2,
+    "range": "1 m",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+10",
+    "power": "14 + d10 + d4",
+    "secondaryEffects": "",
+    "otherEffects": "",
+    "description": "The user gathers light on the first turn, then fills a blade with the light's energy and attacks on the next turn."
+  },
+  {
+    "name": "Future Sight",
+    "conversion": "indirect",
+    "official": "Psychic | Special | Power 120 | Accuracy 100% | PP 10 | Hits the target two turns later | No contact",
+    "type": "Psychic",
+    "keywords": [
+      "Single-target",
+      "Special",
+      "Long Range"
+    ],
+    "ppCost": 2,
+    "range": "20 m + 2x (Sp.) Attack",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+10",
+    "power": "12 + d12",
+    "secondaryEffects": "",
+    "otherEffects": "The Move’s damage is dealt to the target during their second End Phase after getting hit.",
+    "description": "Two turns after this move is used, a hunk of psychic energy attacks the target."
+  },
+  {
+    "name": "Roar",
+    "conversion": "indirect",
+    "official": "Normal | Status | Accuracy — | PP 20 | Priority -6 | Forces the target to switch out | No contact",
+    "type": "Normal",
+    "keywords": [
+      "Single-target",
+      "Status",
+      "Long Range"
+    ],
+    "ppCost": 0,
+    "range": "15 m",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "Hits automatically",
+    "power": "-",
+    "secondaryEffects": "",
+    "otherEffects": "The target is forcibly moved 5 meters away from the user.",
+    "description": "The target is scared off, and a different Pokémon is dragged out. In the wild, this ends a battle against a single Pokémon."
+  },
+  {
+    "name": "U-turn",
+    "conversion": "indirect",
+    "official": "Bug | Physical | Power 70 | Accuracy 100% | PP 20 | User must switch out after attacking | Contact",
+    "type": "Bug",
+    "keywords": [
+      "Single-target",
+      "Physical",
+      "Melee"
+    ],
+    "ppCost": 0,
+    "range": "1 m",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+10",
+    "power": "8 + d8",
+    "secondaryEffects": "",
+    "otherEffects": "After the Move is resolved, the user gets a free Movement Action.",
+    "description": "After making its attack, the user rushes back to switch places with a party Pokémon in waiting."
+  },
+  {
+    "name": "Volt Switch",
+    "conversion": "indirect",
+    "official": "Electric | Special | Power 70 | Accuracy 100% | PP 20 | User must switch out after attacking | No contact",
+    "type": "Electric",
+    "keywords": [
+      "Single-target",
+      "Special",
+      "Long Range"
+    ],
+    "ppCost": 0,
+    "range": "20 m + 2x (Sp.) Attack",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+10",
+    "power": "8 + d8",
+    "secondaryEffects": "",
+    "otherEffects": "After the Move is resolved, the user gets a free Movement Action.",
+    "description": "After making its attack, the user rushes back to switch places with a party Pokémon in waiting."
+  },
+  {
+    "name": "Memento",
+    "conversion": "indirect",
+    "official": "Dark | Status | Accuracy 100% | PP 10 | Lowers the target’s Attack and Special Attack by two stages; user faints | No contact",
+    "type": "Dark",
+    "keywords": [
+      "Single-target",
+      "Status",
+      "Long Range"
+    ],
+    "ppCost": 2,
+    "range": "15 m",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+10",
+    "power": "-",
+    "secondaryEffects": "Applies an Attack debuff of two stages (-4) and a Special attack debuff of two stages (-4) to the target.",
+    "otherEffects": "After the Move is resolved, the user is reduced to 0 HP.",
+    "description": "The user faints. In return, the target's Attack and Sp. Atk stats are harshly lowered."
+  },
+  {
+    "name": "Super Fang",
+    "conversion": "indirect",
+    "official": "Normal | Physical | Power — | Accuracy 90% | PP 10 | Inflicts damage equal to half the target’s HP | Contact",
+    "type": "Normal",
+    "keywords": [
+      "Single-target",
+      "Physical",
+      "Melee"
+    ],
+    "ppCost": 2,
+    "range": "1 m",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "+8",
+    "power": "-",
+    "secondaryEffects": "",
+    "otherEffects": "Deals True Damage equal to half of the target’s current HP (rounded up), to a maximum of 20.",
+    "description": "The user chomps hard on the target with its sharp front fangs. This cuts the target's HP in half."
+  },
+  {
+    "name": "Healing Wish",
+    "conversion": "indirect",
+    "official": "Psychic | Status | Accuracy — | PP 10 | User faints; its replacement has its HP fully restored and status conditions cured | No contact",
+    "type": "Psychic",
+    "keywords": [
+      "Single-target (self)",
+      "Status"
+    ],
+    "ppCost": 2,
+    "range": "Self",
+    "shape": "",
+    "shapeSize": "",
+    "placementType": "",
+    "accuracy": "Hits automatically",
+    "power": "-",
+    "secondaryEffects": "",
+    "otherEffects": "After the Move is resolved, the user is reduced to 0 HP. One other character of the user’s choice within 15 m that the user can see regains up to 40 HP and is cured of all Status Conditions.",
+    "description": "The user faints. In return, the Pokémon taking its place will have its HP restored and status conditions cured."
   }
 ]
