@@ -534,9 +534,6 @@ body.modal-open { overflow: hidden; } /* page scroll locked while a modal is ope
 .move-pick .btn.added { background: var(--accent-blue) linear-gradient(90deg, var(--accent-blue), var(--accent-red)); color: #fff; } /* active Move: just replace the background — no border, so no size shift and no edge peeking */
 
 .kv-list { display: flex; flex-direction: column; gap: 6px; }
-.ability-slot { margin: 10px 0; }
-.ability-slot > select { min-width: 220px; }
-.ability-desc { font-size: 13px; color: var(--muted); margin-top: 4px; max-width: 560px; }
 .cond-desc { display: block; margin-top: 2px; font-size: 12px; color: var(--muted); } /* status condition description under the label in cards */
 .kv-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px; margin: 7px 0; }
 

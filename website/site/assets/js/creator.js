@@ -129,8 +129,12 @@ const filterInput = document.getElementById("char-filter");
 const listEl = document.getElementById("char-list");
 
 let chars = loadCharacters();
-// normalize older string-form abilities to {name, stat}
-for (const c of chars) c.abilities = (c.abilities || []).map((a) => (typeof a === "string" ? { name: a } : a));
+// normalize older string-form abilities to {name, description, stat?}; description filled from ABILITIES
+for (const c of chars) c.abilities = (c.abilities || []).map((a) => {
+  if (typeof a === "string") a = { name: a };
+  if (a.description == null) { const info = ABILITIES.find(([n]) => n === a.name); a.description = info ? info[1] : ""; }
+  return a;
+});
 let currentId = null;
 let mode = "edit"; // "edit" | "preview"
 let movesLib = [];
@@ -255,6 +259,12 @@ function renderEditor() {
       try {
         const data = JSON.parse(r.result);
         data.id = c.id; // replace current character, keep slot
+        // normalize older string-form abilities to {name, description, stat?}
+        data.abilities = (data.abilities || []).map((a) => {
+          if (typeof a === "string") a = { name: a };
+          if (a.description == null) { const info = ABILITIES.find(([n]) => n === a.name); a.description = info ? info[1] : ""; }
+          return a;
+        });
         if (data.kind === "pc") data.advancementPoints = { unspent: +data.advancementPoints?.unspent || 0 }; // spent is recomputed from Progress modifiers
         else delete data.advancementPoints;
         chars = chars.map((x) => (x.id === c.id ? data : x));
@@ -307,6 +317,8 @@ function editSheet(c, d) {
     sec.appendChild(kvInput("Weight", c.weight, (v) => { c.weight = v; persist(); }, "text", "kg"));
     sec.appendChild(portraitEditor(c));
   }));
+
+  wrap.appendChild(section("Resistances / Weaknesses", (sec) => sec.appendChild(resEditor(c))));
 
   wrap.appendChild(section("Core stats", (sec) => {
     if (c.kind === "npc") {
@@ -367,49 +379,7 @@ function editSheet(c, d) {
     }
   }));
 
-  wrap.appendChild(section("Abilities", (sec) => {
-    for (let i = 0; i < 2; i++) {
-      const slot = document.createElement("div");
-      slot.className = "ability-slot";
-      const sel = document.createElement("select");
-      const empty = document.createElement("option"); empty.value = ""; empty.textContent = "-"; sel.appendChild(empty);
-      for (const [name] of ABILITIES) { const o = document.createElement("option"); o.value = name; o.textContent = name; sel.appendChild(o); }
-      const cur = c.abilities[i];
-      sel.value = cur?.name || "";
-      const desc = document.createElement("div");
-      desc.className = "ability-desc";
-      const statRow = document.createElement("div");
-      statRow.className = "kv-row";
-      const renderSlot = () => {
-        const info = ABILITIES.find(([n]) => n === sel.value);
-        desc.textContent = info ? info[1] : "";
-        statRow.innerHTML = "";
-        if (sel.value === "Specialized") {
-          // Specialized: choose which stat gets the +2
-          const statSel = document.createElement("select");
-          const opts = [...KNOWLEDGE_STATS.map((k) => KNOWLEDGE_LABEL[k]), ...SOCIAL_STATS.map((k) => SOCIAL_LABEL[k]), ...c.bonusStats.map((b) => `Bonus: ${b.topic}`)];
-          for (const o of opts) { const op = document.createElement("option"); op.value = o; op.textContent = o; statSel.appendChild(op); }
-          statSel.value = cur?.stat || opts[0];
-          statSel.addEventListener("change", () => { if (c.abilities[i]) { c.abilities[i].stat = statSel.value; persist(); } });
-          const lab = document.createElement("span");
-          lab.style.cssText = "font-size:12px;color:var(--muted)";
-          lab.textContent = "Stat that gets the +2:";
-          statRow.append(lab, statSel);
-        }
-      };
-      sel.addEventListener("change", () => {
-        const prev = c.abilities[i];
-        c.abilities[i] = sel.value ? { name: sel.value, stat: prev?.stat } : undefined;
-        c.abilities = c.abilities.filter(Boolean);
-        persist(); renderEditor();
-      });
-      renderSlot();
-      slot.append(sel, desc, statRow);
-      sec.appendChild(slot);
-    }
-  }));
-
-  wrap.appendChild(section("Resistances / Weaknesses", (sec) => sec.appendChild(resEditor(c))));
+  wrap.appendChild(section("Abilities", (sec) => { sec.appendChild(abilitiesEditor(c)); }));
 
   wrap.appendChild(section("Moves (max 4 learnt + Basic attack)", (sec) => {
     movesEditor(c).then((el) => sec.appendChild(el)); // async: fetch library, then append
@@ -454,7 +424,6 @@ function previewSheet(c, d) {
   idRow("Weight", c.weight ? c.weight + " kg" : "");
   idRow("Resistances", c.resistances.map((r) => `${r.type} (${r.level})`).join(", "));
   idRow("Weaknesses", c.weaknesses.map((r) => `${r.type} (${r.level})`).join(", "));
-  idRow("Abilities", c.abilities.map((a) => typeof a === "string" ? a : a.name + (a.stat ? " (" + a.stat + ")" : "")).join(", ") || "-");
 
   const statTable = (title, stats, labels, store, cat) => {
     const h = document.createElement("div"); h.className = "pv-h"; h.textContent = title;
@@ -568,6 +537,10 @@ function previewSheet(c, d) {
   }
   if (c.kind === "pc") rRow("Fate Points (max 2)", c.fatePoints, true, (v) => { c.fatePoints = Math.max(0, Math.min(2, v)); }, 2);
 
+  const ah = document.createElement("div"); ah.className = "pv-h"; ah.textContent = "Abilities";
+  right.appendChild(ah);
+  right.appendChild(abilitiesEditor(c, { allowAdd: false, allowRemove: false })); // cards only — Abilities are added/removed in Edit mode
+
   const ch = document.createElement("div"); ch.className = "pv-h"; ch.textContent = "Status Conditions";
   right.appendChild(ch);
   right.appendChild(conditionsEditor(c, false));
@@ -662,10 +635,13 @@ function itemCard(contentHtml, onRemove) {
   const grow = document.createElement("div");
   grow.className = "grow";
   grow.innerHTML = contentHtml;
-  const rm = document.createElement("button");
-  rm.className = "btn small danger"; rm.type = "button"; rm.textContent = "Remove";
-  rm.addEventListener("click", onRemove);
-  card.append(grow, rm);
+  card.appendChild(grow);
+  if (onRemove) {
+    const rm = document.createElement("button");
+    rm.className = "btn small danger"; rm.type = "button"; rm.textContent = "Remove";
+    rm.addEventListener("click", onRemove);
+    card.appendChild(rm);
+  }
   return card;
 }
 
@@ -884,6 +860,63 @@ async function movesEditor(c) {
   hint.style.cssText = "font-size:12px;color:var(--muted);margin-top:6px";
   hint.textContent = "Basic attack is always available and not counted in the 4 learnt Moves.";
   wrap.appendChild(hint);
+  return wrap;
+}
+
+const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+// Abilities: any number of cards (the ruleset limits Abilities to 2, but the GM may grant
+// additional custom ones), added one by one in Edit mode via a modal with name +
+// description inputs that can be pre-filled from an existing Ability.
+function abilitiesEditor(c, { allowAdd = true, allowRemove = true } = {}) {
+  const wrap = document.createElement("div");
+  if (allowAdd) {
+    const addBtn = document.createElement("button");
+    addBtn.className = "btn small add-btn"; addBtn.type = "button"; addBtn.textContent = "Add Ability";
+    addBtn.addEventListener("click", () => {
+      let statSel = null;
+      const fillSel = document.createElement("select");
+      const none = document.createElement("option"); none.value = ""; none.textContent = "-"; fillSel.appendChild(none);
+      for (const [name] of ABILITIES) { const o = document.createElement("option"); o.value = name; o.textContent = name; fillSel.appendChild(o); }
+      const nameInp = document.createElement("input"); nameInp.type = "text"; nameInp.placeholder = "Ability name"; nameInp.style.width = "100%";
+      const descInp = document.createElement("textarea"); descInp.rows = 3; descInp.placeholder = "Ability description"; descInp.style.width = "100%"; descInp.style.resize = "vertical";
+      const statRow = document.createElement("div"); statRow.className = "kv-row"; statRow.style.display = "none";
+      fillSel.addEventListener("change", () => {
+        const info = ABILITIES.find(([n]) => n === fillSel.value);
+        if (info) { nameInp.value = info[0]; descInp.value = info[1]; }
+        statSel = null; statRow.innerHTML = ""; statRow.style.display = "none";
+        if (fillSel.value === "Specialized") {
+          // Specialized: choose which stat gets the +2
+          statRow.style.display = "";
+          const sel = document.createElement("select");
+          const opts = [...KNOWLEDGE_STATS.map((k) => KNOWLEDGE_LABEL[k]), ...SOCIAL_STATS.map((k) => SOCIAL_LABEL[k]), ...c.bonusStats.map((b) => `Bonus: ${b.topic}`)];
+          for (const o of opts) { const op = document.createElement("option"); op.value = o; op.textContent = o; sel.appendChild(op); }
+          const lab = document.createElement("span"); lab.style.cssText = "font-size:12px;color:var(--muted)"; lab.textContent = "Stat that gets the +2:";
+          statRow.append(lab, sel);
+          statSel = sel;
+        }
+      });
+      const m = openModal("Add Ability", (body) => {
+        body.append(kvRow("Fill from existing Ability:", fillSel), kvRow("Name:", nameInp), kvRow("Description:", descInp), statRow);
+      }, [{
+        label: "Add", primary: true,
+        onClick: () => {
+          const name = nameInp.value.trim();
+          if (!name) return;
+          const a = { name, description: descInp.value.trim() };
+          if (statSel) a.stat = statSel.value;
+          c.abilities.push(a); persist(); renderEditor(); m.close();
+        },
+      }]);
+    });
+    wrap.appendChild(addBtn);
+  }
+  for (const a of c.abilities) {
+    const label = esc(a.name) + (a.stat ? " (" + esc(a.stat) + ")" : "");
+    wrap.appendChild(itemCard("<strong>" + label + "</strong>" + (a.description ? "<span class=\"cond-desc\">" + esc(a.description) + "</span>" : ""), allowRemove ? () => {
+      c.abilities = c.abilities.filter((x) => x !== a); persist(); renderEditor();
+    } : null));
+  }
   return wrap;
 }
 
